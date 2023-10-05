@@ -1,0 +1,12 @@
+Font:   Style: 
+Point Size: 0   SP/PD Ratio: Infinity
+
+Characters included: 0/4890
+Missing characters: 0
+Excluded characters: 0
+
+Characters missing from font file:
+----------------------------------------
+
+Characters excluded from packing:
+----------------------------------------
