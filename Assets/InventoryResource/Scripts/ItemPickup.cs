@@ -20,12 +20,13 @@ public class ItemPickup : MonoBehaviour
 
             if (existingItem != null)
             {
+                ChatManager.Instance.SystemMessage($"你拾取了{itemToAdd.itemName}。");
                 existingItem.itemCounts[itemToAdd.itemName]++; //僅增加數量
                 Destroy(gameObject);
             }
             else
             {
-                if (InventoryManager.Instance.Items.Count < InventoryManager.Instance.maxCapacity)
+                if (InventoryManager.Instance.Items.Count < InventoryManager.Instance.maxCapacity) //背包還能裝的話才能撿
                 {
                     consumableItemToAdd.itemCounts[itemToAdd.itemName] = 1;
                     ChatManager.Instance.SystemMessage($"你拾取了{itemToAdd.itemName}。");
