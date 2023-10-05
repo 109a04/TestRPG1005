@@ -10602,8 +10602,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: QuitManager, Assembly-CSharp
+      - m_Target: {fileID: 1175179953}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: PressYes
         m_Mode: 1
         m_Arguments:
@@ -11361,7 +11361,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &566286277
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11608,7 +11608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11616,8 +11616,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_Font: {fileID: 12800000, guid: 74a90c1aa3744674c842da899b392d08, type: 3}
+    m_FontSize: 33
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 5
@@ -11628,7 +11628,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4EFB\u52D9"
+  m_Text: "\u4EFB \u52D9"
 --- !u!222 &569450856
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17646,10 +17646,10 @@ RectTransform:
   m_Father: {fileID: 866811202}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 124, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &853888103
 MonoBehaviour:
@@ -17799,8 +17799,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 774, y: 87}
-  m_SizeDelta: {x: 125, y: 130}
+  m_AnchoredPosition: {x: 485, y: 450}
+  m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &866811203
 MonoBehaviour:
@@ -20465,8 +20465,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: QuitManager, Assembly-CSharp
+      - m_Target: {fileID: 1175179953}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: PressNo
         m_Mode: 1
         m_Arguments:
@@ -21569,7 +21569,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -226, y: -91}
+  m_AnchoredPosition: {x: -320, y: -91}
   m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1049102845
@@ -42038,8 +42038,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 254, y: 449}
-  m_SizeDelta: {x: 128, y: 128}
+  m_AnchoredPosition: {x: 328, y: 449}
+  m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2030499051
 MonoBehaviour:
@@ -42875,7 +42875,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 778, y: 304}
+  m_AnchoredPosition: {x: 806, y: 450}
   m_SizeDelta: {x: 114.3748, y: 74.9382}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2066318512
@@ -42954,8 +42954,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: a87196562fa0eab439a1e7ea1afc4352, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

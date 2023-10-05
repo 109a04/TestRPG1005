@@ -103,14 +103,14 @@ public class Player : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        else
-        {
-            currentHealth += value;
-        }
-
-        if((currentHealth + value) <= 0) //讽產砆Ι﹀璽计眏0
+        else if ((currentHealth + value) <= 0)//讽產砆Ι﹀璽计眏0
         {
             currentHealth = 0;
+            
+        }
+        else //ㄤ緇薄猵タ盽
+        {
+            currentHealth += value;
         }
 
         /*ド代刚hp碞琌ネ㏑翴计*50狦干珇⊿ΤΘ狦
