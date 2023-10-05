@@ -23,12 +23,13 @@ public class WeaponItem : Item
         AbleToSell = true;
         return AbleToSell;
     }
+
     public enum WeaponType //四種武器
     {
         Sword,     //劍
         MagicWand, //魔杖
-        Bow,       //弓
-        Heavy      //重型武器
+        Heavy,     //重型武器
+        Bow        //弓
     }
 
     public enum ElementType

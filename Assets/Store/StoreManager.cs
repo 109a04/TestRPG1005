@@ -30,7 +30,7 @@ public class StoreManager : MonoBehaviour
     }
     public void GetMoney()
     {
-        moneyText.text = $"{Player.Instance.money}";
+        moneyText.text = $"{playerAttributeManager.Instance.money}";
     }
 
     public void ToggleStoreUI(bool active) //UI¶}Ãö

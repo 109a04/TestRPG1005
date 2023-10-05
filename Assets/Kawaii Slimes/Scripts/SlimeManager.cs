@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class SlimeManager : MonoBehaviour
 {
     public GameObject mainSlime;
     public Button idleBut, walkBut,jumpBut,attackBut,damageBut0,damageBut1,damageBut2;

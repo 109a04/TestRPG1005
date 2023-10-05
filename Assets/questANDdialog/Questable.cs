@@ -84,7 +84,9 @@ public class Questable : MonoBehaviour
 
     public void OfferRewards()//提供獎勵，加經驗和金幣
     {
-        playerAttributeManager.Instance.exp += quest.expReward;
-        Player.Instance.money += quest.goldReward;
+        //加上UI同步顯示
+        Player.Instance.IncreaseExp(quest.expReward);
+        //playerAttributeManager.Instance.exp += quest.expReward;
+        playerAttributeManager.Instance.money += quest.goldReward;
     }
 }

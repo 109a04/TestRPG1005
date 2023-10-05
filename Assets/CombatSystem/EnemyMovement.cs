@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour
 {
     private Transform player;
     private GameObject enemy; //怪物物件
+    public Enemy enemyData; //怪物數值
     private EnemyController stateMachine; //引用狀態機
     private EnemyActionVariables actionVariables; //引用各種變數
     private Vector3 targetPos;
@@ -223,9 +224,9 @@ public class EnemyMovement : MonoBehaviour
     //攻擊玩家的函式
     public void Attack()
     {
-        Debug.Log("攻擊玩家");
         targetPos = player.position;
         Rotate(targetPos);
+        Player.Instance.IncreaseHealth(-enemyData.attack); //傷害玩家
     }
 
     //規定每幾秒攻擊一次玩家
@@ -234,7 +235,7 @@ public class EnemyMovement : MonoBehaviour
         actionVariables.canAttack = false;
         Attack();
         yield return new WaitForSeconds(delaySeconds);
-        Debug.Log("進入攻擊");
+        
         actionVariables.canAttack = true;
     }
 

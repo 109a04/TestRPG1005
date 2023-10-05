@@ -3,20 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//控制玩家數值相關UI
 public class Player : MonoBehaviour
 {
-    public static Player Instance;
+    public static Player Instance { get; private set; }
 
-    public string playerName;
+    //給Slider做動態運算的最大值
+    protected int maxHealth;
+    protected int maxMp;
+    protected int maxExp;
 
-    public int Health = 100;//把Mp和Healteh和Exp都設成public
-    public int Mp = 50;
-    public int Exp = 0;
-    public int money = 1200; //玩家財力
+    //當前玩家數值
+    protected int currentHealth;
+    protected int currentMp;
+    protected int currentExp;
 
+    public Slider HealthSlider;
+    public Slider MpSlider;
+    public Slider ExpSlider;
     public Text HealthText;
     public Text MpText;
     public Text ExpText;
+
 
     private void Awake()
     {
@@ -25,33 +33,64 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        //玉珊測試，讓主畫面的血條值=血量
-        Health = playerAttributeManager.Instance.hp;
-        Mp = playerAttributeManager.Instance.mp;
-        Exp = playerAttributeManager.Instance.exp;
-        //
+        //把PlayerAttribute中的數值引用過來，並初始化當前數值
+        SetStatus();
+        currentHealth = maxHealth;
+        currentMp = maxMp;
+        currentExp = playerAttributeManager.Instance.exp;
 
-        //正確顯示玩家狀態
-        GetHealth();
-        GetMP();
-        GetEXP();
+
+        //正確初始化玩家顯示狀態
+
+        SetUI();
+        
     }
 
-
-    public void GetHealth()
+    public void SetStatus()
     {
-        HealthText.text = $"HP: {Health}";
+        maxHealth = playerAttributeManager.Instance.hp;
+        maxMp = playerAttributeManager.Instance.mp;
+        maxExp = playerAttributeManager.Instance.up_exp;
     }
 
-    public void GetMP()
+    public void SetUI()
     {
-        MpText.text = $"MP: {Mp}";
+        UpdateSliderRange();
+        SetHealthUI();
+        SetMPUI();
+        SetEXPUI();
     }
 
-    public void GetEXP()
+
+    public void SetHealthUI()
     {
-        ExpText.text = $"EXP: {Exp}";
+        HealthSlider.value = currentHealth;
+        HealthText.text = $"HP: {currentHealth}";
     }
+
+    public void SetMPUI()
+    {
+        MpSlider.value = currentMp;
+        MpText.text = $"MP: {currentMp}";
+    }
+
+    public void SetEXPUI()
+    {
+        ExpSlider.value = currentExp;
+        ExpText.text = $"EXP: {currentExp}";
+    }
+
+    //控制血量條與其它進度條動態的函數
+    public void UpdateSliderRange()
+    {
+        HealthSlider.minValue = 0;
+        MpSlider.minValue = 0;
+        ExpSlider.minValue = 0;
+        HealthSlider.maxValue = maxHealth;
+        MpSlider.maxValue = maxMp;
+        ExpSlider.maxValue = maxExp;
+    }
+
 
     /// <summary>
     /// 使用消耗品相關的函數，以後可能可以搬運到其他腳本，或留在這裡哈哈(哈哈)
@@ -59,14 +98,28 @@ public class Player : MonoBehaviour
 
     public void IncreaseHealth(int value)
     {
-        Health += value;
+        //若當前數值加成後超出最大範圍，則只回復到最大值
+        if((currentHealth + value) > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        else
+        {
+            currentHealth += value;
+        }
 
-        //玉珊測試，hp的上限就是生命點數*50，如果到了上限再吃補品並沒有加成效果
+        if((currentHealth + value) <= 0) //當玩家可能被扣血到負數，強制為0
+        {
+            currentHealth = 0;
+        }
+
+        /*玉珊測試，hp的上限就是生命點數*50，如果到了上限再吃補品並沒有加成效果
         playerAttributeManager.Instance.hp = Mathf.Min(playerAttributeManager.Instance.hp + value, playerAttributeManager.Instance.origin_hp * 50);
-        Health = playerAttributeManager.Instance.hp;//讓角色主畫面的血條也受到限制
-        //
+        currentHealth = playerAttributeManager.Instance.hp;//讓角色主畫面的血條也受到限制
+        */
 
-        HealthText.text = $"HP: {Health}";
+        SetHealthUI();
+
         if (value < 0)
         {
             ChatManager.Instance.SystemMessage($"<color=#F5EC3D>體力減少{Mathf.Abs(value)}。</color>\n");
@@ -75,19 +128,26 @@ public class Player : MonoBehaviour
         {
             ChatManager.Instance.SystemMessage($"<color=#F5EC3D>體力增加{value}。</color>\n");
         }
-
     }
 
     public void IncreaseMp(int value)
     {
-        Mp += value;
+        if ((currentMp + value) > maxMp)
+        {
+            currentMp = maxMp;
+        }
+        else
+        {
+            currentMp += value;
+        }
 
-        //玉珊測試，mp上限是法力點*10
+        /*玉珊測試，mp上限是法力點*10
         playerAttributeManager.Instance.mp = Mathf.Min(playerAttributeManager.Instance.mp + value, playerAttributeManager.Instance.origin_mp * 10);
         Mp = playerAttributeManager.Instance.mp;//讓角色主畫面的法條受到限制
-        //
+        */
 
-        MpText.text = $"MP: {Mp}";
+        SetMPUI();
+
         if (value < 0)
         {
             ChatManager.Instance.SystemMessage($"<color=#F5EC3D>魔力減少{Mathf.Abs(value)}。</color>\n");
@@ -96,16 +156,30 @@ public class Player : MonoBehaviour
         {
             ChatManager.Instance.SystemMessage($"<color=#F5EC3D>魔力增加{value}。</color>\n");
         }
+
     }
     public void IncreaseExp(int value)
     {
-        Exp += value;
+        if((currentExp + value) >= maxExp) //照理來說要升級，但目前還不知道升級後要做什麼
+        {
+            ///  LevelUp(); 假裝這是升級函式
+            ///  函式裡面可能有playerAttributeManager.Instance.level += 1; 
+            ///  currentExp = 0;
+            ///  之類的東西
+        }
+        else
+        {
+            playerAttributeManager.Instance.exp += value;
+            currentExp += value;
+        }
 
-        //玉珊測試，讓角色欄的經驗欄也一起改變
+
+        /*玉珊測試，讓角色欄的經驗欄也一起改變
         playerAttributeManager.Instance.exp = playerAttributeManager.Instance.exp + value;
-        //
+        */
 
-        ExpText.text = $"EXP: {Exp}";
+        SetEXPUI();
+
         if (value < 0)
         {
             ChatManager.Instance.SystemMessage($"<color=#F5EC3D>經驗減少{Mathf.Abs(value)}。</color>\n");
@@ -114,5 +188,10 @@ public class Player : MonoBehaviour
         {
             ChatManager.Instance.SystemMessage($"<color=#F5EC3D>經驗增加{value}。</color>\n");
         }
+    }
+
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
     }
 }

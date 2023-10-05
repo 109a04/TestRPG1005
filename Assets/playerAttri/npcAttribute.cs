@@ -94,11 +94,7 @@ public class npcAttribute : MonoBehaviour
         playerAttributeManager.Instance.attack = playerAttributeManager.Instance.origin_attack * 2;
         playerAttributeManager.Instance.speed = playerAttributeManager.Instance.origin_speed * 2;
 
-        //顯示到遊戲主畫面的血條/法條/經驗條
-        Player.Instance.Health = playerAttributeManager.Instance.hp;
-        Player.Instance.Mp = playerAttributeManager.Instance.mp;
-        Player.Instance.GetHealth();
-        Player.Instance.GetMP();
-        
+        Player.Instance.SetStatus();
+        Player.Instance.SetUI();
     }
 }

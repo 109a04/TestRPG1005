@@ -82,10 +82,10 @@ public class StoreItemController : BaseItemController
         if (InventoryManager.Instance.Items.Count < InventoryManager.Instance.maxCapacity) //背包滿了不行買
         {
             int totalPrice = thisItem.itemPrice * currentQuantity; // 計算總價格
-            if (Player.Instance.money >= totalPrice) //有錢的情況
+            if (playerAttributeManager.Instance.money >= totalPrice) //有錢的情況
             {
                 CanNotAfford = false;
-                Player.Instance.money -= totalPrice; //付錢
+                playerAttributeManager.Instance.money -= totalPrice; //付錢
 
 
                 //若為消耗品類，檢查背包中是否已存在相同物品

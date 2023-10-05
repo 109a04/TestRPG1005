@@ -39,7 +39,7 @@ public class ChatManager : MonoBehaviour
             // 創建新的 Text 元素
             GameObject systemMessage = Instantiate(MessagePrefab, chatContent);
             Text messageText = systemMessage.GetComponent<Text>();
-            messageText.text = $"<color=#FFFFFF>{Player.Instance.playerName}：{message}</color>\n"; //白色
+            messageText.text = $"<color=#FFFFFF>{playerAttributeManager.Instance.name}：{message}</color>\n"; //白色
 
             inputField.text = ""; //清空
 
