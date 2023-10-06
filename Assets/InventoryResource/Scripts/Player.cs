@@ -35,9 +35,7 @@ public class Player : MonoBehaviour
     {
         //把PlayerAttribute中的數值引用過來，並初始化當前數值
         SetStatus();
-        currentHealth = maxHealth;
-        currentMp = maxMp;
-        currentExp = playerAttributeManager.Instance.exp;
+        SetInitStats();
 
 
         //正確初始化玩家顯示狀態
@@ -51,6 +49,12 @@ public class Player : MonoBehaviour
         maxHealth = playerAttributeManager.Instance.hp;
         maxMp = playerAttributeManager.Instance.mp;
         maxExp = playerAttributeManager.Instance.up_exp;
+    }
+    public void SetInitStats()
+    {
+        currentHealth = maxHealth;
+        currentMp = maxMp;
+        currentExp = playerAttributeManager.Instance.exp;
     }
 
     public void SetUI()

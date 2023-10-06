@@ -57,16 +57,20 @@ public class GameManager : MonoBehaviour
         DeathUI.SetActive(true);
     }
 
-    /*遊戲重開，因為還沒想好存檔的要怎麼做，之後有需要存檔點的話再改（好）
+    //遊戲重開，因為還沒想好存檔的要怎麼做，之後有需要存檔點的話再改（好）
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        ResetGameState();
+        //血量回復後，生成到指定地點
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //ResetGameState();
 
-    }好像沒辦法重開  跟對話系統的某東西有關係但我看不懂*/
+    }
+    //好像沒辦法重開 跟對話系統的某東西有關係但我看不懂
 
     private void ResetGameState()
     {
+        Player.Instance.SetStatus();
+        Player.Instance.SetInitStats();
         Time.timeScale = 1.0f;
     }
 }
