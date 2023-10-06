@@ -49,7 +49,7 @@ public class PlayerUI : MonoBehaviour
         expText.text = "經驗：" + playerAttributeManager.Instance.exp.ToString();
         up_expText.text = "經驗上限：" + playerAttributeManager.Instance.up_exp.ToString();
 
-        HPText.text = "血量：" + playerAttributeManager.Instance.hp.ToString();
+        HPText.text = "血量：" + Player.Instance.GetCurrentHealth()+ "/" + playerAttributeManager.Instance.hp.ToString();
         MPText.text = "魔力：" + playerAttributeManager.Instance.mp.ToString();
         attackText.text = "攻擊力：" + playerAttributeManager.Instance.attack.ToString();
         speedText.text = "速度：" + playerAttributeManager.Instance.speed.ToString();

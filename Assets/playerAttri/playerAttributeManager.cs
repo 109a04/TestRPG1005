@@ -40,7 +40,7 @@ public class playerAttributeManager : MonoBehaviour
     public playerAttributeManager()
     {
         pname = "test";
-        money = 1200;
+        money = 12000;
         level = 1;
         exp = 0;
         up_exp = 90;

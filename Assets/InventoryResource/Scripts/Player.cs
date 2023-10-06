@@ -65,19 +65,19 @@ public class Player : MonoBehaviour
     public void SetHealthUI()
     {
         HealthSlider.value = currentHealth;
-        HealthText.text = $"HP: {currentHealth}";
+        HealthText.text = $"HP: {currentHealth}/{maxHealth}";
     }
 
     public void SetMPUI()
     {
         MpSlider.value = currentMp;
-        MpText.text = $"MP: {currentMp}";
+        MpText.text = $"MP: {currentMp}/{maxMp}";
     }
 
     public void SetEXPUI()
     {
         ExpSlider.value = currentExp;
-        ExpText.text = $"EXP: {currentExp}";
+        ExpText.text = $"EXP: {currentExp}/{maxExp}";
     }
 
     //控制血量條與其它進度條動態的函數
