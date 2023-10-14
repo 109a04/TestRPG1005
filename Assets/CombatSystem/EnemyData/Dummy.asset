@@ -15,5 +15,5 @@ MonoBehaviour:
   enemyName: "\u9776\u5B50"
   enemyElement: 0
   level: 5
-  health: 100
+  maxHealth: 50
   attack: 15

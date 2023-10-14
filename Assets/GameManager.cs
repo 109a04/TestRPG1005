@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public GameObject EscUI;
     public GameObject DeathUI;
+    private bool isDead;
 
     public void Awake()
     {
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     {
         EscUI.SetActive(false);
         DeathUI.SetActive(false);
+        isDead = false;
     }
 
     // Update is called once per frame
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
         //當玩家生命值歸零
         if (Player.Instance.GetCurrentHealth() <= 0)
         {
+            isDead = true;
 
             //顯示死亡訊息
             DisplayDeathUI();
@@ -72,5 +75,10 @@ public class GameManager : MonoBehaviour
         Player.Instance.SetStatus();
         Player.Instance.SetInitStats();
         Time.timeScale = 1.0f;
+    }
+
+    public bool IsDead()
+    {
+        return isDead;
     }
 }

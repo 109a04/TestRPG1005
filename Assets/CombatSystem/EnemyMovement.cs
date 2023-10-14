@@ -12,20 +12,32 @@ public class EnemyMovement : MonoBehaviour
     private EnemyActionVariables actionVariables; //引用各種變數
     private Vector3 targetPos;
     private bool hasRandomPosition = false; //是否已抽過隨機點
+    private int currentHP; //當前血量
 
     private void Start()
     {
+        stateMachine = GetComponent<EnemyController>();
+        actionVariables = GetComponent<EnemyActionVariables>();
+
         player = GameObject.FindGameObjectWithTag("Player").transform; //找尋玩家物件
 
         enemy = this.gameObject;
+        actionVariables.StatusUI.SetActive(false); //預設隱藏
+        currentHP = enemyData.maxHealth; //初始化血量
+        //初始化怪物血條與名稱等級
+        actionVariables.hpSlider.minValue = 0;
+        actionVariables.hpSlider.maxValue = enemyData.maxHealth;
+        actionVariables.hpSlider.value = currentHP;
+        actionVariables.enemyName.text = enemyData.enemyName;
+        actionVariables.enemyLevel.text = $"Lv. " + enemyData.level.ToString();
+
         if (enemy == null)
         {
             Debug.LogWarning("並未設定好適當的怪物物件");
             return;
         }
 
-        stateMachine = GetComponent<EnemyController>();
-        actionVariables = GetComponent<EnemyActionVariables>();
+        
 
         if (stateMachine == null || actionVariables == null)
         {
@@ -39,6 +51,7 @@ public class EnemyMovement : MonoBehaviour
     //閒置狀態的行為
     public void IdleAction() 
     {
+        
         actionVariables.currentSpeed = actionVariables.walkSpeed;
 
         // 進入追擊狀態的邏輯，檢查玩家是否進入視野範圍
@@ -71,6 +84,7 @@ public class EnemyMovement : MonoBehaviour
     //遊蕩狀態的行為
     public void WanderAction()
     {
+        
         if (!hasRandomPosition)
         {
             targetPos = GetRandomPos();
@@ -104,7 +118,7 @@ public class EnemyMovement : MonoBehaviour
     //追擊狀態的行為
     public void ChaseAction()
     {
-
+        actionVariables.StatusUI.SetActive(true);
         targetPos = player.position;
         
         
@@ -114,6 +128,8 @@ public class EnemyMovement : MonoBehaviour
         {
             hasRandomPosition = false; //回去重抽一次隨機點
             //回到閒置狀態
+
+            StartCoroutine(HideStatusUI());
             stateMachine.SetState(EnemyController.EnemyState.Idle); 
         }
 
@@ -132,7 +148,7 @@ public class EnemyMovement : MonoBehaviour
     //攻擊狀態的行為
     public void AttackAction()
     {
-
+        actionVariables.StatusUI.SetActive(true);
         if (actionVariables.canAttack)
         {
             //攻擊間隔為一秒，也可以改
@@ -147,6 +163,11 @@ public class EnemyMovement : MonoBehaviour
         }
 
         //之後會有當玩家死亡時回到閒置狀態
+        if (GameManager.Instance.IsDead())
+        {
+            StartCoroutine(HideStatusUI());
+            stateMachine.SetState(EnemyController.EnemyState.Idle);
+        }
     }
 
     //移動到指定地點
@@ -220,6 +241,13 @@ public class EnemyMovement : MonoBehaviour
 
         MoveToTarget(targetPos);
     }
+
+    private IEnumerator HideStatusUI()
+    {
+        yield return new WaitForSeconds(1f);
+
+        actionVariables.StatusUI.SetActive(false);
+    }
     
     //攻擊玩家的函式
     public void Attack()
@@ -244,5 +272,34 @@ public class EnemyMovement : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         return distanceToPlayer <= range;
+    }
+
+    private void Update()
+    {
+        MouseOverEnemy();
+    }
+
+    private void MouseOverEnemy() //滑鼠在怪物上方時顯示UI
+    {
+        //把滑鼠在的地方記成射線
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(ray, out hitInfo)) //如果射線射到怪物，則顯示UI
+        {
+            if (hitInfo.collider.gameObject == gameObject)
+            {
+                actionVariables.StatusUI.SetActive(true);
+            }
+            else
+            {
+                //假如滑鼠離開怪物上方而玩家也不在追擊範圍內時，隱藏UI
+                if(stateMachine.currentState != EnemyController.EnemyState.Chase || stateMachine.currentState != EnemyController.EnemyState.Attack)
+                {
+                    actionVariables.StatusUI.SetActive(false);
+                }
+                
+            }
+        }
     }
 }

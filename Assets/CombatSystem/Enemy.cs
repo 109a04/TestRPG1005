@@ -16,7 +16,7 @@ public class Enemy : ScriptableObject
     public EnemyElement enemyElement; //敵人屬性
 
     public int level; //等級
-    public int health; //血量
+    public int maxHealth; //血量
     public int attack; //攻擊力
 
     public enum EnemyElement
