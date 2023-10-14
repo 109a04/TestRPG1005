@@ -87,14 +87,18 @@ public class toPhp : MonoBehaviour
                     playerNameManager.Instance.playerName = responseParts[1];
                     playerNameManager.Instance.playerID = responseParts[2];
                     loginText.text = responseParts[0];
+
+                    yield return new WaitForSecondsRealtime(4.0f);
+                    paneljump.SetActive(false);
+                    buttonshow.SetActive(true);
                 }
                 else
                 {
                     loginText.text = responseText;
+
+                    yield return new WaitForSecondsRealtime(4.0f);
+                    paneljump.SetActive(false);
                 }
-                yield return new WaitForSecondsRealtime(4.0f);
-                paneljump.SetActive(false);
-                buttonshow.SetActive(true);
             }
         }
     }
@@ -168,7 +172,6 @@ public class toPhp : MonoBehaviour
     public void sceneStart()
     {
         SceneManager.LoadScene(1);//進到遊戲場景
-
     }
 
 }

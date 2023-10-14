@@ -36,7 +36,7 @@ public class Talkable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerInRange && dialogManager.instance.dialogueBox.activeInHierarchy == false && diaFinish == false/* && Input.GetKeyDown(KeyCode.F)*/)
+        if (playerInRange && dialogManager.instance.dialogueBox.activeInHierarchy == false && diaFinish == false && Input.GetKeyDown(KeyCode.F))
         {
             dialogManager.instance.ShowDialogue(lines);
             diaFinish = true;

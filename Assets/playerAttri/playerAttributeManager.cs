@@ -43,8 +43,8 @@ public class playerAttributeManager : MonoBehaviour
         money = 12000;
         level = 1;
         exp = 0;
-        up_exp = 90;
-        point = 10;
+        up_exp = 40;
+        point = 3;
 
         origin_hp = 1;
         origin_mp = 3;

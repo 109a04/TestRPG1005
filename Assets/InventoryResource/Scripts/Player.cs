@@ -170,6 +170,10 @@ public class Player : MonoBehaviour
             ///  函式裡面可能有playerAttributeManager.Instance.level += 1; 
             ///  currentExp = 0;
             ///  之類的東西
+            playerAttributeManager.Instance.level++;
+            playerAttributeManager.Instance.exp = playerAttributeManager.Instance.up_exp - playerAttributeManager.Instance.exp; 
+            playerAttributeManager.Instance.point = playerAttributeManager.Instance.point + 5;
+            currentExp = playerAttributeManager.Instance.exp;
         }
         else
         {

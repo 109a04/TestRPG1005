@@ -88,5 +88,6 @@ public class Questable : MonoBehaviour
         Player.Instance.IncreaseExp(quest.expReward);
         //playerAttributeManager.Instance.exp += quest.expReward;
         playerAttributeManager.Instance.money += quest.goldReward;
+        //PlayerLevelSystem.Instance.CheckExperience();
     }
 }
