@@ -28,13 +28,16 @@ public class playerAttributeManager : MonoBehaviour
     public int attack { get; set; }        //攻擊力
     public int speed { get; set; }         //移動速度
     public int weapon { get; set; }        //裝備，0 = 赤手空拳，1 = 劍，2 = 法器，3 = 重裝，4 = 弓箭
-    public int element { get; set; }       //0 = 無屬性，1 = 火，2 = 水，3 = 草，4 = 土
+    public int element { get; set; }       //0 = 無屬性，1 = 水，2 = 火 ，3 = 草，4 = 土
 
     //各元素屬性抗性
-    public int fire_mr { get; set; }       //火抗
     public int water_mr { get; set; }      //水抗
+    public int fire_mr { get; set; }       //火抗
     public int grass_mr { get; set; }      //草抗
     public int ground_mr { get; set; }     //土抗
+
+    //1017增加玩家攻擊範圍
+    public int atkRange {  get; set; }
 
     //給playerAttributes類的東東初始值或初始設定
     public playerAttributeManager()
@@ -63,6 +66,8 @@ public class playerAttributeManager : MonoBehaviour
         water_mr = 10;
         grass_mr = 10;
         ground_mr = 10;
+
+        atkRange = 10;
     }
 
     private void Awake()

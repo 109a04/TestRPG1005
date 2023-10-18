@@ -5057,6 +5057,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &225048216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225048205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc7a267e7db26a4ca8d484e80e61b0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &227714289
 GameObject:
   m_ObjectHideFlags: 0
@@ -46318,11 +46330,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 938276232745361831, guid: e389d9d8360f9654588d36f2aecc0491, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 19.999939
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 938276232745361831, guid: e389d9d8360f9654588d36f2aecc0491, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 467.4998
+      value: 467.49976
       objectReference: {fileID: 0}
     - target: {fileID: 938276232745361831, guid: e389d9d8360f9654588d36f2aecc0491, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -254,7 +254,7 @@ public class EnemyMovement : MonoBehaviour
     {
         targetPos = player.position;
         Rotate(targetPos);
-        Player.Instance.IncreaseHealth(-enemyData.attack); //傷害玩家
+        Player.Instance.Beaten(enemyData.attack, (int)enemyData.enemyElement);
     }
 
     //規定每幾秒攻擊一次玩家
@@ -265,6 +265,60 @@ public class EnemyMovement : MonoBehaviour
         yield return new WaitForSeconds(delaySeconds);
         
         actionVariables.canAttack = true;
+    }
+
+    //怪物遭到玩家攻擊的函數
+    public void TakeDamage(float damage, int weaponElement)
+    {
+        if(weaponElement != 0) //若武器屬性不為無
+        {
+            /// 元素相剋表
+            /// 水 = 1, 火 = 2, 草 = 3, 土 = 4
+            ///
+            if (weaponElement - (int)enemyData.enemyElement == -1) //武器屬性剋制怪物屬性
+            {
+                damage *= 1.25f;
+            }
+            else if (weaponElement - (int)enemyData.enemyElement == 1) //武器屬性被怪物屬性剋制
+            {
+                damage *= 0.75f;
+            } 
+
+            if(weaponElement == 1 && (int)enemyData.enemyElement == 4) //武器水怪物土
+            {
+                damage *= 0.75f;
+            }
+
+            if (weaponElement == 4 && (int)enemyData.enemyElement == 1) //武器土怪物水
+            {
+                damage *= 1.25f;
+            } 
+        }
+        //檢查是否打死 然後控制血條的程式碼不能用 救命
+        if((currentHP - damage) > 0)
+        {
+            currentHP -= (int)damage;
+            //actionVariables.hpSlider.value = currentHP;
+            Debug.Log("Current HP: " + currentHP); // 輸出 currentHP 看看是否正確
+        }
+        else
+        {
+            currentHP = 0;
+            //actionVariables.hpSlider.value = 0;
+            Debug.Log("Current HP is zero. Enemy is killed.");
+            IsKilled();
+
+        }
+    }
+
+    //假如怪物被擊敗，銷毀遊戲物件
+    public void IsKilled()
+    {
+        if(currentHP == 0)
+        {
+            Destroy(gameObject);
+            actionVariables.StatusUI.SetActive(false); //隱藏UI
+        }
     }
 
     //確認是否在範圍內

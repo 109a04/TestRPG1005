@@ -18,12 +18,12 @@ public class MouseCursorChange : MonoBehaviour
 
     void Update()
     {
-        RaycastHit hit;
+        RaycastHit hitInfo;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hitInfo))
         {
-            if (hit.collider != null && hit.collider.CompareTag("Enemy"))
+            if (hitInfo.collider != null && hitInfo.collider.CompareTag("Enemy"))
             {
                 // 當滑鼠懸停在怪物上時，更改滑鼠圖示為自定義的圖示
                 Cursor.SetCursor(cursorTexture, new Vector2(cursorWidth / 2, cursorHeight / 2), CursorMode.Auto);

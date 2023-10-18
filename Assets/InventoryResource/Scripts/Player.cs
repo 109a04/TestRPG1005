@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Enemy;
 
 //控制玩家數值相關UI
 public class Player : MonoBehaviour
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
     protected int currentHealth;
     protected int currentMp;
     protected int currentExp;
+    protected int playerElement;
 
     public Slider HealthSlider;
     public Slider MpSlider;
@@ -36,7 +38,7 @@ public class Player : MonoBehaviour
         //把PlayerAttribute中的數值引用過來，並初始化當前數值
         SetStatus();
         SetInitStats();
-
+        SetElement((int)playerAttributeManager.Instance.element);
 
         //正確初始化玩家顯示狀態
 
@@ -49,6 +51,11 @@ public class Player : MonoBehaviour
         maxHealth = playerAttributeManager.Instance.hp;
         maxMp = playerAttributeManager.Instance.mp;
         maxExp = playerAttributeManager.Instance.up_exp;
+    }
+
+    public void SetElement(int element)
+    {
+        playerElement = element;
     }
     public void SetInitStats()
     {
@@ -98,7 +105,49 @@ public class Player : MonoBehaviour
 
     /// <summary>
     /// 使用消耗品相關的函數，以後可能可以搬運到其他腳本，或留在這裡哈哈(哈哈)
+    /// 1017把被怪物打的生命相關函數單獨拿出來寫了
     /// </summary>
+    
+
+    //被怪物打，依照屬性判斷真實造成的傷害
+    public void Beaten(float damage, int element) 
+    {
+        /// 元素相剋表
+        /// 水 = 1, 火 = 2, 草 = 3, 土 = 4
+        ///
+        if(element != 0)
+        {
+            //若怪物屬性減去玩家屬性剛好是-1，意即怪物剋制玩家屬性，攻擊力加成1.25倍（然後取整數）
+            if(element - playerElement == -1)
+            {
+                damage *= 1.25f;
+            }
+            //若怪物屬性減去玩家屬性剛好是1，則怪物被玩家剋制，攻擊力轉為0.75倍
+            else if(element - playerElement == 1)
+            {
+                damage *= 0.75f;
+            }
+
+            //土水的另外算（1跟4）
+            if(element == 1 && playerElement == 4) //怪物水玩家土
+            {
+                damage *= 0.75f;
+            }
+            if(element == 4 && playerElement == 1) //怪物土玩家水
+            {
+                damage *= 1.25f;
+            }
+        }
+        if(currentHealth - damage > 0)
+        {
+            currentHealth -= (int) damage;
+        }
+        else if(currentHealth - damage <= 0)
+        {
+            currentHealth = 0;
+        }
+        SetHealthUI();
+    }
 
     public void IncreaseHealth(int value)
     {

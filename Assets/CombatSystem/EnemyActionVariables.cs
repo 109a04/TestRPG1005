@@ -51,6 +51,7 @@ public class EnemyActionVariables : MonoBehaviour
         enemyName = StatusUI.transform.Find("Name").GetComponent<Text>();
         enemyLevel = StatusUI.transform.Find("Level").GetComponent<Text>();
         hpSlider = StatusUI.GetComponent<Slider>();
+
         
         
         if(exclamationUI == null)

@@ -21,9 +21,10 @@ public class Enemy : ScriptableObject
 
     public enum EnemyElement
     {
-        Fire,
-        Water,
-        Grass,
-        Earth
+        None,   //µL
+        Water,  //¤ô
+        Fire,   //¤õ
+        Grass,  //¯ó
+        Earth   //¤g
     }
 }
