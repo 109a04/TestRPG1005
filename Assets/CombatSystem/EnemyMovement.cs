@@ -24,12 +24,14 @@ public class EnemyMovement : MonoBehaviour
         enemy = this.gameObject;
         actionVariables.StatusUI.SetActive(false); //預設隱藏
         currentHP = enemyData.maxHealth; //初始化血量
+        
         //初始化怪物血條與名稱等級
         actionVariables.hpSlider.minValue = 0;
         actionVariables.hpSlider.maxValue = enemyData.maxHealth;
         actionVariables.hpSlider.value = currentHP;
         actionVariables.enemyName.text = enemyData.enemyName;
         actionVariables.enemyLevel.text = $"Lv. " + enemyData.level.ToString();
+        actionVariables.isBeaten = false;
 
         if (enemy == null)
         {
@@ -47,6 +49,24 @@ public class EnemyMovement : MonoBehaviour
 
     }
 
+    //在追擊模式之前的準備與進入追擊模式
+    private void EnterChaseMode()
+    {
+        //設定玩家位置為目標
+        targetPos = player.position;
+
+        //改變成追擊模式的速度
+        actionVariables.currentSpeed = actionVariables.chaseSpeed;
+
+        //顯示驚嘆號UI
+        actionVariables.exclamationUI.SetActive(true);
+
+        //轉向玩家
+        Rotate(targetPos);
+
+        //前置作業準備好後進入追擊狀態
+        stateMachine.SetState(EnemyController.EnemyState.Chase);
+    }
 
     //閒置狀態的行為
     public void IdleAction() 
@@ -57,20 +77,7 @@ public class EnemyMovement : MonoBehaviour
         // 進入追擊狀態的邏輯，檢查玩家是否進入視野範圍
         if (PlayerInRange(player, actionVariables.visionRadius))
         {
-            //設定玩家位置為目標
-            targetPos = player.position;
-
-            //改變成追擊模式的速度
-            actionVariables.currentSpeed = actionVariables.chaseSpeed;
-
-            //顯示驚嘆號UI
-            actionVariables.exclamationUI.SetActive(true);
-
-            //轉向玩家
-            Rotate(targetPos);
-
-            //前置作業準備好後進入追擊狀態
-            stateMachine.SetState(EnemyController.EnemyState.Chase); 
+            EnterChaseMode();
         }
 
         //等待一秒後進入遊蕩狀態
@@ -94,20 +101,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (PlayerInRange(player, actionVariables.visionRadius))
         {
-            //設定玩家位置為目標
-            targetPos = player.position;
-
-            //改變成追擊模式的速度
-            actionVariables.currentSpeed = actionVariables.chaseSpeed;
-
-            //顯示驚嘆號UI
-            actionVariables.exclamationUI.SetActive(true);
-
-            //轉向玩家
-            Rotate(targetPos);
-
-            //前置作業準備好後進入追擊狀態
-            stateMachine.SetState(EnemyController.EnemyState.Chase);
+            EnterChaseMode();
         }
 
 
@@ -121,17 +115,21 @@ public class EnemyMovement : MonoBehaviour
         actionVariables.StatusUI.SetActive(true);
         targetPos = player.position;
         
+        if(actionVariables.isBeaten != true) //怪沒有被打時才會回到閒置模式，不然就會追到天涯海角直到咬到玩家
+        {
+            //若玩家離開追擊範圍則回到閒置模式
+            if (!PlayerInRange(player, actionVariables.chaseRadius))
+            {
+                hasRandomPosition = false; //回去重抽一次隨機點
+                                           //回到閒置狀態
+
+                StartCoroutine(HideStatusUI());
+                stateMachine.SetState(EnemyController.EnemyState.Idle);
+            }
+        }
         
 
-        //若玩家離開追擊範圍則回到閒置模式
-        if(!PlayerInRange(player, actionVariables.chaseRadius))
-        {
-            hasRandomPosition = false; //回去重抽一次隨機點
-            //回到閒置狀態
-
-            StartCoroutine(HideStatusUI());
-            stateMachine.SetState(EnemyController.EnemyState.Idle); 
-        }
+        
 
         //當玩家更接近敵人達到可攻擊範圍時進入攻擊模式
         else if(PlayerInRange(player, actionVariables.attackRadius))
@@ -148,6 +146,7 @@ public class EnemyMovement : MonoBehaviour
     //攻擊狀態的行為
     public void AttackAction()
     {
+        actionVariables.isBeaten = false;
         actionVariables.StatusUI.SetActive(true);
         if (actionVariables.canAttack)
         {
@@ -270,7 +269,12 @@ public class EnemyMovement : MonoBehaviour
     //怪物遭到玩家攻擊的函數
     public void TakeDamage(float damage, int weaponElement)
     {
-        if(weaponElement != 0) //若武器屬性不為無
+        //當怪物被攻擊時，不論玩家有無在攻擊範圍內都會進入追擊模式
+        actionVariables.isBeaten = true;
+        EnterChaseMode();
+
+        
+        if (weaponElement != 0) //若武器屬性不為無
         {
             /// 元素相剋表
             /// 水 = 1, 火 = 2, 草 = 3, 土 = 4
@@ -294,18 +298,16 @@ public class EnemyMovement : MonoBehaviour
                 damage *= 1.25f;
             } 
         }
-        //檢查是否打死 然後控制血條的程式碼不能用 救命
+        //檢查是否打死
         if((currentHP - damage) > 0)
         {
             currentHP -= (int)damage;
-            //actionVariables.hpSlider.value = currentHP;
-            Debug.Log("Current HP: " + currentHP); // 輸出 currentHP 看看是否正確
+            actionVariables.hpSlider.value = currentHP;
         }
         else
         {
             currentHP = 0;
-            //actionVariables.hpSlider.value = 0;
-            Debug.Log("Current HP is zero. Enemy is killed.");
+            actionVariables.hpSlider.value = 0;
             IsKilled();
 
         }
@@ -316,8 +318,9 @@ public class EnemyMovement : MonoBehaviour
     {
         if(currentHP == 0)
         {
-            Destroy(gameObject);
+            actionVariables.currentSpeed = 0;
             actionVariables.StatusUI.SetActive(false); //隱藏UI
+            Destroy(gameObject); //銷毀物件
         }
     }
 

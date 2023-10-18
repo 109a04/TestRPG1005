@@ -49,7 +49,7 @@ public class PlayerAttack : MonoBehaviour
                         }
                         
                         float distance = Vector3.Distance(transform.position, enemyTransform.transform.position);
-                        if(atkRange <= distance)
+                        if(distance <= atkRange) //當怪物在可攻擊範圍內
                         {
                             enemyMovement.TakeDamage(damage, weapon);
                         }

@@ -38,6 +38,7 @@ public class EnemyActionVariables : MonoBehaviour
 
     //控制攻擊間隔的東西
     internal bool canAttack;
+    internal bool isBeaten; //被打了
 
 
 
@@ -50,11 +51,14 @@ public class EnemyActionVariables : MonoBehaviour
         exclamationUI = GameObject.Find("Canvas/Exclamation");
         enemyName = StatusUI.transform.Find("Name").GetComponent<Text>();
         enemyLevel = StatusUI.transform.Find("Level").GetComponent<Text>();
-        hpSlider = StatusUI.GetComponent<Slider>();
 
-        
-        
-        if(exclamationUI == null)
+        if (hpSlider == null)
+        {
+            Debug.LogError("hpSlider is not assigned in the inspector.");
+            return;
+        }
+
+        if (exclamationUI == null)
         {
             Debug.LogError("Exclamation UI not found!");
         }
