@@ -25,6 +25,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if(Input.GetMouseButtonDown(0)) // 當玩家按下滑鼠左鍵
         {   
             //檢查滑鼠射線位置

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d86c0f43aa77814b89943d6f94b9742, type: 3}
   m_Name: Dummy
   m_EditorClassIdentifier: 
+  enemyID: 100
   enemyName: "\u9776\u5B50"
   enemyElement: 0
   level: 5

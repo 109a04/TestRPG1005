@@ -12,6 +12,7 @@ using UnityEngine;
 
 public class Enemy : ScriptableObject
 {
+    public int enemyID;      //怪物編號
     public string enemyName; //敵人名稱
     public EnemyElement enemyElement; //敵人屬性
 

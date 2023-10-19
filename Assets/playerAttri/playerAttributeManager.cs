@@ -67,7 +67,7 @@ public class playerAttributeManager : MonoBehaviour
         grass_mr = 10;
         ground_mr = 10;
 
-        atkRange = 100;
+        atkRange = 15;
     }
 
     private void Awake()
