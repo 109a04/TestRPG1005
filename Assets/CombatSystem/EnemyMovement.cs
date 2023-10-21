@@ -14,6 +14,11 @@ public class EnemyMovement : MonoBehaviour
     private bool hasRandomPosition = false; //是否已抽過隨機點
     private int currentHP; //當前血量
 
+    //測試打怪任務用
+    public delegate void monsterDestroyed();
+    public static event monsterDestroyed monsterQuest;
+    //
+
     private void Start()
     {
         stateMachine = GetComponent<EnemyController>();
@@ -326,6 +331,7 @@ public class EnemyMovement : MonoBehaviour
             actionVariables.exclamationUI.SetActive(false); //隱藏UI
             actionVariables.StatusUI.SetActive(false); 
             Destroy(gameObject); //銷毀物件
+            monsterQuest();//打怪任務測試
         }
     }
 

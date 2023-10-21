@@ -27,6 +27,9 @@ public class Player : MonoBehaviour
     public Text MpText;
     public Text ExpText;
 
+    //屬性大師
+    public npcAttribute masterNPC;
+
 
     private void Awake()
     {
@@ -219,9 +222,12 @@ public class Player : MonoBehaviour
             ///  函式裡面可能有playerAttributeManager.Instance.level += 1; 
             ///  currentExp = 0;
             ///  之類的東西
-            playerAttributeManager.Instance.level++;
-            playerAttributeManager.Instance.exp = playerAttributeManager.Instance.up_exp - playerAttributeManager.Instance.exp; 
-            playerAttributeManager.Instance.point = playerAttributeManager.Instance.point + 5;
+            playerAttributeManager.Instance.exp += value;
+            int levelsToUp = playerAttributeManager.Instance.exp / playerAttributeManager.Instance.up_exp;
+            playerAttributeManager.Instance.level += levelsToUp;
+            playerAttributeManager.Instance.exp = playerAttributeManager.Instance.exp - (levelsToUp * playerAttributeManager.Instance.up_exp);
+            playerAttributeManager.Instance.point = playerAttributeManager.Instance.point + (levelsToUp * 5);
+            masterNPC.avaPoint = playerAttributeManager.Instance.point;
             currentExp = playerAttributeManager.Instance.exp;
         }
         else

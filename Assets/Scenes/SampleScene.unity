@@ -4934,6 +4934,7 @@ MonoBehaviour:
   HealthText: {fileID: 1220914674}
   MpText: {fileID: 1308749031}
   ExpText: {fileID: 440663830}
+  masterNPC: {fileID: 448697542}
 --- !u!135 &225048212
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14482,8 +14483,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -208.48004, y: 289.02588}
-  m_SizeDelta: {x: 235.04, y: 69.8622}
+  m_AnchoredPosition: {x: -191.86, y: 288.0736}
+  m_SizeDelta: {x: 266.77, y: 71.7667}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &708636859
 MonoBehaviour:
@@ -27278,7 +27279,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 334, y: 383}
+  m_AnchoredPosition: {x: 330, y: 410}
   m_SizeDelta: {x: 113.8548, y: 103.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1305359261
@@ -30199,8 +30200,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -222, y: 290}
-  m_SizeDelta: {x: 189.8159, y: 81.1181}
+  m_AnchoredPosition: {x: -156.45, y: 286.0527}
+  m_SizeDelta: {x: 312.91, y: 89.0126}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1461243414
 MonoBehaviour:
@@ -34197,7 +34198,7 @@ MonoBehaviour:
     questID: 20
     questType: 1
     questStatus: 0
-    expReward: 25
+    expReward: 60
     goldReward: 500
     requireAmount: 1
     ownAmount: 0
@@ -38938,7 +38939,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 330.8378, y: 410.91}
+  m_AnchoredPosition: {x: 330, y: 410}
   m_SizeDelta: {x: 113.8548, y: 103.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1909093152

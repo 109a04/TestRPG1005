@@ -10,6 +10,26 @@ public class QuestTarget : MonoBehaviour
     public enum QuestType { Gathering, Talk, Monster };
     public QuestType questType;//收集類的任務，收集完後會消失
 
+    private void Awake()
+    {
+        //先訂閱怪物被消滅事件
+        EnemyMovement.monsterQuest += OnMonsterDestroyed;
+    }
+
+    private void OnMonsterDestroyed()
+    {
+        //打怪任務則怪物消滅後才加
+        for (int i = 0; i < QuestManager.instance.questList.Count; i++)
+        {
+            if (targetID == QuestManager.instance.questList[i].targetID)
+            {
+                Debug.Log("解決任務怪物拉");
+                QuestManager.instance.questList[i].ownAmount++;
+                CheckQuestIsComplete();
+            }
+        }
+    }
+
     //攜帶這個腳本的是任務相關人和物品
     private void OnCollisionEnter(Collision other)
     {
@@ -20,31 +40,17 @@ public class QuestTarget : MonoBehaviour
             {
                 if (targetID == QuestManager.instance.questList[i].targetID)
                 {
-                    //QuestManager.instance.questList[i].ownAmount++;
-                    //非打怪任務直接加
+                    //非打怪任務的任務目標計數
                     if (QuestManager.instance.questList[i].questType == Quest.QuestType.Gathering || QuestManager.instance.questList[i].questType == Quest.QuestType.Talk)
                     {
                         QuestManager.instance.questList[i].ownAmount++;
                     }
 
-                    //打怪任務則怪物消滅後才加
-                    if (QuestManager.instance.questList[i].questType == Quest.QuestType.Monster)
-                    {
-                        Debug.Log("碰到任務怪物拉");
-                    }
-
-                    //打怪任務則怪物消滅後才加
-                    if (QuestManager.instance.questList[i].questType == Quest.QuestType.Monster && gameObject == null)
-                    {
-                        QuestManager.instance.questList[i].ownAmount++;
-                        Debug.Log("解決任務怪物拉");
-                    }
-
+                    //收集任務直接銷毀任務道具
                     if (QuestManager.instance.questList[i].questType == Quest.QuestType.Gathering)
                     {
                         Destroy(gameObject);
                     }
-                    
                     CheckQuestIsComplete();
                 }
             }
@@ -66,5 +72,11 @@ public class QuestTarget : MonoBehaviour
                 }
             }
         }
+    }
+
+    //當怪物被消滅後，呼叫完事件後要取消訂閱
+    private void OnDestroy()
+    {
+        EnemyMovement.monsterQuest -= OnMonsterDestroyed;
     }
 }

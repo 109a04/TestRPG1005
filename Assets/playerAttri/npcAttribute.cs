@@ -32,8 +32,6 @@ public class npcAttribute : MonoBehaviour
         cspeed = playerAttributeManager.Instance.origin_speed;
         avaPoint = playerAttributeManager.Instance.point;
     }
-    
-
 
     //用來增加血量的屬性點
     public void hpAdd(int points)
