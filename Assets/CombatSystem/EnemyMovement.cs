@@ -298,8 +298,10 @@ public class EnemyMovement : MonoBehaviour
                 damage *= 1.25f;
             } 
         }
+
+
         //檢查是否打死
-        if((currentHP - damage) > 0)
+        if ((currentHP - damage) > 0)
         {
             currentHP -= (int)damage;
             actionVariables.hpSlider.value = currentHP;
@@ -311,6 +313,7 @@ public class EnemyMovement : MonoBehaviour
             IsKilled();
 
         }
+
     }
 
     //假如怪物被擊敗，銷毀遊戲物件
@@ -319,7 +322,9 @@ public class EnemyMovement : MonoBehaviour
         if(currentHP == 0)
         {
             actionVariables.currentSpeed = 0;
-            actionVariables.StatusUI.SetActive(false); //隱藏UI
+            stateMachine.currentState = EnemyController.EnemyState.Idle; //回歸初始狀態
+            actionVariables.exclamationUI.SetActive(false); //隱藏UI
+            actionVariables.StatusUI.SetActive(false); 
             Destroy(gameObject); //銷毀物件
         }
     }
