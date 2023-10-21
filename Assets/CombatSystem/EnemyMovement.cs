@@ -132,7 +132,7 @@ public class EnemyMovement : MonoBehaviour
         
 
         //當玩家更接近敵人達到可攻擊範圍時進入攻擊模式
-        else if(PlayerInRange(player, actionVariables.attackRadius))
+        if(PlayerInRange(player, actionVariables.attackRadius))
         {
             actionVariables.currentSpeed *= 0.75f;
             stateMachine.SetState(EnemyController.EnemyState.Attack);
