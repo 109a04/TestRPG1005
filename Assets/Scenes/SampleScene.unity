@@ -8121,6 +8121,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392960713}
   m_CullTransparentMesh: 1
+--- !u!1 &397510797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1e76ce47a98c1eb4eb31f9dfc8b485dc, type: 3}
+  m_PrefabInstance: {fileID: 1007400522}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &397510801
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397510797}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4493585093827132993, guid: 1e76ce47a98c1eb4eb31f9dfc8b485dc, type: 3}
 --- !u!1 &398577535
 GameObject:
   m_ObjectHideFlags: 0
@@ -20810,7 +20829,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9f20caf5d2f3dac4995d9ff34a794371, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9f20caf5d2f3dac4995d9ff34a794371, type: 3}
       propertyPath: m_LocalScale.x
@@ -20864,6 +20883,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9f20caf5d2f3dac4995d9ff34a794371, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5e52ee6fd776bd34382d07d13d7b1ed7, type: 2}
     - target: {fileID: 919132149155446097, guid: 9f20caf5d2f3dac4995d9ff34a794371, type: 3}
       propertyPath: m_Name
       value: Old Bridge
@@ -21439,6 +21462,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 1e76ce47a98c1eb4eb31f9dfc8b485dc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: de0b3414410022142bd0b3d87f6b6624, type: 2}
     - target: {fileID: 919132149155446097, guid: 1e76ce47a98c1eb4eb31f9dfc8b485dc, type: 3}
       propertyPath: m_Name
       value: Old Bridge 1
