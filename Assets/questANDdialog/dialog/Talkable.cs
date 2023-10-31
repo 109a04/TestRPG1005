@@ -8,10 +8,12 @@ public class Talkable : MonoBehaviour
     public string[] lines;
     private bool playerInRange;
     private bool diaFinish = false;
+    private QuestTarget questTScript;
 
-    // Start is called before the first frame update
     void Start()
     {
+        //抓取是對話任務的任務目標的target腳本
+        questTScript = GetComponent<QuestTarget>();
     }
 
     private void OnCollisionEnter(Collision other)
@@ -19,27 +21,39 @@ public class Talkable : MonoBehaviour
         //玩家接觸npc
         if (other.gameObject.CompareTag("Player"))
         {
-            playerInRange = true;
-        }
+            Debug.Log("撞到npc拉");
+
+            //如果是對話任務的target
+            if(questTScript != null && diaFinish == false)
+            {
+                for (int i = 0; i < QuestManager.instance.questList.Count; i++)
+                {
+                    if (questTScript.targetID == QuestManager.instance.questList[i].targetID)
+                    {
+                        dialogManager.instance.ShowDialogue(lines);
+                        break;
+                        diaFinish = true;
+                    }
+
+                }
+            }
+            else//單純對話腳本
+            {
+                dialogManager.instance.ShowDialogue(lines);
+                diaFinish = true;
+            }
+        }   
     }
 
+    
     private void OnCollisionExit(Collision other)
     {
         //玩家離開npc
         if (other.gameObject.CompareTag("Player"))
         {
-            playerInRange = false;
+            //playerInRange = false;
+            Debug.Log("離開npc拉");
         }
     }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (playerInRange && dialogManager.instance.dialogueBox.activeInHierarchy == false && diaFinish == false && Input.GetKeyDown(KeyCode.F))
-        {
-            dialogManager.instance.ShowDialogue(lines);
-            diaFinish = true;
-        }
-    }
+    
 }
