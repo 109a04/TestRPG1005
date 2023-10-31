@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11b36145649738748b50e1e7edd9729a, type: 3}
+  m_Name: FireSword
+  m_EditorClassIdentifier: 
+  id: 13
+  itemName: "\u528D"
+  itemIcon: {fileID: 21300000, guid: ba56f69c5e5353e49a59ddb3bb8f7872, type: 3}
+  itemPrice: 60
+  AbleToSell: 1
+  itemDescript: "\u4E00\u628A\u77ED\u528D\uFF0C\u8DDF\u87A2\u5149\u68D2\u4E00\u6A23\u597D\u63EE\u3002"
+  weaponType: 1
+  elementType: 2

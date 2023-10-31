@@ -45620,6 +45620,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2872963462506618205, guid: e43bc70e55bbfe9408f83c12736c145c, type: 3}
+      propertyPath: m_Radius
+      value: 1.65
+      objectReference: {fileID: 0}
     - target: {fileID: 2872963462506618207, guid: e43bc70e55bbfe9408f83c12736c145c, type: 3}
       propertyPath: StoreUI
       value: 
@@ -45636,6 +45640,14 @@ PrefabInstance:
       propertyPath: StoreParent
       value: 
       objectReference: {fileID: 1778428734}
+    - target: {fileID: 2872963462506618207, guid: e43bc70e55bbfe9408f83c12736c145c, type: 3}
+      propertyPath: Goods.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2872963462506618207, guid: e43bc70e55bbfe9408f83c12736c145c, type: 3}
+      propertyPath: Goods.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: e646ac584631bd740a720f4ffa361eb7, type: 2}
     - target: {fileID: 3212475698888460264, guid: e43bc70e55bbfe9408f83c12736c145c, type: 3}
       propertyPath: m_Name
       value: StoreNPCSample
