@@ -20,3 +20,4 @@ MonoBehaviour:
   itemDescript: "\u4E00\u6839\u9B54\u6CD5\u68D2\uFF08\u63B0\u4E0D\u4E0B\u53BB\u4E86\u4F86\u4EBA\u7DE8\u500B\u53EF\u611B\u9EDE\u7684\u6558\u8FF0\u5427\uFF09\u3002"
   weaponType: 2
   elementType: 0
+  weaponModel: {fileID: 919132149155446097, guid: 9f9c5612df1cd3f48a89590d80c733bd, type: 3}

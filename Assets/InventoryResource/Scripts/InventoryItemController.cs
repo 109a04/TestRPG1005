@@ -68,8 +68,7 @@ public class InventoryItemController : BaseItemController, IPointerEnterHandler,
         if (thisItem.GetItemType() == Item.ItemType.Weapon)
         {
             WeaponItem itemToUse = thisItem as WeaponItem;
-            ChatManager.Instance.SystemMessage($"<color=#F5EC3D>裝備道具{itemToUse.itemName}。</color>\n");
-            Debug.Log("裝備道具");
+            ChatManager.Instance.SystemMessage($"裝備道具<color=#F5EC3D>{itemToUse.itemName}。</color>\n");
         }
         else if (thisItem.GetItemType() == Item.ItemType.Consumable)
         {
