@@ -5,5 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerWeapon : MonoBehaviour
 {
-    
+    public Transform catTransform; //¿ßªº¦ì¸m
+    public WeaponItem currentWeapon;
+    public WeaponItem tempItem;
 }
