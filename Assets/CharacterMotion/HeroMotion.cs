@@ -8,8 +8,13 @@ using UnityEngine;
 
 public class HeroMotion : MonoBehaviour
 {
-    private Animator animator;
+    public static HeroMotion Instance;
+    public Animator animator;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
