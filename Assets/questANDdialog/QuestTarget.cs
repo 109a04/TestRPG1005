@@ -69,6 +69,15 @@ public class QuestTarget : MonoBehaviour
                 {//確認任務是否完成
                     QuestManager.instance.questList[i].questStatus = Quest.QuestStatus.Completed;
                     PlayerQ.instance.questCompleteList.Add(questID);
+                    ChatManager.Instance.SystemMessage($"<color=#3fe047>{QuestManager.instance.questList[i].questName}任務已達標</color>\n");
+                    ChatManager.Instance.SystemMessage($"<color=#3fe047>可以回去找NPC完成任務拉</color>\n");
+                }
+                else
+                {
+                    int leftCount = QuestManager.instance.questList[i].requireAmount - QuestManager.instance.questList[i].ownAmount;
+                    //ChatManager.Instance.SystemMessage($"<color=#F5EC3D>{QuestManager.instance.questList[i].questName}任務數量剩下  {leftCount}。</color>\n");
+                    ChatManager.Instance.SystemMessage($"<color=#3fe047>{QuestManager.instance.questList[i].questName}</color>\n");
+                    ChatManager.Instance.SystemMessage($"<color=#3fe047>任務目標數量還剩 {leftCount}。</color>\n");
                 }
             }
         }

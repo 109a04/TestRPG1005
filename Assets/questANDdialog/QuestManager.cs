@@ -24,7 +24,7 @@ public class QuestManager : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -46,7 +46,8 @@ public class QuestManager : MonoBehaviour
             if (i < questList.Count)
             {
                 quest[i].text = questList[i].questName;
-                status[i].text = questList[i].questStatus.ToString();
+                status[i].text = "未完成";
+                //status[i].text = questList[i].questStatus.ToString();
             }
             else
             {
