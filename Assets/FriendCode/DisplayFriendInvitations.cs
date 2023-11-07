@@ -59,6 +59,7 @@ public class DisplayFriendInvitations : MonoBehaviour
 
     IEnumerator GetFriendInvitations()
     {
+        receiverPlayer = playerNameManager.Instance.playerName;
         //先將玩家名字POST到php
         WWWForm form = new WWWForm();
         form.AddField("receiverPlayer", receiverPlayer);

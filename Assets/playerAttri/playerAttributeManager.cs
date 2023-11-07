@@ -42,6 +42,7 @@ public class playerAttributeManager : MonoBehaviour
     //給playerAttributes類的東東初始值或初始設定
     public playerAttributeManager()
     {
+        //pname = playerNameManager.Instance.playerName;
         pname = "test";
         money = 12000;
         level = 1;

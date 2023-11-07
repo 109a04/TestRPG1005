@@ -54,12 +54,14 @@ public class PlayerMove : MonoBehaviour
             Velocity.y = Mathf.Sqrt(JumpHight * -2 * Gravity);//套用跳躍公式
         }
 
+        /*
         //掉落就會觸發玩完了的panel
         if (transform.position.y < -30f)
         {
             GameManager.Instance.SetIsDead();
             Debug.Log(transform.position.y);
         }
+        */
 
         //w,a,s,d的輸入
         var horizontal = Input.GetAxis("Horizontal");

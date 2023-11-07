@@ -40,7 +40,7 @@ public class friendList : MonoBehaviour
     IEnumerator FriendList()
     {
         panel.SetActive(true);
-
+        sender = playerNameManager.Instance.playerName;
 
         //先將玩家名字POST到php
         WWWForm form = new WWWForm();

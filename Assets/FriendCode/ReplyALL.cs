@@ -38,7 +38,7 @@ public class ReplyALL : MonoBehaviour
     IEnumerator GetMessagesFromPHP()
     {
         panel.SetActive(true);
-
+        receiver = playerNameManager.Instance.playerName;
 
         //先將玩家名字POST到php
         WWWForm form = new WWWForm();

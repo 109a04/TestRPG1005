@@ -11,8 +11,8 @@ public class AddFriendrequest : MonoBehaviour
 
     public void SendFriendRequest()
     {
-        //string sender = playerNameManager.Instance.playerName;
-        string sender = "D";
+        string sender = playerNameManager.Instance.playerName;
+        //string sender = "D";
         string receiver = receiverInput.text;
 
         StartCoroutine(AddFriendRequest(sender, receiver));

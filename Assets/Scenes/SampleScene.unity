@@ -7707,7 +7707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &329466055
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9593,7 +9593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &431302120
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10563,7 +10563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &463472609
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17169,7 +17169,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &767437761
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27291,6 +27291,7 @@ MonoBehaviour:
   DeathUI: {fileID: 1246433489}
   respawnPoint: {fileID: 344959009}
   playerModel: {fileID: 225048205}
+  deathDelay: 2
 --- !u!1 &1177454330
 GameObject:
   m_ObjectHideFlags: 0
@@ -38166,27 +38167,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ae2a7d50e4741e4bb94147240818c4a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.04911968
+      value: 0.060816724
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ae2a7d50e4741e4bb94147240818c4a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.04911968
+      value: 0.07582008
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ae2a7d50e4741e4bb94147240818c4a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.019245092
+      value: 0.027341502
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ae2a7d50e4741e4bb94147240818c4a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.01093
+      value: -0.0111594
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ae2a7d50e4741e4bb94147240818c4a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.02153
+      value: -0.02154
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ae2a7d50e4741e4bb94147240818c4a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.00723
+      value: -0.00747
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5ae2a7d50e4741e4bb94147240818c4a, type: 3}
       propertyPath: m_LocalRotation.w

@@ -787,13 +787,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 175869925}
         m_TargetAssemblyTypeName: toPhp, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: register
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -919,7 +919,7 @@ RectTransform:
   - {fileID: 18949035}
   - {fileID: 1349060539}
   m_Father: {fileID: 1155416864}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1525,8 +1525,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 186.601, y: -12.055}
-  m_SizeDelta: {x: 251.2933, y: 55.694}
+  m_AnchoredPosition: {x: 275.1826, y: -0.000003845}
+  m_SizeDelta: {x: 428.634, y: 79.828}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &351984876
 MonoBehaviour:
@@ -1921,7 +1921,7 @@ RectTransform:
   - {fileID: 1631594719}
   - {fileID: 1825317730}
   m_Father: {fileID: 1155416864}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2472,7 +2472,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1167779350}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2835,6 +2835,7 @@ RectTransform:
   - {fileID: 1104269202}
   - {fileID: 2023335631}
   - {fileID: 1167779350}
+  - {fileID: 1877843548}
   - {fileID: 874517128}
   - {fileID: 189514484}
   m_Father: {fileID: 0}
@@ -2878,7 +2879,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 474635852}
-  - {fileID: 1877843548}
   - {fileID: 1060299118}
   m_Father: {fileID: 1155416864}
   m_RootOrder: 6
@@ -4923,13 +4923,13 @@ RectTransform:
   - {fileID: 900800826}
   - {fileID: 175869920}
   - {fileID: 716314504}
-  m_Father: {fileID: 1167779350}
-  m_RootOrder: 1
+  m_Father: {fileID: 1155416864}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4.0908203, y: 91.6474}
-  m_SizeDelta: {x: 1728.7451, y: 1101.8864}
+  m_AnchoredPosition: {x: -3.0908203, y: -29.3526}
+  m_SizeDelta: {x: -11.254883, y: 106.886475}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1877843549
 MonoBehaviour:

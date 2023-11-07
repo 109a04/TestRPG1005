@@ -18,6 +18,7 @@ public class deleteFriend : MonoBehaviour
 
     IEnumerator SendDeleteRequest(string friendName)
     {
+        sender = playerNameManager.Instance.playerName;
         WWWForm form = new WWWForm();
         form.AddField("sender", sender);
         form.AddField("friendName", friendName);

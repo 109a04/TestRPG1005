@@ -35,7 +35,7 @@ public class postMessage : MonoBehaviour
 
         sendMessage.name = reName;
         sendMessage.messT = mess;
-        sendMessage.sendName = senderName;
+        sendMessage.sendName = playerNameManager.Instance.playerName;
 
         // 將物件轉換為JSON字符串
         string jsonPost = JsonUtility.ToJson(sendMessage);
