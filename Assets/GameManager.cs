@@ -120,6 +120,10 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("回到重生點");
         playerModel.transform.position = respawnPoint.position;
+
+        //玉珊
+        DeathUI.SetActive(false);
+
     }
 
 }

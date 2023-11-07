@@ -19,6 +19,7 @@ public class PlayerMove : MonoBehaviour
 
     private int jumpCount = 0;  // 記錄跳躍次數
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,10 +55,10 @@ public class PlayerMove : MonoBehaviour
         }
 
         //掉落就會觸發玩完了的panel
-        if (transform.position.y < -5f)
+        if (transform.position.y < -30f)
         {
             GameManager.Instance.SetIsDead();
-            Debug.Log("y < -5f");
+            Debug.Log(transform.position.y);
         }
 
         //w,a,s,d的輸入
@@ -79,13 +80,27 @@ public class PlayerMove : MonoBehaviour
         controller.Move(new Vector3(0f, Velocity.y, 0f) * Time.deltaTime);
 
 
+
+        
         //mouse vector - player vector ,can get the vector point mouse from player 
         var playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
         var point = Input.mousePosition - playerScreenPoint;
-        var angle = Mathf.Atan2(point.x, point.y) * Mathf.Rad2Deg;//get the rotate angle
 
-        //角色轉動
+        //滑鼠轉到哪裡，視角就轉到哪裡
+        //var angle = Mathf.Atan2(point.x, point.y) * Mathf.Rad2Deg;//get the rotate angle
+        var angle = Mathf.Atan2(point.x, point.y) * Mathf.Rad2Deg * RotateSpeed;
+
+        //滑鼠轉到哪裡，角色和視角就轉到哪裡
         controller.transform.eulerAngles = new Vector3(controller.transform.eulerAngles.x, angle, controller.transform.eulerAngles.z);
+
+        //角色和視角柔和地轉，但是快吐了
+        /*
+        controller.transform.rotation = Quaternion.Slerp(
+            controller.transform.rotation,
+            Quaternion.Euler(new Vector3(0, angle, 0)),
+            RotateSpeed * Time.deltaTime
+        );
+        */
     }
 
 }
