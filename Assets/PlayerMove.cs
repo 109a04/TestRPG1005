@@ -52,7 +52,7 @@ public class PlayerMove : MonoBehaviour
         if (transform.position.y < -5f)
         {
             GameManager.Instance.DisplayDeathUI();
-            Debug.Log("掉下去拉");
+            Debug.Log("y < -5f");
         }
 
         //w,a,s,d的輸入

@@ -36,21 +36,15 @@ public class PlayerAttack : MonoBehaviour
                 //檢查點擊位置是否有怪物
                 if (hitInfo.collider.CompareTag("Enemy"))
                 {
-                    Debug.Log("點到怪物");
+                    
                     GameObject enemyTransform = hitInfo.collider.gameObject;
                     
-
-
                     if (enemyTransform != null)
                     {
                         EnemyMovement enemyMovement = enemyTransform.GetComponent<EnemyMovement>();
-                        if (enemyMovement != null)
-                        {
-                            Debug.Log("抓到怪物");
-                        }
                         
                         float distance = Vector3.Distance(transform.position, enemyTransform.transform.position);
-                        if(distance <= atkRange) //當怪物在可攻擊範圍內
+                        if(distance <= atkRange && !GameManager.Instance.IsDead()) //當怪物在可攻擊範圍內，且玩家非死亡狀態
                         {
                             HeroMotion.Instance.animator.SetTrigger("AttackTrigger");
                             enemyMovement.TakeDamage(damage, weapon);

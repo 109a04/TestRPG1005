@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public GameObject EscUI;
     public GameObject DeathUI;
     private bool isDead;
+    public Transform respawnPoint; //重生點
+    public GameObject playerModel; //玩家模型
 
     public void Awake()
     {
@@ -20,6 +22,7 @@ public class GameManager : MonoBehaviour
         EscUI.SetActive(false);
         DeathUI.SetActive(false);
         isDead = false;
+        
     }
 
     // Update is called once per frame
@@ -45,12 +48,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PressYes()
+    public void PressEscYes()
     {
         Application.Quit();
     }
 
-    public void PressNo()
+    public void PressEscNo()
     {
         EscUI.SetActive(false);
     }
@@ -64,14 +67,15 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         //血量回復後，生成到指定地點
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //ResetGameState();
+        
+        ResetGameState();
 
     }
     //好像沒辦法重開 跟對話系統的某東西有關係但我看不懂
 
     private void ResetGameState()
     {
+        playerModel.transform.position = respawnPoint.position; //將玩家移動到重生點
         Player.Instance.SetStatus();
         Player.Instance.SetInitStats();
         Time.timeScale = 1.0f;
