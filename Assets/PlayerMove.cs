@@ -17,6 +17,8 @@ public class PlayerMove : MonoBehaviour
     public float CheckRadius = 0.2f;//是否在地面檢查器的半徑
     public LayerMask layerMask;//篩選地面層
 
+    private int jumpCount = 0;  // 記錄跳躍次數
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,12 +38,21 @@ public class PlayerMove : MonoBehaviour
         if (IsGround && Velocity.y < 0)//Velocity.y為垂直速度，因為垂直速度為負等於角色正在落下
         {
             Velocity.y = 0;//角色回到地面後，重置垂直速度
+            jumpCount = 0;//重置跳躍次數
         }
 
         //跳躍
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && jumpCount < 2)
         {
+            jumpCount++;
             Velocity.y = Mathf.Sqrt(JumpHight * -2 * Gravity);//套用跳躍公式
+        }
+
+        //掉落就會觸發玩完了的panel
+        if (transform.position.y < -5f)
+        {
+            GameManager.Instance.DisplayDeathUI();
+            Debug.Log("掉下去拉");
         }
 
         //w,a,s,d的輸入
