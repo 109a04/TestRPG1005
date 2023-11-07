@@ -12,7 +12,7 @@ public class ItemPickup : MonoBehaviour
     void Pickup()
     {
         //玩家活著的時候才能拾取道具
-        if (!GameManager.Instance.IsDead())
+        if (!GameManager.Instance.GetIsDead())
         {
             //如果為消耗品，檢查是否已存在相同道具
             if (itemToAdd.GetItemType() == Item.ItemType.Consumable)

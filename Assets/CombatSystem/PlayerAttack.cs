@@ -44,7 +44,7 @@ public class PlayerAttack : MonoBehaviour
                         EnemyMovement enemyMovement = enemyTransform.GetComponent<EnemyMovement>();
                         
                         float distance = Vector3.Distance(transform.position, enemyTransform.transform.position);
-                        if(distance <= atkRange && !GameManager.Instance.IsDead()) //當怪物在可攻擊範圍內，且玩家非死亡狀態
+                        if(distance <= atkRange && !GameManager.Instance.GetIsDead()) //當怪物在可攻擊範圍內，且玩家非死亡狀態
                         {
                             HeroMotion.Instance.animator.SetTrigger("AttackTrigger");
                             enemyMovement.TakeDamage(damage, weapon);

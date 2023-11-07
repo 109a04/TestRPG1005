@@ -167,7 +167,7 @@ public class EnemyMovement : MonoBehaviour
         }
 
         //之後會有當玩家死亡時回到閒置狀態
-        if (GameManager.Instance.IsDead())
+        if (GameManager.Instance.GetIsDead())
         {
             StartCoroutine(HideStatusUI());
             stateMachine.SetState(EnemyController.EnemyState.Idle);

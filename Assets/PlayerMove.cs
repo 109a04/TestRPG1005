@@ -28,11 +28,16 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerMoveMethod();
+        if (!GameManager.Instance.GetIsDead()) //如果玩家沒有死才能移動
+        {
+            PlayerMoveMethod();
+        }
+        
     }
 
     private void PlayerMoveMethod()
     {
+        Debug.Log("玩家移動");
         //是否在地面檢查
         IsGround = Physics.CheckSphere(GroundCheck.position, CheckRadius, layerMask);
         if (IsGround && Velocity.y < 0)//Velocity.y為垂直速度，因為垂直速度為負等於角色正在落下
@@ -51,7 +56,7 @@ public class PlayerMove : MonoBehaviour
         //掉落就會觸發玩完了的panel
         if (transform.position.y < -5f)
         {
-            GameManager.Instance.DisplayDeathUI();
+            GameManager.Instance.SetIsDead();
             Debug.Log("y < -5f");
         }
 

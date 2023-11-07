@@ -38,13 +38,12 @@ public class GameManager : MonoBehaviour
         if (Player.Instance.GetCurrentHealth() <= 0)
         {
             isDead = true;
+        }
 
-            //顯示死亡訊息
-            DisplayDeathUI();
-
-            //暫停遊戲
+        if (isDead)
+        {
             Time.timeScale = 0f;
-
+            DisplayDeathUI();
         }
     }
 
@@ -60,29 +59,43 @@ public class GameManager : MonoBehaviour
 
     public void DisplayDeathUI()
     {
-        DeathUI.SetActive(true);
+        DeathUI.SetActive(isDead);
     }
 
     //遊戲重開，因為還沒想好存檔的要怎麼做，之後有需要存檔點的話再改（好）
     public void RestartGame()
     {
+
         //血量回復後，生成到指定地點
-        
+        StartCoroutine(RestartPositonAfterDelay(1));
         ResetGameState();
+        DeathUI.SetActive(isDead);
 
     }
     //好像沒辦法重開 跟對話系統的某東西有關係但我看不懂
 
     private void ResetGameState()
     {
-        playerModel.transform.position = respawnPoint.position; //將玩家移動到重生點
+        Debug.Log("重新開始");
+        isDead = false;
         Player.Instance.SetStatus();
         Player.Instance.SetInitStats();
+        Player.Instance.SetUI();
         Time.timeScale = 1.0f;
     }
 
-    public bool IsDead()
+    public bool GetIsDead()
     {
         return isDead;
+    }
+    public void SetIsDead()
+    {
+        isDead = true;
+    }
+
+    private IEnumerator RestartPositonAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay); // 等待指定的秒數
+        playerModel.transform.position = new Vector3(18, 2, -7); //將玩家移動到重生點
     }
 }
