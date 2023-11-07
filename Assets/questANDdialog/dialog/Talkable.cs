@@ -31,8 +31,9 @@ public class Talkable : MonoBehaviour
                     if (questTScript.targetID == QuestManager.instance.questList[i].targetID)
                     {
                         dialogManager.instance.ShowDialogue(lines);
-                        break;
                         diaFinish = true;
+                        break;
+                        
                     }
 
                 }

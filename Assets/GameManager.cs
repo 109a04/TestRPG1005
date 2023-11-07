@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,8 +11,11 @@ public class GameManager : MonoBehaviour
     public GameObject EscUI;
     public GameObject DeathUI;
     private bool isDead;
+    private bool backToPoint;
+    private bool next;
     public Transform respawnPoint; //重生點
     public GameObject playerModel; //玩家模型
+    public float deathDelay = 2.0f; // 死亡後延遲復活的時間
 
     public void Awake()
     {
@@ -22,7 +27,8 @@ public class GameManager : MonoBehaviour
         EscUI.SetActive(false);
         DeathUI.SetActive(false);
         isDead = false;
-        
+        backToPoint = true;
+        next = false;
     }
 
     // Update is called once per frame
@@ -45,6 +51,13 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f;
             DisplayDeathUI();
         }
+
+        if (!backToPoint)
+        {
+            MoveToRespawnPoint();
+        }
+
+
     }
 
     public void PressEscYes()
@@ -65,19 +78,29 @@ public class GameManager : MonoBehaviour
     //遊戲重開，因為還沒想好存檔的要怎麼做，之後有需要存檔點的話再改（好）
     public void RestartGame()
     {
-
+        if (next)
+        {
+            backToPoint = true;
+            isDead = false;
+            next = false;
+        }
+        if (playerModel.transform.position != respawnPoint.position)
+        {
+            backToPoint = false;
+        }
         //血量回復後，生成到指定地點
-        StartCoroutine(RestartPositonAfterDelay(1));
         ResetGameState();
         DeathUI.SetActive(isDead);
-
+        next = true;
+        
     }
-    //好像沒辦法重開 跟對話系統的某東西有關係但我看不懂
+    
 
     private void ResetGameState()
     {
         Debug.Log("重新開始");
-        isDead = false;
+        
+        
         Player.Instance.SetStatus();
         Player.Instance.SetInitStats();
         Player.Instance.SetUI();
@@ -93,9 +116,10 @@ public class GameManager : MonoBehaviour
         isDead = true;
     }
 
-    private IEnumerator RestartPositonAfterDelay(float delay)
+    private void MoveToRespawnPoint()
     {
-        yield return new WaitForSeconds(delay); // 等待指定的秒數
-        playerModel.transform.position = new Vector3(18, 2, -7); //將玩家移動到重生點
+        Debug.Log("回到重生點");
+        playerModel.transform.position = respawnPoint.position;
     }
+
 }
