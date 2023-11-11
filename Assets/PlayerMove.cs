@@ -33,13 +33,13 @@ public class PlayerMove : MonoBehaviour
         {
             PlayerMoveMethod();
         }
-        
     }
 
     private void PlayerMoveMethod()
     {
         Debug.Log("玩家移動");
         //是否在地面檢查
+        //IsGround = Physics.Raycast(GroundCheck.position, Vector3.down, 0.1f, layerMask);
         IsGround = Physics.CheckSphere(GroundCheck.position, CheckRadius, layerMask);
         if (IsGround && Velocity.y < 0)//Velocity.y為垂直速度，因為垂直速度為負等於角色正在落下
         {
@@ -47,21 +47,17 @@ public class PlayerMove : MonoBehaviour
             jumpCount = 0;//重置跳躍次數
         }
 
+
         //跳躍
-        if (Input.GetButtonDown("Jump") && jumpCount < 2)
+        if (Input.GetButtonDown("Jump") && jumpCount < 1)
         {
             jumpCount++;
             Velocity.y = Mathf.Sqrt(JumpHight * -2 * Gravity);//套用跳躍公式
         }
 
-        /*
-        //掉落就會觸發玩完了的panel
-        if (transform.position.y < -30f)
-        {
-            GameManager.Instance.SetIsDead();
-            Debug.Log(transform.position.y);
-        }
-        */
+        //重力，讓角色能回到地面
+        Velocity.y += Gravity * Time.deltaTime;
+        controller.Move(new Vector3(0f, Velocity.y, 0f) * Time.deltaTime);
 
         //w,a,s,d的輸入
         var horizontal = Input.GetAxis("Horizontal");
@@ -77,9 +73,19 @@ public class PlayerMove : MonoBehaviour
         //角色移動
         controller.Move(moveDirection * speed * Time.deltaTime);
 
-        //重力，讓角色能回到地面
-        Velocity.y += Gravity * Time.deltaTime;
-        controller.Move(new Vector3(0f, Velocity.y, 0f) * Time.deltaTime);
+
+        /*
+        //掉落就會觸發玩完了的panel
+        if (transform.position.y < -30f)
+        {
+            GameManager.Instance.SetIsDead();
+            Debug.Log(transform.position.y);
+        }
+        */
+
+        
+
+        
 
 
 

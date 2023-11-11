@@ -5642,7 +5642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   RotateSpeed: 1
-  Gravity: -25
+  Gravity: -50
   JumpHight: 6
   GroundCheck: {fileID: 439984434}
   CheckRadius: 0.2
@@ -5740,7 +5740,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
