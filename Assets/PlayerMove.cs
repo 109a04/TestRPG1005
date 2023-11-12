@@ -19,6 +19,21 @@ public class PlayerMove : MonoBehaviour
 
     private int jumpCount = 0;  // 記錄跳躍次數
 
+    //
+    //public float speed = 10f; // 移動速度
+    //public float horizontalRotationSpeed = 2f; // 水平旋轉速度
+    //public float verticalRotationSpeed = 2f;   // 垂直旋轉速度
+    //public float verticalRotationLimit = 80f;  // 垂直旋轉上下限
+
+    //private float verticalRotation = 0f;  // 儲存垂直旋轉的角度
+    public float rotationSpeed = 100000000f; // 旋轉速度
+    public float verticalRotationLimit = 80f; // 垂直旋轉上下限
+
+    private float verticalRotation = 0f;
+
+
+    //
+
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +62,6 @@ public class PlayerMove : MonoBehaviour
             jumpCount = 0;//重置跳躍次數
         }
 
-
         //跳躍
         if (Input.GetButtonDown("Jump") && jumpCount < 1)
         {
@@ -59,6 +73,9 @@ public class PlayerMove : MonoBehaviour
         Velocity.y += Gravity * Time.deltaTime;
         controller.Move(new Vector3(0f, Velocity.y, 0f) * Time.deltaTime);
 
+
+        /* 舊方法
+        
         //w,a,s,d的輸入
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
@@ -74,22 +91,16 @@ public class PlayerMove : MonoBehaviour
         controller.Move(moveDirection * speed * Time.deltaTime);
 
 
-        /*
+        //
         //掉落就會觸發玩完了的panel
         if (transform.position.y < -30f)
         {
             GameManager.Instance.SetIsDead();
             Debug.Log(transform.position.y);
         }
-        */
+        //
 
-        
-
-        
-
-
-
-        
+       
         //mouse vector - player vector ,can get the vector point mouse from player 
         var playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
         var point = Input.mousePosition - playerScreenPoint;
@@ -102,13 +113,57 @@ public class PlayerMove : MonoBehaviour
         controller.transform.eulerAngles = new Vector3(controller.transform.eulerAngles.x, angle, controller.transform.eulerAngles.z);
 
         //角色和視角柔和地轉，但是快吐了
-        /*
+        //
         controller.transform.rotation = Quaternion.Slerp(
             controller.transform.rotation,
             Quaternion.Euler(new Vector3(0, angle, 0)),
             RotateSpeed * Time.deltaTime
         );
+        //
+
         */
+
+        //新方法
+        // 取得滑鼠的移動量
+        //float mouseX = Input.GetAxis("Mouse X");
+        //float mouseY = Input.GetAxis("Mouse Y");
+
+        // 旋轉角色水平方向
+        //transform.Rotate(Vector3.up * mouseX * horizontalRotationSpeed);
+
+        /*
+        // 垂直旋轉視角
+        verticalRotation -= mouseY * verticalRotationSpeed;
+        verticalRotation = Mathf.Clamp(verticalRotation, -verticalRotationLimit, verticalRotationLimit);
+
+        // 設定相機的垂直旋轉
+        Camera.main.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+        */
+        // 使用 Q 和 E 旋轉視角
+        if (Input.GetKey(KeyCode.J))
+        {
+            //transform.Rotate(Vector3.up * -rotationSpeed);
+            transform.Rotate(Vector3.up * -rotationSpeed * Time.deltaTime);
+
+        }
+        else if (Input.GetKey(KeyCode.K))
+        {
+            //transform.Rotate(Vector3.up * rotationSpeed);
+            transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+        }
+
+        // 移動方向
+        var moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+
+        // 將移動方向轉換為相對於相機視角的方向
+        moveDirection = Camera.main.transform.TransformDirection(moveDirection);
+
+        // 移動角色
+        controller.Move(moveDirection * speed * Time.deltaTime);
+        
+
+
+
     }
 
 }
