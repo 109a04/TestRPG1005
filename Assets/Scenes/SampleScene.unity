@@ -5653,8 +5653,9 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
-  rotationSpeed: 2
-  verticalRotationLimit: 80
+  horizontalRotationSpeed: 1
+  verticalRotationSpeed: 2
+  verticalRotationLimit: 10
 --- !u!143 &225048207
 CharacterController:
   m_ObjectHideFlags: 0

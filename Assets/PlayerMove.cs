@@ -19,21 +19,12 @@ public class PlayerMove : MonoBehaviour
 
     private int jumpCount = 0;  // 記錄跳躍次數
 
-    //
-    //public float speed = 10f; // 移動速度
-    //public float horizontalRotationSpeed = 2f; // 水平旋轉速度
-    //public float verticalRotationSpeed = 2f;   // 垂直旋轉速度
-    //public float verticalRotationLimit = 80f;  // 垂直旋轉上下限
 
-    //private float verticalRotation = 0f;  // 儲存垂直旋轉的角度
-    public float rotationSpeed = 100000000f; // 旋轉速度
-    public float verticalRotationLimit = 80f; // 垂直旋轉上下限
+    public float horizontalRotationSpeed = 2f; // 水平旋轉速度
+    public float verticalRotationSpeed = 2f;   // 垂直旋轉速度
+    public float verticalRotationLimit = 80f;  // 垂直旋轉上下限
 
-    private float verticalRotation = 0f;
-
-
-    //
-
+    private float verticalRotation = 0f;  // 儲存垂直旋轉的角度
 
     // Start is called before the first frame update
     void Start()
@@ -125,11 +116,11 @@ public class PlayerMove : MonoBehaviour
 
         //新方法
         // 取得滑鼠的移動量
-        //float mouseX = Input.GetAxis("Mouse X");
-        //float mouseY = Input.GetAxis("Mouse Y");
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
 
         // 旋轉角色水平方向
-        //transform.Rotate(Vector3.up * mouseX * horizontalRotationSpeed);
+        transform.Rotate(Vector3.up * mouseX * horizontalRotationSpeed);
 
         /*
         // 垂直旋轉視角
@@ -139,18 +130,6 @@ public class PlayerMove : MonoBehaviour
         // 設定相機的垂直旋轉
         Camera.main.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
         */
-        // 使用 Q 和 E 旋轉視角
-        if (Input.GetKey(KeyCode.J))
-        {
-            //transform.Rotate(Vector3.up * -rotationSpeed);
-            transform.Rotate(Vector3.up * -rotationSpeed * Time.deltaTime);
-
-        }
-        else if (Input.GetKey(KeyCode.K))
-        {
-            //transform.Rotate(Vector3.up * rotationSpeed);
-            transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
-        }
 
         // 移動方向
         var moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
@@ -161,9 +140,6 @@ public class PlayerMove : MonoBehaviour
         // 移動角色
         controller.Move(moveDirection * speed * Time.deltaTime);
         
-
-
-
     }
 
 }
