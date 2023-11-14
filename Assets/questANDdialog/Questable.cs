@@ -14,6 +14,8 @@ public class Questable : MonoBehaviour
     public string[] complete = new string[2];//恭喜完成
     public string[] repeat = new string[2];//不能重複做任務
 
+
+    
     private void Start()
     {
         giveMission[0] = npcName;
@@ -25,6 +27,7 @@ public class Questable : MonoBehaviour
         repeat[1] = "不能重複做任務喔";
     }
 
+    /*
     private void OnCollisionEnter(Collision other)
     {
         //玩家碰到npc
@@ -45,10 +48,11 @@ public class Questable : MonoBehaviour
             Debug.Log("離");
         }
     }
+    */
 
     public void DelegateQuest()
     {
-        if (playerInRange && dialogManager.instance.dialogueBox.activeInHierarchy == false)
+        if (/*playerInRange && */dialogManager.instance.dialogueBox.activeInHierarchy == false)
         {
             if (quest.questStatus != Quest.QuestStatus.Completed)//任務還沒完成
             {

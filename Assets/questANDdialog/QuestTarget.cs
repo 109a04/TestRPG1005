@@ -30,6 +30,7 @@ public class QuestTarget : MonoBehaviour
         }
     }
 
+    /*
     //攜帶這個腳本的是任務相關人和物品
     private void OnCollisionEnter(Collision other)
     {
@@ -53,6 +54,30 @@ public class QuestTarget : MonoBehaviour
                     }
                     CheckQuestIsComplete();
                 }
+            }
+        }
+    }
+    */
+
+    //攜帶這個腳本的是任務相關人和物品
+    public void questTargetCheck()
+    {
+        for (int i = 0; i < QuestManager.instance.questList.Count; i++)
+        {
+            if (targetID == QuestManager.instance.questList[i].targetID)
+            {
+                //非打怪任務的任務目標計數
+                if (QuestManager.instance.questList[i].questType == Quest.QuestType.Gathering || QuestManager.instance.questList[i].questType == Quest.QuestType.Talk)
+                {
+                    QuestManager.instance.questList[i].ownAmount++;
+                }
+
+                //收集任務直接銷毀任務道具
+                if (QuestManager.instance.questList[i].questType == Quest.QuestType.Gathering)
+                {
+                    Destroy(gameObject);
+                }
+                CheckQuestIsComplete();
             }
         }
     }
