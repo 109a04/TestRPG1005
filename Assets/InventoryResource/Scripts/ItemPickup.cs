@@ -9,7 +9,8 @@ public class ItemPickup : MonoBehaviour
 {
     public Item itemToAdd;
 
-    void Pickup()
+
+    public void Pickup()
     {
         //玩家活著的時候才能拾取道具
         if (!GameManager.Instance.GetIsDead())
@@ -61,11 +62,5 @@ public class ItemPickup : MonoBehaviour
             InventoryManager.Instance.UpdateList();
         }
 
-    }
-
-
-    private void OnMouseDown()
-    {
-        Pickup();
     }
 }
