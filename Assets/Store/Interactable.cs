@@ -11,7 +11,7 @@ public class Interactable : MonoBehaviour
     public Text nameText; //把字拉進來
     public Text hintText; //提示文字
     public Image pressF;  //按鈕圖片
-    protected Vector3 offset = new Vector3(0f, 1.5f, 0f); // UI元素在頭頂上的偏移值
+    protected Vector3 offset = new Vector3(0f, 2f, 0f); // UI元素在頭頂上的偏移值
     protected Vector3 moreHigh = new Vector3(0f, 80f, 0f); //更高
     protected Vector3 moreMoreHigh = new Vector3(0f, 125f, 0f); //更更高
     protected Camera mainCamera;
