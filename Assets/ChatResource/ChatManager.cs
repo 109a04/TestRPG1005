@@ -25,7 +25,7 @@ public class ChatManager : MonoBehaviour
     private void Start()
     {
         // 將 OnEndEdit 事件與 SendInput 函數關聯，當按下Enter，Listener就會叫SendInput傳文字進去
-        inputField.onEndEdit.AddListener(SendInput);
+        //inputField.onEndEdit.AddListener(SendInput);
     }
 
      //玩家輸入文字。
