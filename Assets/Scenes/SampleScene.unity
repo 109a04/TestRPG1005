@@ -1262,6 +1262,7 @@ GameObject:
   - component: {fileID: 38043790}
   - component: {fileID: 38043793}
   - component: {fileID: 38043794}
+  - component: {fileID: 38043795}
   m_Layer: 6
   m_Name: npc30
   m_TagString: Untagged
@@ -1366,7 +1367,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 38043788}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a86eecdb9089baf4c91a1aa3e1755e30, type: 3}
   m_Name: 
@@ -1390,6 +1391,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.12
   m_Center: {x: 0.3, y: 1.07, z: 0}
+--- !u!114 &38043795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38043788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8572a5a5d49ab6c4a9ef2b5a4eb61d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objName: "\u88AB\u6B3A\u8CA0\u7684\u5C45\u6C11"
+  prompt: "\u6253\u602A"
+  interactTransform: {fileID: 38043789}
+  nameText: {fileID: 285096125}
+  hintText: {fileID: 768740297}
+  pressF: {fileID: 407382413}
 --- !u!1 &46348021
 GameObject:
   m_ObjectHideFlags: 0
@@ -15427,15 +15446,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b69536a138b83594a94d773556b73abe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.3
+      value: 23.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b69536a138b83594a94d773556b73abe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 60.63
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b69536a138b83594a94d773556b73abe, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -164.7
+      value: -2.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b69536a138b83594a94d773556b73abe, type: 3}
       propertyPath: m_LocalRotation.w
