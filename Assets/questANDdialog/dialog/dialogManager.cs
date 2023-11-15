@@ -40,7 +40,7 @@ public class dialogManager : MonoBehaviour
     {
         if (dialogueBox.activeInHierarchy)//對話框是否開啟
         {
-            if (Input.GetKeyDown(KeyCode.F))//按F才能顯示下一句
+            if (Input.GetKeyDown(KeyCode.J))//按J才能顯示下一句
             {
                 if(isScrolling == false)//整句顯示完整才能顯示下一句
                 {

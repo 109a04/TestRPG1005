@@ -16,6 +16,7 @@ public class Talkable : MonoBehaviour
         questTScript = GetComponent<QuestTarget>();
     }
 
+    /*
     private void OnCollisionEnter(Collision other)
     {
         //玩家接觸npc
@@ -56,5 +57,29 @@ public class Talkable : MonoBehaviour
             Debug.Log("離開npc拉");
         }
     }
-    
+    */
+
+    //如果是對話任務的target
+    public void StartTalk()
+    {
+        if (questTScript != null && diaFinish == false)
+        {
+            for (int i = 0; i < QuestManager.instance.questList.Count; i++)
+            {
+                if (questTScript.targetID == QuestManager.instance.questList[i].targetID)
+                {
+                    dialogManager.instance.ShowDialogue(lines);
+                    diaFinish = true;
+                    break;
+
+                }
+
+            }
+        }
+        else//單純對話腳本
+        {
+            dialogManager.instance.ShowDialogue(lines);
+            diaFinish = true;
+        }
+    }
 }
