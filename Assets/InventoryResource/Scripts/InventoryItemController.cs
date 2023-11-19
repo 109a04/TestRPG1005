@@ -69,28 +69,10 @@ public class InventoryItemController : BaseItemController, IPointerEnterHandler,
         if (thisItem.GetItemType() == Item.ItemType.Weapon)
         {
             WeaponItem itemToUse = thisItem as WeaponItem;
-            
-            //改變玩家屬性的武器型態
-            playerAttributeManager.Instance.weapon = (int) itemToUse.weaponType;
-            playerAttributeManager.Instance.element = (int)itemToUse.elementType;
 
-            //不同武器的攻擊範圍
-            switch (itemToUse.weaponType)
-            {
-                case WeaponItem.WeaponType.MagicWand:
-                    playerAttributeManager.Instance.atkRange = 25;
-                    break;
-                case WeaponItem.WeaponType.Heavy:
-                    playerAttributeManager.Instance.atkRange = 10;
-                    break;
-                case WeaponItem.WeaponType.Bow:
-                    playerAttributeManager.Instance.atkRange = 40;
-                    break;
-            }
+            WeaponItemController.Instance.ChangeWeapon(itemToUse);
 
-            PlayerAttack.Instance.SetPlayerAtkParameter(); //設置參數
-
-            ChatManager.Instance.SystemMessage($"裝備道具<color=#F5EC3D>{itemToUse.itemName}。</color>\n");
+            ChatManager.Instance.SystemMessage($"裝備武器<color=#F5EC3D>{itemToUse.itemName}。</color>\n");
         }
         else if (thisItem.GetItemType() == Item.ItemType.Consumable)
         {

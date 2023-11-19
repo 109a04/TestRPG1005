@@ -42,8 +42,12 @@ public class BaseItemController : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     protected virtual void Update()
     {
-        if (thisItem == null) return; //當下沒有道具資料時不需要做任何事
-        if (isMouseOverItem)
+        if (thisItem == null)
+        {
+            itemNameText.text = null;
+            itemDescriptionText.text = null;
+        }
+        if (isMouseOverItem && thisItem != null)
         {
             DescriptionPanel.SetActive(true);
             itemNameText.text = thisItem.itemName;

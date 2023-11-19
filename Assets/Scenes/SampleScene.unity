@@ -9407,7 +9407,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 467, y: 0}
+  m_AnchoredPosition: {x: -288, y: 0}
   m_SizeDelta: {x: 500, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &393152991
@@ -15454,31 +15454,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b69536a138b83594a94d773556b73abe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.27
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b69536a138b83594a94d773556b73abe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 35.173656
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b69536a138b83594a94d773556b73abe, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -134.9
+      value: -7.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b69536a138b83594a94d773556b73abe, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.14483255
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b69536a138b83594a94d773556b73abe, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b69536a138b83594a94d773556b73abe, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9894562
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b69536a138b83594a94d773556b73abe, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b69536a138b83594a94d773556b73abe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -15496,6 +15496,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: -6251132694207805316, guid: b69536a138b83594a94d773556b73abe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4683669308469848369, guid: b69536a138b83594a94d773556b73abe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -15511,6 +15515,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b69536a138b83594a94d773556b73abe, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7568980800345145602, guid: b69536a138b83594a94d773556b73abe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b69536a138b83594a94d773556b73abe, type: 3}
@@ -52615,6 +52623,11 @@ MonoBehaviour:
   itemNameText: {fileID: 190298042464499613}
   itemDescriptionText: {fileID: 4682981870507700628}
   DescriptionPanel: {fileID: 7332011022181310463}
+  thisWeaponItem: {fileID: 0}
+  weaponModel: {fileID: 0}
+  playerHand: {fileID: 2029757125}
+  screenHeightThreshold: 0.7
+  screenWidthThreshold: 0.8
 --- !u!114 &8682058735636217964
 MonoBehaviour:
   m_ObjectHideFlags: 0
