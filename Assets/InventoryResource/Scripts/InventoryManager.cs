@@ -60,6 +60,7 @@ public class InventoryManager : MonoBehaviour
     {
         if (itemToRemove.GetItemType() == Item.ItemType.Weapon)
         {
+            
             Items.Remove(itemToRemove);
         }
         if (itemToRemove.GetItemType() == Item.ItemType.Consumable)

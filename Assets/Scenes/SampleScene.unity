@@ -10200,7 +10200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &431302120
 RectTransform:
   m_ObjectHideFlags: 0
@@ -52262,6 +52262,7 @@ GameObject:
   - component: {fileID: 5098349772200729035}
   - component: {fileID: 8531174861857884179}
   - component: {fileID: 3969016648449187639}
+  - component: {fileID: 8531174861857884180}
   m_Layer: 5
   m_Name: WeaponItem
   m_TagString: Untagged
@@ -52590,6 +52591,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8531174861857884180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464896485109797927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 399a2decb125ce64eacf5c298ec1324f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisItem: {fileID: 0}
+  itemNameText: {fileID: 190298042464499613}
+  itemDescriptionText: {fileID: 4682981870507700628}
+  DescriptionPanel: {fileID: 7332011022181310463}
 --- !u!114 &8682058735636217964
 MonoBehaviour:
   m_ObjectHideFlags: 0

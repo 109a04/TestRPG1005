@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -19,11 +20,6 @@ public class WeaponItem : Item
         return ItemType.Weapon;
     }
 
-    public override bool CanSell()
-    {
-        AbleToSell = true;
-        return AbleToSell;
-    }
 
     public enum WeaponType //¥|ºØªZ¾¹
     {

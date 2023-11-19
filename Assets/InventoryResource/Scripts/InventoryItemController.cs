@@ -11,12 +11,13 @@ public class InventoryItemController : BaseItemController, IPointerEnterHandler,
 
     protected override void Update()
     {
+        base.Update(); //前面用BaseItemController的東西
+
         if (Input.GetMouseButtonDown(1) && isMouseOverItem) //我把使用道具的觸發方式改成右鍵點擊了
         {
             UseItem();
         }
 
-        base.Update(); //前面用BaseItemController的東西
         Vector3 mouseScreenPos = Input.mousePosition;
 
         // 將滑鼠螢幕座標轉換成世界座標
@@ -68,6 +69,27 @@ public class InventoryItemController : BaseItemController, IPointerEnterHandler,
         if (thisItem.GetItemType() == Item.ItemType.Weapon)
         {
             WeaponItem itemToUse = thisItem as WeaponItem;
+            
+            //改變玩家屬性的武器型態
+            playerAttributeManager.Instance.weapon = (int) itemToUse.weaponType;
+            playerAttributeManager.Instance.element = (int)itemToUse.elementType;
+
+            //不同武器的攻擊範圍
+            switch (itemToUse.weaponType)
+            {
+                case WeaponItem.WeaponType.MagicWand:
+                    playerAttributeManager.Instance.atkRange = 25;
+                    break;
+                case WeaponItem.WeaponType.Heavy:
+                    playerAttributeManager.Instance.atkRange = 10;
+                    break;
+                case WeaponItem.WeaponType.Bow:
+                    playerAttributeManager.Instance.atkRange = 40;
+                    break;
+            }
+
+            PlayerAttack.Instance.SetPlayerAtkParameter(); //設置參數
+
             ChatManager.Instance.SystemMessage($"裝備道具<color=#F5EC3D>{itemToUse.itemName}。</color>\n");
         }
         else if (thisItem.GetItemType() == Item.ItemType.Consumable)

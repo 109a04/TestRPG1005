@@ -9,11 +9,7 @@ using UnityEngine;
 
 public class QuestItem : Item
 {
-    public override bool CanSell()
-    {
-        AbleToSell = false;
-        return AbleToSell;
-    }
+    
 
     public override ItemType GetItemType()
     {
