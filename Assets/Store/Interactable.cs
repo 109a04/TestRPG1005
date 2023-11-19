@@ -68,7 +68,8 @@ public class Interactable : MonoBehaviour
         //判斷是否開始互動
         if (isInRange == true && Input.GetKeyDown(KeyCode.F))
         {
-            isTriggered = !isTriggered;
+            isTriggered = !isTriggered; //繼承腳本可以用這個變數去做額外的判斷執行
+                                        //例：if (isTriggered) { 你想要讓它做的事情 }
         }
     }
 }

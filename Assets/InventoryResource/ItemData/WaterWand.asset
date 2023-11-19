@@ -17,7 +17,7 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 5bfc2726df902094d90150f281770c24, type: 3}
   itemPrice: 145
   AbleToSell: 1
-  itemDescript: "\u4E00\u628A\u6C34\u85CD\u8272\u7684\u9B54\u6756"
+  itemDescript: "\u6C34\u85CD\u8272\u7684\u9B54\u6CD5\u68D2\u3002"
   weaponType: 2
   elementType: 2
   weaponModel: {fileID: 129130, guid: 7e4fe71e8701ed147ac48614044e1c01, type: 3}
