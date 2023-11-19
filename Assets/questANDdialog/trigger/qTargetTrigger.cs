@@ -9,7 +9,7 @@ public class qTargetTrigger : Interactable
     private bool isFinish;
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
         base.Start();
         qTarget = this.gameObject.GetComponent<QuestTarget>();
@@ -18,7 +18,7 @@ public class qTargetTrigger : Interactable
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         base.Update();
         if (isInRange && Input.GetKeyDown(KeyCode.F) && isFinish == false)

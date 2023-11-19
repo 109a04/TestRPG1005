@@ -9,19 +9,20 @@ public class talkTrigger : Interactable
 
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
         base.Start();
         qTalk = this.gameObject.GetComponent<Talkable>();
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         base.Update();
         if (isInRange && Input.GetKeyDown(KeyCode.F))
         {
             qTalk.StartTalk();
+            isInRange = false;
         }
     }
 }

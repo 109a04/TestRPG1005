@@ -7,14 +7,14 @@ public class qNPCtrigger : Interactable
     private Questable qTable;
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
         base.Start();
         qTable = this.gameObject.GetComponent<Questable>();
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
         base.Update();
 
