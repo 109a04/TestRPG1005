@@ -52354,7 +52354,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!1 &6096458295455077185
 GameObject:
   m_ObjectHideFlags: 0
@@ -52623,11 +52623,7 @@ MonoBehaviour:
   itemNameText: {fileID: 190298042464499613}
   itemDescriptionText: {fileID: 4682981870507700628}
   DescriptionPanel: {fileID: 7332011022181310463}
-  thisWeaponItem: {fileID: 0}
-  weaponModel: {fileID: 0}
   playerHand: {fileID: 2029757125}
-  screenHeightThreshold: 0.7
-  screenWidthThreshold: 0.8
 --- !u!114 &8682058735636217964
 MonoBehaviour:
   m_ObjectHideFlags: 0

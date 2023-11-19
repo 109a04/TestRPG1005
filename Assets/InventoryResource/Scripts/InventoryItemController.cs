@@ -9,6 +9,11 @@ public class InventoryItemController : BaseItemController, IPointerEnterHandler,
     public float screenHeightThreshold = 0.7f; // 螢幕高度的閾值
     public float screenWidthThreshold = 0.8f; // 螢幕寬度的閾值
 
+    protected override void Start()
+    {
+        base.Start();
+    }
+
     protected override void Update()
     {
         base.Update(); //前面用BaseItemController的東西
@@ -70,7 +75,8 @@ public class InventoryItemController : BaseItemController, IPointerEnterHandler,
         {
             WeaponItem itemToUse = thisItem as WeaponItem;
 
-            WeaponItemController.Instance.ChangeWeapon(itemToUse);
+            
+            
 
             ChatManager.Instance.SystemMessage($"裝備武器<color=#F5EC3D>{itemToUse.itemName}。</color>\n");
         }
