@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjInteract : InteractV2
+public class ItemInteract : InteractV2
 {
     private ItemPickup itemPickup;
 
