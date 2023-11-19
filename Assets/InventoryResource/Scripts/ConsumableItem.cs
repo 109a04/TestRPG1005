@@ -18,11 +18,7 @@ public class ConsumableItem : Item
         return ItemType.Consumable;
     }
 
-    public override bool CanSell()
-    {
-        AbleToSell = true;
-        return AbleToSell;
-    }
+    
 
     public enum ConsumableType 
     {   

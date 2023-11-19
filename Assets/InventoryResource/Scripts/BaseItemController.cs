@@ -15,6 +15,8 @@ public class BaseItemController : MonoBehaviour, IPointerEnterHandler, IPointerE
     protected bool isMouseOverItem;
     public GameObject DescriptionPanel;
 
+
+
     protected virtual void Start()
     {
         isMouseOverItem = false; //不會一開始就被摸到
@@ -40,7 +42,12 @@ public class BaseItemController : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     protected virtual void Update()
     {
-        if (isMouseOverItem)
+        if (thisItem == null)
+        {
+            itemNameText.text = null;
+            itemDescriptionText.text = null;
+        }
+        if (isMouseOverItem && thisItem != null)
         {
             DescriptionPanel.SetActive(true);
             itemNameText.text = thisItem.itemName;

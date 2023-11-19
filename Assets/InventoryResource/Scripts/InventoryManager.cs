@@ -53,6 +53,7 @@ public class InventoryManager : MonoBehaviour
             ChatManager.Instance.SystemMessage($"<color=#CC0000>背包已滿!</color>\n");
             Debug.Log("背包已滿!");
         }
+        UpdateList();
     }
 
 
@@ -60,6 +61,7 @@ public class InventoryManager : MonoBehaviour
     {
         if (itemToRemove.GetItemType() == Item.ItemType.Weapon)
         {
+            
             Items.Remove(itemToRemove);
         }
         if (itemToRemove.GetItemType() == Item.ItemType.Consumable)

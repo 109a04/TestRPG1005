@@ -9,18 +9,29 @@ using UnityEngine;
 /// </summary>
 public class PlayerAttack : MonoBehaviour
 {
-    protected int atkRange;
-    protected int damage;
-    protected int weapon;
-    
+    protected int atkRange; //攻擊範圍（跟持有武器有關係）
+    protected int damage;   //攻擊力
+    protected int weaponElement;   //武器屬性
+
+    public static PlayerAttack Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        SetPlayerAtkParameter();
+    }
+
+    public void SetPlayerAtkParameter() //設置好玩家當前的攻擊相關參數
+    {
         atkRange = playerAttributeManager.Instance.atkRange;
         damage = playerAttributeManager.Instance.attack;
-        weapon = playerAttributeManager.Instance.weapon;
-    }
+        weaponElement = playerAttributeManager.Instance.element;
+    } 
 
     // Update is called once per frame
     void Update()
@@ -47,7 +58,7 @@ public class PlayerAttack : MonoBehaviour
                         if(distance <= atkRange && !GameManager.Instance.GetIsDead()) //當怪物在可攻擊範圍內，且玩家非死亡狀態
                         {
                             HeroMotion.Instance.animator.SetTrigger("AttackTrigger");
-                            enemyMovement.TakeDamage(damage, weapon);
+                            enemyMovement.TakeDamage(damage, weaponElement);
                         }
                     }
                     else

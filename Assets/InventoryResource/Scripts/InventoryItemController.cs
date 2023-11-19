@@ -9,14 +9,20 @@ public class InventoryItemController : BaseItemController, IPointerEnterHandler,
     public float screenHeightThreshold = 0.7f; // 螢幕高度的閾值
     public float screenWidthThreshold = 0.8f; // 螢幕寬度的閾值
 
+    protected override void Start()
+    {
+        base.Start();
+    }
+
     protected override void Update()
     {
+        base.Update(); //前面用BaseItemController的東西
+
         if (Input.GetMouseButtonDown(1) && isMouseOverItem) //我把使用道具的觸發方式改成右鍵點擊了
         {
             UseItem();
         }
 
-        base.Update(); //前面用BaseItemController的東西
         Vector3 mouseScreenPos = Input.mousePosition;
 
         // 將滑鼠螢幕座標轉換成世界座標
@@ -68,7 +74,11 @@ public class InventoryItemController : BaseItemController, IPointerEnterHandler,
         if (thisItem.GetItemType() == Item.ItemType.Weapon)
         {
             WeaponItem itemToUse = thisItem as WeaponItem;
-            ChatManager.Instance.SystemMessage($"裝備道具<color=#F5EC3D>{itemToUse.itemName}。</color>\n");
+
+            
+            
+
+            ChatManager.Instance.SystemMessage($"裝備武器<color=#F5EC3D>{itemToUse.itemName}。</color>\n");
         }
         else if (thisItem.GetItemType() == Item.ItemType.Consumable)
         {
