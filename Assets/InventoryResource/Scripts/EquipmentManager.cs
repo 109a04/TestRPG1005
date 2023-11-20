@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class EquipmentManager : MonoBehaviour
 {
@@ -82,10 +83,23 @@ public class EquipmentManager : MonoBehaviour
         Debug.Log("裝備武器");
         equipmentModel = Instantiate(weaponItem.weaponModel, playerHand);
         equipmentModel.transform.parent = PlayerSkeleton;
+
+        SetLayer(equipmentModel, 8);
+
     }
 
     private void DestoryModel()
     {
         Destroy(equipmentModel);
+    }
+
+    private void SetLayer(GameObject obj ,int layerNum) //遞迴設定物件圖層
+    {
+        obj.layer = layerNum;
+
+        foreach(Transform child in obj.transform)
+        {
+            SetLayer(child.gameObject, layerNum);
+        }
     }
 }
