@@ -12,6 +12,9 @@ public class EquipmentManager : MonoBehaviour
 
     public WeaponItem weaponItem; //武器欄
     public BaseItemController equipment; //資料轉換
+    public Transform PlayerSkeleton; //玩家骨架
+    public Transform playerHand; //玩家手部位置
+    public GameObject equipmentModel; //待會會實例化的道具模型
 
     public static EquipmentManager Instance;
 
@@ -39,11 +42,14 @@ public class EquipmentManager : MonoBehaviour
         {
             EquipItemController equipItemController = FindObjectOfType<EquipItemController>();
             InventoryManager.Instance.AddItem(weaponItem);
-            EquipmentManager.Instance.weaponItem = null;
+            weaponItem = null;
             InventoryManager.Instance.UpdateList();
-            EquipmentManager.Instance.UpdateSlot();
+            UpdateSlot();
+            DestoryModel();
         }
         weaponItem = newWeapon;
+        ShowModel();
+        UpdateParameter();
     }
 
     public void UpdateSlot()
@@ -64,8 +70,22 @@ public class EquipmentManager : MonoBehaviour
         equipment.SetItem(weaponItem);
     }
 
-    public void UpdaeParameter()
+    public void UpdateParameter()
     {
-        
+        playerAttributeManager.Instance.weapon = (int) weaponItem.weaponType;
+        playerAttributeManager.Instance.element = (int)weaponItem.elementType;
+    }
+
+    private void ShowModel()
+    {
+        if (weaponItem == null) return;
+        Debug.Log("裝備武器");
+        equipmentModel = Instantiate(weaponItem.weaponModel, playerHand);
+        equipmentModel.transform.parent = PlayerSkeleton;
+    }
+
+    private void DestoryModel()
+    {
+        Destroy(equipmentModel);
     }
 }
