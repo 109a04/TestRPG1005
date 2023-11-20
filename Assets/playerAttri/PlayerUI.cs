@@ -59,8 +59,44 @@ public class PlayerUI : MonoBehaviour
         oattackText.text = "力量：" + playerAttributeManager.Instance.origin_attack.ToString();
         ospeedText.text = "敏捷：" + playerAttributeManager.Instance.origin_speed.ToString();
 
-        weaponText.text = "武器：" + playerAttributeManager.Instance.weapon.ToString();
-        elementText.text = "屬性：" + playerAttributeManager.Instance.element.ToString();
+        switch (playerAttributeManager.Instance.weapon)
+        {
+            case 0:
+                weaponText.text = "武器： 無";
+                break;
+            case 1:
+                weaponText.text = "武器： 劍";
+                break;
+            case 2:
+                weaponText.text = "武器： 魔杖";
+                break; 
+            case 3:
+                weaponText.text = "武器： 重裝";
+                break;
+            case 4:
+                weaponText.text = "武器： 弓箭";
+                break;
+        }
+
+        switch (playerAttributeManager.Instance.element)
+        {
+            case 0:
+                elementText.text = "屬性： 無";
+                break;
+            case 1:
+                elementText.text = "屬性： 水";
+                break;
+            case 2:
+                elementText.text = "屬性： 火";
+                break;
+            case 3:
+                elementText.text = "屬性： 草";
+                break;
+            case 4:
+                elementText.text = "屬性： 土";
+                break;
+        }
+
 
         firemText.text = "火抗：" + playerAttributeManager.Instance.fire_mr.ToString();
         watermText.text = "水抗：" + playerAttributeManager.Instance.water_mr.ToString();
