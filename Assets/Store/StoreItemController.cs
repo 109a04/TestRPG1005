@@ -134,6 +134,7 @@ public class StoreItemController : BaseItemController
                         purchasedItem.itemDescript = itemToBuy.itemDescript;
                         purchasedItem.weaponType = itemToBuy.weaponType;
                         purchasedItem.elementType = itemToBuy.elementType;
+                        purchasedItem.weaponModel = itemToBuy.weaponModel;
                         InventoryManager.Instance.AddItem(purchasedItem); //僅增加，不疊加數量
                     }
 
