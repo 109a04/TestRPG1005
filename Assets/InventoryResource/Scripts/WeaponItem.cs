@@ -14,6 +14,7 @@ public class WeaponItem : Item
     public WeaponType weaponType;
     public ElementType elementType;
     public GameObject weaponModel;
+    public int damage;
 
     public override ItemType GetItemType()
     {

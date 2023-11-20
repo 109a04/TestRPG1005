@@ -16,8 +16,8 @@ MonoBehaviour:
   itemName: "\u528D"
   itemIcon: {fileID: 21300000, guid: ba56f69c5e5353e49a59ddb3bb8f7872, type: 3}
   itemPrice: 60
-  AbleToSell: 1
   itemDescript: "\u4E00\u628A\u77ED\u528D\uFF0C\u8DDF\u87A2\u5149\u68D2\u4E00\u6A23\u597D\u63EE\u3002"
   weaponType: 1
   elementType: 2
   weaponModel: {fileID: 919132149155446097, guid: d7ee9f840f55ec3409d1b2fef5774761, type: 3}
+  damage: 6

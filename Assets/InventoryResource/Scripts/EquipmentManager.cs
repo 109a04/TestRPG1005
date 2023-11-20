@@ -50,7 +50,8 @@ public class EquipmentManager : MonoBehaviour
         }
         weaponItem = newWeapon;
         ShowModel();
-        UpdateParameter();
+        UpdatePlayerAttribute();
+        PlayerAttack.Instance.SetPlayerAtkParameter();
     }
 
     public void UpdateSlot()
@@ -71,10 +72,37 @@ public class EquipmentManager : MonoBehaviour
         equipment.SetItem(weaponItem);
     }
 
-    public void UpdateParameter()
+    public void UpdatePlayerAttribute()
     {
+        if(weaponItem == null)
+        
+        {
+            playerAttributeManager.Instance.weapon = 0;
+            playerAttributeManager.Instance.element = 0;
+            playerAttributeManager.Instance.attack = playerAttributeManager.Instance.origin_attack * 2;
+            playerAttributeManager.Instance.atkRange = 10;
+            return;
+        }
+
         playerAttributeManager.Instance.weapon = (int) weaponItem.weaponType;
-        playerAttributeManager.Instance.element = (int)weaponItem.elementType;
+        playerAttributeManager.Instance.element = (int) weaponItem.elementType;
+        playerAttributeManager.Instance.attack = playerAttributeManager.Instance.origin_attack * 2 + weaponItem.damage;
+
+        switch (weaponItem.weaponType) //根據不同武器改變攻擊範圍
+        {
+            case WeaponItem.WeaponType.Sword:
+                playerAttributeManager.Instance.atkRange = 15;
+                break;
+            case WeaponItem.WeaponType.MagicWand:
+                playerAttributeManager.Instance.atkRange = 20;
+                break;
+            case WeaponItem.WeaponType.Heavy:
+                playerAttributeManager.Instance.atkRange = 5;
+                break;
+            case WeaponItem.WeaponType.Bow:
+                playerAttributeManager.Instance.atkRange = 25;
+                break;
+        }
     }
 
     private void ShowModel()

@@ -32,6 +32,7 @@ public class EquipItemController : BaseItemController
         EquipmentManager.Instance.weaponItem = null;
         InventoryManager.Instance.UpdateList();
         EquipmentManager.Instance.UpdateSlot();
+        EquipmentManager.Instance.UpdatePlayerAttribute();
         ChatManager.Instance.SystemMessage($"¨ø¤UªZ¾¹<color=#F5EC3D>{thisItem.itemName}¡C</color>\n");
     }
 

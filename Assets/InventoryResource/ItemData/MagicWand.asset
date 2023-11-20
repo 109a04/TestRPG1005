@@ -20,3 +20,4 @@ MonoBehaviour:
   weaponType: 2
   elementType: 0
   weaponModel: {fileID: 919132149155446097, guid: 9f9c5612df1cd3f48a89590d80c733bd, type: 3}
+  damage: 3
