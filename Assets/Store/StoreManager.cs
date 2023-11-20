@@ -26,8 +26,9 @@ public class StoreManager : MonoBehaviour
 
     public void Update()
     {
-        GetMoney();
+        GetMoney(); //這之後可以改成玩家購買東西之後再調用，不然太白癡了
     }
+
     public void GetMoney()
     {
         moneyText.text = $"{playerAttributeManager.Instance.money}";

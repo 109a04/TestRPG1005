@@ -71,10 +71,7 @@ public class InventoryManager : MonoBehaviour
             {
                 consumableItem.itemCounts[itemToRemove.itemName]--;
 
-                if (consumableItem.itemCounts[itemToRemove.itemName] <= 0)
-                {
-                    Items.Remove(itemToRemove);
-                }
+                if (consumableItem.itemCounts[itemToRemove.itemName] <= 0) Items.Remove(itemToRemove);
             }
         }
 

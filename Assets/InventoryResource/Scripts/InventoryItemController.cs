@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class InventoryItemController : BaseItemController, IPointerEnterHandler, IPointerExitHandler
 {
-    public float screenHeightThreshold = 0.7f; // 螢幕高度的閾值
-    public float screenWidthThreshold = 0.8f; // 螢幕寬度的閾值
+    
+
+    
 
     protected override void Start()
     {
@@ -23,49 +24,7 @@ public class InventoryItemController : BaseItemController, IPointerEnterHandler,
             UseItem();
         }
 
-        Vector3 mouseScreenPos = Input.mousePosition;
-
-        // 將滑鼠螢幕座標轉換成世界座標
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(new Vector3(mouseScreenPos.x, mouseScreenPos.y, 10f));
-
-        // 將世界座標轉換成螢幕座標，只取 x 軸值
-        float mouseScreenX = Camera.main.WorldToScreenPoint(mouseWorldPos).x;
-
-        // 將世界座標轉換成螢幕座標，只取 y 軸值
-        float mouseScreenY = Camera.main.WorldToScreenPoint(mouseWorldPos).y;
-
-        // 判斷滑鼠是否位於螢幕的某處之上
-        bool isAboveThreshold = mouseScreenY > Screen.height * screenHeightThreshold;
-
-        // 判斷滑鼠是否位於螢幕的右側
-        bool isOnRightSide = mouseScreenX > Screen.width * screenWidthThreshold;
-
-        if (isMouseOverItem)
-        {
-            if (isAboveThreshold)
-            {
-                if (!isOnRightSide)
-                {
-                    DescriptionPanel.transform.position = Input.mousePosition + new Vector3(250, -200, 0);
-                }
-                else
-                {
-                    DescriptionPanel.transform.position = Input.mousePosition + new Vector3(-250, -200, 0);
-                }
-            }
-            else
-            {
-                if (!isOnRightSide)
-                {
-                    DescriptionPanel.transform.position = Input.mousePosition + new Vector3(250, 100, 0);
-                }
-                else
-                {
-                    DescriptionPanel.transform.position = Input.mousePosition + new Vector3(-250, 100, 0);
-                }
-
-            }
-        }
+        FollowMousePos();
 
     }
 
@@ -74,10 +33,8 @@ public class InventoryItemController : BaseItemController, IPointerEnterHandler,
         if (thisItem.GetItemType() == Item.ItemType.Weapon)
         {
             WeaponItem itemToUse = thisItem as WeaponItem;
-
-            
-            
-
+            EquipmentManager.Instance.Equip(itemToUse); //把武器資料傳給管理裝備腳本
+            EquipmentManager.Instance.UpdateSlot();
             ChatManager.Instance.SystemMessage($"裝備武器<color=#F5EC3D>{itemToUse.itemName}。</color>\n");
         }
         else if (thisItem.GetItemType() == Item.ItemType.Consumable)
