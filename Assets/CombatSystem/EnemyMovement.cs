@@ -355,6 +355,8 @@ public class EnemyMovement : MonoBehaviour
 
         if (Physics.Raycast(ray, out hitInfo)) //如果射線射到怪物，則顯示UI
         {
+            float distance = Vector3.Distance(transform.position, player.position);
+            if (distance > playerAttributeManager.Instance.atkRange) return;
             if (hitInfo.collider.gameObject == gameObject)
             {
                 actionVariables.StatusUI.SetActive(true);

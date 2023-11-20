@@ -23,9 +23,13 @@ public class MouseCursorChange : MonoBehaviour
 
         if (Physics.Raycast(ray, out hitInfo))
         {
+
             if (hitInfo.collider != null && hitInfo.collider.CompareTag("Enemy"))
             {
+                GameObject enemyTransform = hitInfo.collider.gameObject;
+                float distance = Vector3.Distance(transform.position, enemyTransform.transform.position);
                 // 當滑鼠懸停在怪物上時，更改滑鼠圖示為自定義的圖示
+                if (distance > playerAttributeManager.Instance.atkRange) return;
                 Cursor.SetCursor(cursorTexture, new Vector2(cursorWidth / 2, cursorHeight / 2), CursorMode.Auto);
             }
             else
