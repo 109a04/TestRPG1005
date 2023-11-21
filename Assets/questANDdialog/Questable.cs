@@ -74,6 +74,7 @@ public class Questable : MonoBehaviour
                 {
                     dialogManager.instance.ShowDialogue(complete);
                     OfferRewards();
+                    QuestManager.instance.questList.RemoveAll(quest => quest.questStatus == Quest.QuestStatus.Completed);
                     isFinish = true;
                 }
                 else

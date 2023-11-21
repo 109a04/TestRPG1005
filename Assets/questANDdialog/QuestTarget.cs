@@ -94,6 +94,7 @@ public class QuestTarget : MonoBehaviour
                 {//確認任務是否完成
                     QuestManager.instance.questList[i].questStatus = Quest.QuestStatus.Completed;
                     PlayerQ.instance.questCompleteList.Add(questID);
+                    QuestManager.instance.updateList();
                     ChatManager.Instance.SystemMessage($"<color=#3fe047>{QuestManager.instance.questList[i].questName}任務已達標</color>\n");
                     ChatManager.Instance.SystemMessage($"<color=#3fe047>可以回去找NPC完成任務拉</color>\n");
                 }

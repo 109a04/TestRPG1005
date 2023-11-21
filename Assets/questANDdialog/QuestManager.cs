@@ -38,7 +38,7 @@ public class QuestManager : MonoBehaviour
     public void updateList()
     {
         //移除狀態為complete的任務
-        questList.RemoveAll(quest => quest.questStatus == Quest.QuestStatus.Completed);
+        //questList.RemoveAll(quest => quest.questStatus == Quest.QuestStatus.Completed);
 
         //只顯示accepted的任務
         for (int i = 0; i < quest.Length; i++)
@@ -46,8 +46,9 @@ public class QuestManager : MonoBehaviour
             if (i < questList.Count)
             {
                 quest[i].text = questList[i].questName;
-                status[i].text = "未完成";
+                //status[i].text = "未完成";
                 //status[i].text = questList[i].questStatus.ToString();
+                status[i].text = (questList[i].questStatus == Quest.QuestStatus.Completed) ? "已完成" : "未完成";
             }
             else
             {
