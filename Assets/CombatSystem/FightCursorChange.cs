@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseCursorChange : MonoBehaviour
+public class FightCursorChange : MonoBehaviour
 {
     public Texture2D cursorTexture;  // ·s·Æ¹«¹Ï¥Ü
     public CursorMode cursorMode = CursorMode.Auto;
