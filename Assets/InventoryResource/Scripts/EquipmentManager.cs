@@ -107,7 +107,6 @@ public class EquipmentManager : MonoBehaviour
     private void ShowModel()
     {
         if (weaponItem == null) return;
-        Debug.Log("¸Ë³ÆªZ¾¹");
         equipmentModel = Instantiate(weaponItem.weaponModel, playerHand);
         equipmentModel.transform.parent = PlayerSkeleton;
 
