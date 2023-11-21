@@ -179,11 +179,11 @@ public class Player : MonoBehaviour
 
         if (value < 0)
         {
-            ChatManager.Instance.SystemMessage($"<color=#F5EC3D>體力減少{Mathf.Abs(value)}。</color>\n");
+            ChatManager.Instance.SystemMessage($"體力減少<color=#F5EC3D>{Mathf.Abs(value)}。</color>\n");
         }
         else
         {
-            ChatManager.Instance.SystemMessage($"<color=#F5EC3D>體力增加{value}。</color>\n");
+            ChatManager.Instance.SystemMessage($"體力增加<color=#F5EC3D>{value}。</color>\n");
         }
     }
 
@@ -207,11 +207,11 @@ public class Player : MonoBehaviour
 
         if (value < 0)
         {
-            ChatManager.Instance.SystemMessage($"<color=#F5EC3D>魔力減少{Mathf.Abs(value)}。</color>\n");
+            ChatManager.Instance.SystemMessage($"魔力減少<color=#F5EC3D>{Mathf.Abs(value)}。</color>\n");
         }
         else
         {
-            ChatManager.Instance.SystemMessage($"<color=#F5EC3D>魔力增加{value}。</color>\n");
+            ChatManager.Instance.SystemMessage($"魔力增加<color=#F5EC3D>{value}。</color>\n");
         }
 
     }
@@ -247,11 +247,11 @@ public class Player : MonoBehaviour
 
         if (value < 0)
         {
-            ChatManager.Instance.SystemMessage($"<color=#F5EC3D>經驗減少{Mathf.Abs(value)}。</color>\n");
+            ChatManager.Instance.SystemMessage($"經驗減少<color=#F5EC3D>{Mathf.Abs(value)}。</color>\n");
         }
         else
         {
-            ChatManager.Instance.SystemMessage($"<color=#F5EC3D>經驗增加{value}。</color>\n");
+            ChatManager.Instance.SystemMessage($"經驗增加<color=#F5EC3D>{value}。</color>\n");
         }
     }
 
