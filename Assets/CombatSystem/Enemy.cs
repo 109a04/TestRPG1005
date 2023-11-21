@@ -19,6 +19,7 @@ public class Enemy : ScriptableObject
     public int level; //µ¥¯Å
     public int maxHealth; //¦å¶q
     public int attack; //§ðÀ»¤O
+    public int rewardExp;
 
     public enum EnemyElement
     {

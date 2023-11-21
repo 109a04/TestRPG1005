@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: rpgTEST
-  defaultCursor: {fileID: 2800000, guid: 720dcca54ce357f45bc98476adc668d7, type: 3}
+  defaultCursor: {fileID: 2800000, guid: b5dfe1570118daa4a8a963e04737a6c4, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1

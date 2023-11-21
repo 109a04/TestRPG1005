@@ -18,3 +18,4 @@ MonoBehaviour:
   level: 5
   maxHealth: 50
   attack: 15
+  rewardExp: 10

@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
     {
         playerElement = element;
     }
+
     public void SetInitStats()
     {
         currentHealth = maxHealth;
@@ -257,5 +258,10 @@ public class Player : MonoBehaviour
     public int GetCurrentHealth()
     {
         return currentHealth;
+    }
+
+    public void SyncCurrentExp() //同步當前經驗值
+    {
+        currentExp = playerAttributeManager.Instance.exp;
     }
 }

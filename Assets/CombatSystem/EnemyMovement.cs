@@ -328,6 +328,10 @@ public class EnemyMovement : MonoBehaviour
         {
             actionVariables.currentSpeed = 0;
             stateMachine.currentState = EnemyController.EnemyState.Idle; //回歸初始狀態
+            playerAttributeManager.Instance.exp += enemyData.rewardExp; //獲得經驗
+            Player.Instance.SyncCurrentExp();
+            Player.Instance.SetEXPUI();
+
             actionVariables.exclamationUI.SetActive(false); //隱藏UI
             actionVariables.StatusUI.SetActive(false); 
             Destroy(gameObject); //銷毀物件

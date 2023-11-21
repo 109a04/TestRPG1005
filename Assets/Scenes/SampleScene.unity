@@ -29186,6 +29186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1175179952}
   - component: {fileID: 1175179953}
+  - component: {fileID: 1175179954}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -29225,6 +29226,22 @@ MonoBehaviour:
   respawnPoint: {fileID: 344959009}
   playerModel: {fileID: 225048205}
   deathDelay: 2
+--- !u!114 &1175179954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175179950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a1167e550070d449815477f234bf8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: b5dfe1570118daa4a8a963e04737a6c4, type: 3}
+  cursorMode: 1
+  autoCenterHotSpot: 0
+  hotSpotCustom: {x: 0, y: 0}
 --- !u!1 &1177454330
 GameObject:
   m_ObjectHideFlags: 0
@@ -39809,8 +39826,8 @@ RectTransform:
   - {fileID: 831636285}
   - {fileID: 168392681}
   - {fileID: 921339037}
-  - {fileID: 1278366186}
   - {fileID: 2083391834}
+  - {fileID: 1278366186}
   - {fileID: 1069312951}
   - {fileID: 393152990}
   m_Father: {fileID: 0}
@@ -50058,15 +50075,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9f9c5612df1cd3f48a89590d80c733bd, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.53154
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9f9c5612df1cd3f48a89590d80c733bd, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.53154
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9f9c5612df1cd3f48a89590d80c733bd, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.53154
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9f9c5612df1cd3f48a89590d80c733bd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51154,7 +51171,7 @@ RectTransform:
   - {fileID: 882142722}
   - {fileID: 2088640065}
   m_Father: {fileID: 1620615475}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
