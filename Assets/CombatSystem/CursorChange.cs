@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 /// <summary>
 /// 若怪物在玩家的攻擊範圍內，滑鼠移到怪物上方時游標圖示會改變
@@ -31,9 +32,13 @@ public class CursorChange : MonoBehaviour
             
             if (distance > playerAttributeManager.Instance.atkRange) return; //沒有在玩家的攻擊範圍內也不做事
             Cursor.SetCursor(fightTexture, hotSpot, CursorMode.ForceSoftware); // 當滑鼠懸停在怪物上時，更改滑鼠圖示為自定義的圖示
+        }
 
-            
-            
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            GameObject hoveredObject = EventSystem.current.currentSelectedGameObject;
+            if (hoveredObject == null) return;
+            if (hoveredObject.GetComponent<Button>()) Cursor.SetCursor(toggleButtonTexture, hotSpot, CursorMode.ForceSoftware);
         }
     }
 }
