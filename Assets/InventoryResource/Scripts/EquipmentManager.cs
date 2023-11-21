@@ -116,7 +116,7 @@ public class EquipmentManager : MonoBehaviour
 
     }
 
-    private void DestoryModel()
+    public void DestoryModel()
     {
         Destroy(equipmentModel);
     }
