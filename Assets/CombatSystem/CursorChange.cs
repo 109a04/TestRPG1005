@@ -11,7 +11,7 @@ public class CursorChange : MonoBehaviour
 {
     public Texture2D normaltexture; //原本滑鼠圖示
     public Texture2D fightTexture;  // 戰鬥滑鼠圖示
-    public Texture2D toggleButtonTexture; //移到按鈕上方的圖示
+    public Texture2D toggleButtonTexture; //移到按鈕上方的圖示，做不出來我裂開
     private Vector2 hotSpot = Vector2.zero;
 
 
@@ -33,12 +33,9 @@ public class CursorChange : MonoBehaviour
             if (distance > playerAttributeManager.Instance.atkRange) return; //沒有在玩家的攻擊範圍內也不做事
             Cursor.SetCursor(fightTexture, hotSpot, CursorMode.ForceSoftware); // 當滑鼠懸停在怪物上時，更改滑鼠圖示為自定義的圖示
         }
-
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            GameObject hoveredObject = EventSystem.current.currentSelectedGameObject;
-            if (hoveredObject == null) return;
-            if (hoveredObject.GetComponent<Button>()) Cursor.SetCursor(toggleButtonTexture, hotSpot, CursorMode.ForceSoftware);
-        }
     }
+
+  
 }
+
+
