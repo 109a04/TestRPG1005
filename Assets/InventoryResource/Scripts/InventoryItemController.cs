@@ -35,7 +35,7 @@ public class InventoryItemController : BaseItemController, IPointerEnterHandler,
             WeaponItem itemToUse = thisItem as WeaponItem;
             EquipmentManager.Instance.Equip(itemToUse); //把武器資料傳給管理裝備腳本
             EquipmentManager.Instance.UpdateSlot();
-            ChatManager.Instance.SystemMessage($"裝備武器<color=#F5EC3D>{itemToUse.itemName}。</color>\n");
+            ChatManager.Instance.SystemMessage($"裝備武器<color=#F5EC3D>{itemToUse.itemName}</color>。\n");
         }
         else if (thisItem.GetItemType() == Item.ItemType.Consumable)
         {

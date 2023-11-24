@@ -331,7 +331,7 @@ public class EnemyMovement : MonoBehaviour
             playerAttributeManager.Instance.exp += enemyData.rewardExp; //獲得經驗
             Player.Instance.SyncCurrentExp();
             Player.Instance.SetEXPUI();
-            ChatManager.Instance.SystemMessage($"獲得經驗 <color=#F5EC3D>{enemyData.rewardExp}</color> 。");
+            ChatManager.Instance.SystemMessage($"獲得經驗<color=#F5EC3D>{enemyData.rewardExp}</color>。");
             actionVariables.exclamationUI.SetActive(false); //隱藏UI
             actionVariables.StatusUI.SetActive(false); 
             Destroy(gameObject); //銷毀物件

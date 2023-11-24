@@ -53330,6 +53330,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StickR
       objectReference: {fileID: 0}
+    - target: {fileID: 3257631536259517570, guid: 0e715a0faae5e76499c1a609494afeaf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4911908380825024394, guid: 0e715a0faae5e76499c1a609494afeaf, type: 3}
       propertyPath: m_RootBone
       value: 
