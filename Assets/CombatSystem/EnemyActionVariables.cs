@@ -28,7 +28,7 @@ public class EnemyActionVariables : MonoBehaviour
     //UI相關
     protected Camera mainCamera; //主相機
     internal Transform enemyTransfrom;
-    internal GameObject exclamationUI; //驚嘆號UI
+    public GameObject exclamationUI; //驚嘆號UI
     protected Vector3 offset = new Vector3(0f, 2.5f, 0f); // UI元素在頭頂上的偏移值
 
     public GameObject StatusUI; //整塊怪物狀態欄
@@ -48,7 +48,6 @@ public class EnemyActionVariables : MonoBehaviour
         mainCamera = Camera.main;
         enemyTransfrom = GetComponent<Transform>();
         currentSpeed = walkSpeed;
-        exclamationUI = GameObject.Find("Canvas/Exclamation");
         enemyName = StatusUI.transform.Find("Name").GetComponent<Text>();
         enemyLevel = StatusUI.transform.Find("Level").GetComponent<Text>();
 

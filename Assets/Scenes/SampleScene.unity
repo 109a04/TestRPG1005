@@ -35277,6 +35277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e07faeb1698edb4b92044fd4f339331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exclamationUI: {fileID: 1069312950}
   StatusUI: {fileID: 1278366185}
   hpSlider: {fileID: 1299851021}
   enemyName: {fileID: 832081360}
