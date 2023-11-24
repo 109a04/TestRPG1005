@@ -61,6 +61,11 @@ public class Questable : MonoBehaviour
                     dialogManager.instance.ShowDialogue(giveMission);
                     quest.questStatus = Quest.QuestStatus.Accepted;//任務狀態改為accepted
                     QuestManager.instance.questList.Add(quest);//將任務改為接受後，加入玩家的任務列表
+
+                    if(quest.questType == Quest.QuestType.Monster)
+                    {
+                        Debug.Log("接到打怪任務拉");
+                    }
                 }
                 else//沒做完任務
                 {
