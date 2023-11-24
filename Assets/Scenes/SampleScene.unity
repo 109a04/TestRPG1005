@@ -53466,7 +53466,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: db76de85afd27074ab85b468d3ba8b4d, type: 2}
   - {fileID: 11400000, guid: b567e83e1260f734e91c88c1f9933ee1, type: 2}
   - {fileID: 11400000, guid: e646ac584631bd740a720f4ffa361eb7, type: 2}
-  - {fileID: 11400000, guid: 6d7ec399af435474f81aa0f0a76161c3, type: 2}
   StoreItems: []
   StoreParent: {fileID: 1778428734}
   goodsPrefab: {fileID: 2469594747589655327, guid: 61a3e6de7234d9146a3e521b1a910d3b, type: 3}
