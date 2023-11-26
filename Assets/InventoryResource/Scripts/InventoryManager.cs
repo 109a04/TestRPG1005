@@ -61,7 +61,6 @@ public class InventoryManager : MonoBehaviour
     {
         if (itemToRemove.GetItemType() == Item.ItemType.Weapon)
         {
-            
             Items.Remove(itemToRemove);
         }
         if (itemToRemove.GetItemType() == Item.ItemType.Consumable)
@@ -74,7 +73,6 @@ public class InventoryManager : MonoBehaviour
                 if (consumableItem.itemCounts[itemToRemove.itemName] <= 0) Items.Remove(itemToRemove);
             }
         }
-
 
         UpdateList();
     }
@@ -94,11 +92,8 @@ public class InventoryManager : MonoBehaviour
 
         for (int i = 0; i < Items.Count; i++)
         {
-
-
             GameObject obj = Instantiate(itemPrefab, itemsParent);
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
-
 
             itemIcon.sprite = Items[i].itemIcon;
 
@@ -109,12 +104,9 @@ public class InventoryManager : MonoBehaviour
                 itemCount.text = consumable.itemCounts[Items[i].itemName].ToString();
             }
 
-
-
             // ³]¸m InventoryItemController ªº item
             InventoryItems[i] = obj.GetComponent<BaseItemController>();
             InventoryItems[i].SetItem(Items[i]);
-
         }
     }
 

@@ -6,10 +6,6 @@ using UnityEngine.UI;
 
 public class InventoryItemController : BaseItemController, IPointerEnterHandler, IPointerExitHandler
 {
-    
-
-    
-
     protected override void Start()
     {
         base.Start();
