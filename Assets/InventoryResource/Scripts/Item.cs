@@ -8,6 +8,7 @@ public abstract class Item : ScriptableObject
     public int id; //物品編號
     public string itemName; //物品名稱
     public Sprite itemIcon; //物品圖示
+    public int    itemPrice; //物品價格
     
     [TextArea]
     public string itemDescript; //物品描述
