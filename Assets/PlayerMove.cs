@@ -43,7 +43,7 @@ public class PlayerMove : MonoBehaviour
 
     private void PlayerMoveMethod()
     {
-        Debug.Log("玩家移動");
+        //Debug.Log("玩家移動");
         //是否在地面檢查
         //IsGround = Physics.Raycast(GroundCheck.position, Vector3.down, 0.1f, layerMask);
         IsGround = Physics.CheckSphere(GroundCheck.position, CheckRadius, layerMask);
