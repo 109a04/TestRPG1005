@@ -17,8 +17,6 @@ public class CursorChange : MonoBehaviour
 
     void Update()
     {
-        Cursor.SetCursor(normaltexture, hotSpot, CursorMode.ForceSoftware);
-
         RaycastHit hitInfo;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -29,10 +27,14 @@ public class CursorChange : MonoBehaviour
             GameObject enemyTransform = hitInfo.collider.gameObject;
             float distance = Vector3.Distance(transform.position, enemyTransform.transform.position); //檢查與怪物的位置
 
-            
+
             if (distance > playerAttributeManager.Instance.atkRange) return; //沒有在玩家的攻擊範圍內也不做事
             Cursor.SetCursor(fightTexture, hotSpot, CursorMode.ForceSoftware); // 當滑鼠懸停在怪物上時，更改滑鼠圖示為自定義的圖示
         }
+
+        Cursor.SetCursor(normaltexture, hotSpot, CursorMode.ForceSoftware);
+
+        
     }
 
   
