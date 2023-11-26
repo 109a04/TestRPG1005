@@ -32,7 +32,12 @@ public class CursorChange : MonoBehaviour
             Cursor.SetCursor(fightTexture, hotSpot, CursorMode.ForceSoftware); // 當滑鼠懸停在怪物上時，更改滑鼠圖示為自定義的圖示
         }
 
-        Cursor.SetCursor(normaltexture, hotSpot, CursorMode.ForceSoftware);
+        else
+        {
+            Cursor.SetCursor(normaltexture, hotSpot, CursorMode.ForceSoftware);
+        }
+        
+        
 
         
     }
