@@ -16,6 +16,9 @@ public class EquipmentManager : MonoBehaviour
     public Transform playerHand; //玩家手部位置
     public GameObject equipmentModel; //待會會實例化的道具模型
 
+    public GameObject StickL;
+    public GameObject StickR;
+
     public static EquipmentManager Instance;
 
     private void Awake()
@@ -40,7 +43,7 @@ public class EquipmentManager : MonoBehaviour
     {
         if (weaponItem != null)
         {
-            EquipItemController equipItemController = FindObjectOfType<EquipItemController>();
+            //EquipItemController equipItemController = FindObjectOfType<EquipItemController>();
             InventoryManager.Instance.AddItem(weaponItem);
             weaponItem = null;
             InventoryManager.Instance.UpdateList();
@@ -106,7 +109,14 @@ public class EquipmentManager : MonoBehaviour
 
     private void ShowModel()
     {
-        if (weaponItem == null) return;
+        if (weaponItem == null)
+        {
+            StickL.SetActive(true);
+            StickR.SetActive(true);
+            return;
+        }
+        StickL.SetActive(false);
+        StickR.SetActive(false);
         equipmentModel = Instantiate(weaponItem.weaponModel, playerHand);
         equipmentModel.transform.parent = PlayerSkeleton;
 

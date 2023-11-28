@@ -34,6 +34,11 @@ public class EquipItemController : BaseItemController
         InventoryManager.Instance.UpdateList();
         EquipmentManager.Instance.UpdateSlot();
         EquipmentManager.Instance.UpdatePlayerAttribute();
+        if(EquipmentManager.Instance.weaponItem == null)
+        {
+            EquipmentManager.Instance.StickL.SetActive(true);
+            EquipmentManager.Instance.StickR.SetActive(true);
+        } 
     }
 
 }
