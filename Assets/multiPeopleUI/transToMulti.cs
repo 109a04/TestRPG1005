@@ -16,7 +16,7 @@ public class transToMulti : Interactable
         if (isTriggered == true)
         {
             GameObject cat = GameObject.Find("Cat");
-            cat.GetComponentInChildren<Camera>().enabled = false; 
+            //cat.GetComponentInChildren<Camera>().enabled = false; 
             // 先把這個相機關掉，不然會有兩個卡在一起 
             SceneManager.LoadSceneAsync("teamUI", LoadSceneMode.Additive);
             // 在不關掉一個 scene 的情況下開另一個 scene
