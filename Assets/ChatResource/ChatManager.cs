@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ChatManager : MonoBehaviour
 {
+    public CanvasGroup chatPanel; //面板
     public Transform chatContent; // 儲存系統提示的容器
     public GameObject MessagePrefab; // 系統提示的預製件
     public InputField inputField; //文字輸入框
@@ -13,6 +14,9 @@ public class ChatManager : MonoBehaviour
 
     public static ChatManager Instance;
 
+    private float displayTime = 3f; //顯示時間
+    private float timer;            //計時器
+    private float fadeSpeed = 2.0f; //淡出速度
     
 
     private void Awake()
@@ -26,6 +30,8 @@ public class ChatManager : MonoBehaviour
     {
         // 將 OnEndEdit 事件與 SendInput 函數關聯，當按下Enter，Listener就會叫SendInput傳文字進去
         //inputField.onEndEdit.AddListener(SendInput);
+        chatPanel.alpha = 0;
+
     }
 
      //玩家輸入文字。
@@ -50,6 +56,7 @@ public class ChatManager : MonoBehaviour
 
     public void SystemMessage(string message)
     {
+        chatPanel.alpha = 1;
         // 儲存滾動條的位置
         storedPosition = scrollRect.verticalNormalizedPosition;
 
@@ -62,6 +69,7 @@ public class ChatManager : MonoBehaviour
 
         // 等待一幀後設置滾動條位置
         StartCoroutine("SetScrollPosition");
+        timer = displayTime; //重置倒數計時
     }
 
     IEnumerator SetScrollPosition()
@@ -72,5 +80,19 @@ public class ChatManager : MonoBehaviour
 
         // 將滾動條設置回儲存的位置
         scrollRect.verticalNormalizedPosition = storedPosition;
+    }
+
+    private void Update()
+    {
+        if (timer <= 0f) //當倒數結束則淡出聊天框
+        {
+            FadeOutTable();
+        }
+        timer -= Time.deltaTime; //否則繼續倒數
+    }
+
+    public void FadeOutTable()
+    {
+        chatPanel.alpha =  Mathf.Lerp(chatPanel.alpha, 0f, fadeSpeed * Time.deltaTime);
     }
 }

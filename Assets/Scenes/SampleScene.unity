@@ -2507,7 +2507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 938276232745361831, guid: e389d9d8360f9654588d36f2aecc0491, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 938276232745361831, guid: e389d9d8360f9654588d36f2aecc0491, type: 3}
       propertyPath: m_AnchorMax.x
@@ -24201,6 +24201,7 @@ GameObject:
   - component: {fileID: 1054942840}
   - component: {fileID: 1054942842}
   - component: {fileID: 1054942841}
+  - component: {fileID: 1054942843}
   m_Layer: 5
   m_Name: ChatPanel
   m_TagString: Untagged
@@ -24215,7 +24216,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054942839}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -24267,6 +24268,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054942839}
   m_CullTransparentMesh: 1
+--- !u!225 &1054942843
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054942839}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1058316451
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49551,6 +49564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29af08040a6d0645b8e477f10e0e652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chatPanel: {fileID: 1054942843}
   chatContent: {fileID: 1209300347}
   MessagePrefab: {fileID: 2291631526079054252, guid: a7131b059bd7dde468b7f1f9093fd1ac, type: 3}
   inputField: {fileID: 0}
@@ -49561,7 +49575,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095846197}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 474.78055, y: 226.20715, z: -0.6377411}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
