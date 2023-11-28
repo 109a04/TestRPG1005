@@ -12,7 +12,7 @@ public class PlayerUI : MonoBehaviour
     public Text nameText;
     public Text levelText;
     public Text expText;
-    public Text up_expText;
+    //public Text up_expText;
     
     //換算後戰鬥屬性
     public Text HPText;
@@ -46,8 +46,8 @@ public class PlayerUI : MonoBehaviour
         nameText.text = "姓名：" + playerAttributeManager.Instance.pname.ToString();
         levelText.text = "等級：" + playerAttributeManager.Instance.level.ToString();
         //levelText.text = "等級：" + playerAttributeManager.Instance.level.ToString();
-        expText.text = "經驗：" + playerAttributeManager.Instance.exp.ToString();
-        up_expText.text = "經驗上限：" + playerAttributeManager.Instance.up_exp.ToString();
+        expText.text = "經驗：" + playerAttributeManager.Instance.exp.ToString() + "/" + playerAttributeManager.Instance.up_exp.ToString();
+        //up_expText.text = "經驗上限：" + playerAttributeManager.Instance.up_exp.ToString();
 
         HPText.text = "血量：" + Player.Instance.GetCurrentHealth()+ "/" + playerAttributeManager.Instance.hp.ToString();
         MPText.text = "魔力：" + playerAttributeManager.Instance.mp.ToString();

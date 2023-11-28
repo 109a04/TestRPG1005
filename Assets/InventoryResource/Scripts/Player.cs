@@ -39,6 +39,9 @@ public class Player : MonoBehaviour
     private void Start()
     {
         //把PlayerAttribute中的數值引用過來，並初始化當前數值
+        HealthText = HealthSlider.transform.Find("HP").GetComponent<Text>();
+        MpText = MpSlider.transform.Find("MP").GetComponent <Text>();
+        ExpText = ExpSlider.transform.Find("EXP").GetComponent<Text>();
         SetStatus();
         SetInitStats();
         SetElement((int)playerAttributeManager.Instance.element);

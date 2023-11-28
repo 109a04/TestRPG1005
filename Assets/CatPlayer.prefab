@@ -753,9 +753,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c344347880463d4cb9c598b321af605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthSlider: {fileID: 0}
-  MpSlider: {fileID: 0}
-  ExpSlider: {fileID: 0}
+  HealthSlider: {fileID: 1066228171907615588, guid: c21f4c3abc2c48a44b05f21c1610db0f, type: 3}
+  MpSlider: {fileID: 8645920634543402241, guid: db7c31833d3594a4d99d41aa0a10e8a6, type: 3}
+  ExpSlider: {fileID: 7806433610339494234, guid: 9c3dab945b12ee9478f819c206b547e0, type: 3}
   HealthText: {fileID: 0}
   MpText: {fileID: 0}
   ExpText: {fileID: 0}
