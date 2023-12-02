@@ -124,7 +124,7 @@ public class PlayerMove : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y");
 
         // 旋轉角色水平方向
-        transform.Rotate(Vector3.up * mouseX * horizontalRotationSpeed);
+        //transform.Rotate(Vector3.up * mouseX * horizontalRotationSpeed);
 
         /*
         // 垂直旋轉視角
