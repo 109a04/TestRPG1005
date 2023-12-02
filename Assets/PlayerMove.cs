@@ -47,6 +47,10 @@ public class PlayerMove : MonoBehaviour
         //是否在地面檢查
         //IsGround = Physics.Raycast(GroundCheck.position, Vector3.down, 0.1f, layerMask);
         IsGround = Physics.CheckSphere(GroundCheck.position, CheckRadius, layerMask);
+        if (IsGround)
+        {
+            Debug.Log("落地");
+        }
         if (IsGround && Velocity.y < 0)//Velocity.y為垂直速度，因為垂直速度為負等於角色正在落下
         {
             Velocity.y = 0;//角色回到地面後，重置垂直速度
