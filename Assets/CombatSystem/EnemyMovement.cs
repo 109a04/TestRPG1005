@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
 
 public class EnemyMovement : MonoBehaviour
 {
+    private NavMeshAgent navMeshAgent; //怪物導航
     private Transform player;
     private GameObject enemy; //怪物物件
     public Enemy enemyData; //怪物數值
@@ -21,6 +23,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
+        navMeshAgent = GetComponent<NavMeshAgent>();
         stateMachine = GetComponent<EnemyController>();
         actionVariables = GetComponent<EnemyActionVariables>();
 
@@ -117,10 +120,11 @@ public class EnemyMovement : MonoBehaviour
     //追擊狀態的行為
     public void ChaseAction()
     {
+        if (playerAttributeManager.Instance.hp <= 0) stateMachine.SetState(EnemyController.EnemyState.Idle);
         actionVariables.StatusUI.SetActive(true);
         targetPos = player.position;
         
-        if(actionVariables.isBeaten != true) //怪沒有被打時才會回到閒置模式，不然就會追到天涯海角直到咬到玩家
+        if (actionVariables.isBeaten != true) //怪沒有被打時才會回到閒置模式，不然就會追到天涯海角直到咬到玩家
         {
             //若玩家離開追擊範圍則回到閒置模式
             if (!PlayerInRange(player, actionVariables.chaseRadius))
@@ -151,6 +155,7 @@ public class EnemyMovement : MonoBehaviour
     //攻擊狀態的行為
     public void AttackAction()
     {
+        if (playerAttributeManager.Instance.hp <= 0) stateMachine.SetState(EnemyController.EnemyState.Idle);
         actionVariables.isBeaten = false;
         actionVariables.StatusUI.SetActive(true);
         if (actionVariables.canAttack)
@@ -169,7 +174,8 @@ public class EnemyMovement : MonoBehaviour
         //之後會有當玩家死亡時回到閒置狀態
         if (GameManager.Instance.GetIsDead())
         {
-            StartCoroutine(HideStatusUI());
+            Invoke(nameof(HideStatusUI), 1);
+            //StartCoroutine(HideStatusUI());
             stateMachine.SetState(EnemyController.EnemyState.Idle);
         }
     }
@@ -194,10 +200,19 @@ public class EnemyMovement : MonoBehaviour
     private void MoveToTarget(Vector3 target)
     {
         // 移動向目標位置
-        Move(target);
+        SetDestination(target);
 
         // 使怪物面向目標點
         Rotate(target);
+    }
+
+    void SetDestination(Vector3 destination)
+    {
+        // 設定 NavMesh Agent 的目標點
+        if (navMeshAgent != null && navMeshAgent.isActiveAndEnabled)
+        {
+            navMeshAgent.destination = destination;
+        }
     }
 
     private void Wander()
@@ -327,7 +342,6 @@ public class EnemyMovement : MonoBehaviour
         if(currentHP == 0)
         {
             actionVariables.currentSpeed = 0;
-            stateMachine.currentState = EnemyController.EnemyState.Idle; //回歸初始狀態
             playerAttributeManager.Instance.exp += enemyData.rewardExp; //獲得經驗
             Player.Instance.SyncCurrentExp();
             Player.Instance.SetEXPUI();

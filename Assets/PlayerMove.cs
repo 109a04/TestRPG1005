@@ -35,7 +35,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.Instance.GetIsDead()) //如果玩家沒有死才能移動
+        if (!(playerAttributeManager.Instance.hp == 0)) //如果玩家沒有死才能移動
         {
             PlayerMoveMethod();
         }
