@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform player; // 玩家物件
     public float rotationSpeed = 3f; // 視角旋轉速度
-    public float cameraHeight = 5.5f; // 相機高度
+    public float cameraHeight = 5f; // 相機高度
 
     private float mouseX, mouseY; // 用於存儲滑鼠的移動
     private bool isRotating = false; // 標記是否正在旋轉

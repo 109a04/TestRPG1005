@@ -30,7 +30,7 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         controller = transform.GetComponent<CharacterController>();
-}
+    }
 
     // Update is called once per frame
     void Update()
@@ -143,7 +143,7 @@ public class PlayerMove : MonoBehaviour
 
         // ²¾°Ê¨¤¦â
         controller.Move(moveDirection * speed * Time.deltaTime);
-        
+
     }
 
 }
