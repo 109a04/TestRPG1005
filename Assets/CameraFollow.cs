@@ -59,6 +59,9 @@ public class CameraFollow : MonoBehaviour
         Vector3 direction = new Vector3(0, cameraHeight, -5); // 調整相機的高度和距離玩家的距離
         Quaternion rotation = Quaternion.Euler(mouseY, mouseX, 0);
         transform.position = player.position + rotation * direction;
+
+        player.rotation = Quaternion.Euler(0, mouseX, 0);
+
         transform.LookAt(player.position);
     }
 }

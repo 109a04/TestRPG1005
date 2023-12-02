@@ -26,6 +26,8 @@ public class PlayerMove : MonoBehaviour
 
     private float verticalRotation = 0f;  // 儲存垂直旋轉的角度
 
+    private bool isRotating = false; // 標記是否正在旋轉
+
     // Start is called before the first frame update
     void Start()
     {
@@ -119,6 +121,7 @@ public class PlayerMove : MonoBehaviour
         */
 
         //新方法
+
         // 取得滑鼠的移動量
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
@@ -137,6 +140,7 @@ public class PlayerMove : MonoBehaviour
 
         // 移動方向
         var moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+
 
         // 將移動方向轉換為相對於相機視角的方向
         moveDirection = Camera.main.transform.TransformDirection(moveDirection);
