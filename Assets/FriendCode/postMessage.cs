@@ -35,13 +35,17 @@ public class postMessage : MonoBehaviour
 
         sendMessage.name = reName;
         sendMessage.messT = mess;
-        sendMessage.sendName = playerNameManager.Instance.playerName;
+        sendMessage.sendName = playerAttributeManager.Instance.pname;
 
         // 將物件轉換為JSON字符串
         string jsonPost = JsonUtility.ToJson(sendMessage);
 
-        // 發送POST請求
-        StartCoroutine(SendMessageT(jsonPost));
+        if (jsonPost != null && sendMessage.messT != "")
+        {
+            // 發送POST請求
+            StartCoroutine(SendMessageT(jsonPost));
+            
+        }
         //panel.SetActive(false);
     }
 
