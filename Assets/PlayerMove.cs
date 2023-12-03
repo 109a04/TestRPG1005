@@ -32,6 +32,7 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         controller = transform.GetComponent<CharacterController>();
+        transform.forward = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
     }
 
     // Update is called once per frame
@@ -145,9 +146,12 @@ public class PlayerMove : MonoBehaviour
         // 將移動方向轉換為相對於相機視角的方向
         moveDirection = Camera.main.transform.TransformDirection(moveDirection);
 
+        transform.forward = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
+        
+        
         // 移動角色
         controller.Move(moveDirection * speed * Time.deltaTime);
-
+        
     }
 
 }
