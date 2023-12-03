@@ -20,9 +20,9 @@ public class Questable : MonoBehaviour
     {
         giveMission[0] = npcName;
         noComplete[0] = npcName;
-        noComplete[1] = "還沒做完任務內，加油加油";
+        noComplete[1] = "你還沒達成條件呢，繼續加油吧！";
         complete[0] = npcName;
-        complete[1] = "謝謝你拉，給你金幣" + quest.goldReward.ToString() + "和經驗" + quest.expReward.ToString();
+        complete[1] = "謝謝你啦，給你金幣 " + quest.goldReward.ToString() + " 和經驗 " + quest.expReward.ToString();
         repeat[0] = npcName;
         repeat[1] = "不能重複做任務喔";
     }
