@@ -28,10 +28,7 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        if (isRotating)
-        {
-            HandleCameraMovement();
-        }
+        HandleCameraMovement();   
     }
 
     void HandleRotationInput()
