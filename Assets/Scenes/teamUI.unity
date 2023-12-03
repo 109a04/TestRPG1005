@@ -856,7 +856,7 @@ GameObject:
   - component: {fileID: 1586196382}
   - component: {fileID: 1586196381}
   - component: {fileID: 1586196380}
-  - component: {fileID: 1586196384}
+  - component: {fileID: 1586196383}
   m_Layer: 5
   m_Name: ReturnMyGameBtn
   m_TagString: Untagged
@@ -967,7 +967,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586196377}
   m_CullTransparentMesh: 1
---- !u!114 &1586196384
+--- !u!114 &1586196383
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -991,6 +991,7 @@ GameObject:
   - component: {fileID: 1837211232}
   - component: {fileID: 1837211231}
   - component: {fileID: 1837211230}
+  - component: {fileID: 1837211233}
   m_Layer: 5
   m_Name: NewRoomBtn
   m_TagString: Untagged
@@ -1101,6 +1102,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837211228}
   m_CullTransparentMesh: 1
+--- !u!114 &1837211233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837211228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721f84f84bc555f438f860031cba3c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1882577922
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ public class ReturnToMyGame : MonoBehaviour
         //catNow.GetComponent<Transform>().position = move;
         //Debug.Log("移動完後的位置是 " + catNow.GetComponent<Transform>().position);
         SceneManager.UnloadSceneAsync("teamUI");
-        GameObject cat = GameObject.Find("Cat");
-        cat.GetComponentInChildren<Camera>().enabled = true;
+        //GameObject cat = GameObject.Find("Cat");
+        //cat.GetComponentInChildren<Camera>().enabled = true;
     }
 }

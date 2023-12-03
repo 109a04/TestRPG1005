@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/teamUI.unity
     guid: 01b394d7da7be774fa020b319dc66a5e
+  - enabled: 1
+    path: Assets/Scenes/multiPeople.unity
+    guid: 1fe2d5ef16177c443a3a7037de48ab10
+  - enabled: 1
+    path: Assets/Scenes/AnimationTest.unity
+    guid: cd0ea4155f14a6447b1fa88b65763699
   m_configObjects: {}
