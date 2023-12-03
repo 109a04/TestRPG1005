@@ -24,9 +24,9 @@ public class PlayerMove : MonoBehaviour
     public float verticalRotationSpeed = 2f;   // 垂直旋轉速度
     public float verticalRotationLimit = 80f;  // 垂直旋轉上下限
 
-    private float verticalRotation = 0f;  // 儲存垂直旋轉的角度
+    //private float verticalRotation = 0f;  // 儲存垂直旋轉的角度 註解掉了
 
-    private bool isRotating = false; // 標記是否正在旋轉
+    //private bool isRotating = false; // 標記是否正在旋轉        註解掉了
 
     // Start is called before the first frame update
     void Start()
