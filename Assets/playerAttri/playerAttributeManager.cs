@@ -47,7 +47,7 @@ public class playerAttributeManager : MonoBehaviour
         {
             pname = playerNameManager.Instance.playerName;
         }
-        else pname = "test";
+        else pname = "貓貓球";
         money = 12000;
         level = 1;
         exp = 0;
