@@ -28,6 +28,7 @@ public class HeroMotion : MonoBehaviour
     {
         if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")) //當按下上下左右，播放行走動畫
         {
+            if (ChatManager.Instance.inputField.isFocused) return;
             animator.SetBool("Walk", true);
         }
         else

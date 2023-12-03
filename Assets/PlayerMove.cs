@@ -6,7 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     private CharacterController controller;
     public float speed = 10;//角色速度
-    public float RotateSpeed = 1f;//轉動速度(沒用)
+    //public float RotateSpeed = 1f;//轉動速度(沒用)
 
     public float Gravity = -9.8f;//重力預設
     private Vector3 Velocity = Vector3.zero;//預設為0的速度向量
@@ -38,6 +38,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ChatManager.Instance.inputField.isFocused) return;
         if (!(playerAttributeManager.Instance.hp == 0)) //如果玩家沒有死才能移動
         {
             PlayerMoveMethod();

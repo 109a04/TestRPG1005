@@ -10,7 +10,6 @@ public class EnemySpawn : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public Transform spawnPoint;
-    public Vector3 spawnPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -22,5 +21,12 @@ public class EnemySpawn : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SpawnMonster()
+    {
+        if (enemyPrefab == null) return;
+        if (spawnPoint == null) return;
+        GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
     }
 }
