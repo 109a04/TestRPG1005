@@ -43,7 +43,11 @@ public class playerAttributeManager : MonoBehaviour
     public playerAttributeManager()
     {
         //pname = playerNameManager.Instance.playerName;
-        pname = "test";
+        if(playerNameManager.Instance != null)
+        {
+            pname = playerNameManager.Instance.playerName;
+        }
+        else pname = "test";
         money = 12000;
         level = 1;
         exp = 0;
