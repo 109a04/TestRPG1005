@@ -41,7 +41,7 @@ public class ChatManager : MonoBehaviour
     }
 
      //玩家輸入文字。
-    public void SendInput(string message) //靠，結果這台電腦不用掛這串程式碼到InputField裡面就可以輸出文字了，為什麼
+    public void SendInput(string message) 
     {
         if (!string.IsNullOrEmpty(message))
         {
@@ -91,29 +91,13 @@ public class ChatManager : MonoBehaviour
     private void Update()
     {
         timer -= Time.deltaTime; //否則繼續倒數
-        if (toggleChatPanel == true)
-        {
-            chatPanel.alpha = 1;
-            EnableInput();
-        }
-        else
-        {
-            FadeOutTable();
-        }
-        
+
         if (timer <= 0f) //當倒數結束則淡出聊天框
         {
             toggleChatPanel = false;
         }
-        
 
-        if (chatPanel.alpha == 0)
-        {
-            DisableInput();
-        }
-
-
-        if (Input.GetButtonUp("Submit")) //按下Enter時
+        if (Input.GetKeyUp(KeyCode.Return)) //按下Enter時
         {
             timer = 3f;
             if (isSendText) //若有文字要輸出
@@ -123,7 +107,26 @@ public class ChatManager : MonoBehaviour
             else
             {
                 toggleChatPanel = !toggleChatPanel;
+                if (toggleChatPanel)
+                {
+                    inputField.ActivateInputField();
+                }
             }
+        }
+
+        if (toggleChatPanel == true)
+        {
+            chatPanel.alpha = 1;
+            EnableInput();
+        }
+        else
+        {
+            FadeOutTable();
+        }
+
+        if (chatPanel.alpha == 0)
+        {
+            DisableInput();
         }
 
         if (inputField.isFocused) //如果玩家正在輸入文字，把減去的時間抵銷掉
