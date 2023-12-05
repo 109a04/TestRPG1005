@@ -41,5 +41,10 @@ public class HeroMotion : MonoBehaviour
         {
             animator.SetTrigger("JumpTrigger");
         }
+
+        if(playerAttributeManager.Instance.hp == 0)
+        {
+            animator.SetTrigger("Die");
+        }
     }
 }

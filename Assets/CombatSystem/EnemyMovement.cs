@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
     public Enemy enemyData; //怪物數值
     private EnemyController stateMachine; //引用狀態機
     private EnemyActionVariables actionVariables; //引用各種變數
+    private EnemyUIController uiController; //控制怪物UI
     private Vector3 targetPos;
     private bool hasRandomPosition = false; //是否已抽過隨機點
     private int currentHP; //當前血量
@@ -26,19 +27,20 @@ public class EnemyMovement : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         stateMachine = GetComponent<EnemyController>();
         actionVariables = GetComponent<EnemyActionVariables>();
+        uiController = GetComponent<EnemyUIController>(); 
 
         player = GameObject.FindGameObjectWithTag("Player").transform; //找尋玩家物件
 
         enemy = this.gameObject;
-        actionVariables.StatusUI.SetActive(false); //預設隱藏
+        uiController.StatusUI.SetActive(false); //預設隱藏
         currentHP = enemyData.maxHealth; //初始化血量
-        
+
         //初始化怪物血條與名稱等級
-        actionVariables.hpSlider.minValue = 0;
-        actionVariables.hpSlider.maxValue = enemyData.maxHealth;
-        actionVariables.hpSlider.value = currentHP;
-        actionVariables.enemyName.text = enemyData.enemyName;
-        actionVariables.enemyLevel.text = $"Lv. " + enemyData.level.ToString();
+        uiController.hpSlider.minValue = 0;
+        uiController.hpSlider.maxValue = enemyData.maxHealth;
+        uiController.hpSlider.value = currentHP;
+        uiController.enemyName.text = enemyData.enemyName;
+        uiController.enemyLevel.text = $"Lv. " + enemyData.level.ToString();
         actionVariables.isBeaten = false;
 
         if (enemy == null)
@@ -67,7 +69,7 @@ public class EnemyMovement : MonoBehaviour
         actionVariables.currentSpeed = actionVariables.chaseSpeed;
 
         //顯示驚嘆號UI
-        actionVariables.exclamationUI.SetActive(true);
+        uiController.exclamationUI.SetActive(true);
 
         //轉向玩家
         Rotate(targetPos);
@@ -121,7 +123,7 @@ public class EnemyMovement : MonoBehaviour
     public void ChaseAction()
     {
         if (playerAttributeManager.Instance.hp <= 0) stateMachine.SetState(EnemyController.EnemyState.Idle);
-        actionVariables.StatusUI.SetActive(true);
+        DisplayStatus();
         targetPos = player.position;
         
         if (actionVariables.isBeaten != true) //怪沒有被打時才會回到閒置模式，不然就會追到天涯海角直到咬到玩家
@@ -157,7 +159,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (playerAttributeManager.Instance.hp <= 0) stateMachine.SetState(EnemyController.EnemyState.Idle);
         actionVariables.isBeaten = false;
-        actionVariables.StatusUI.SetActive(true);
+        DisplayStatus();
         if (actionVariables.canAttack)
         {
             //攻擊間隔為一秒，也可以改
@@ -256,7 +258,7 @@ public class EnemyMovement : MonoBehaviour
         yield return new WaitForSeconds(delaySeconds);
 
         //隱藏驚嘆號UI
-        actionVariables.exclamationUI.SetActive(false);
+        uiController.exclamationUI.SetActive(false);
 
         MoveToTarget(targetPos);
     }
@@ -265,7 +267,7 @@ public class EnemyMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        actionVariables.StatusUI.SetActive(false);
+        uiController.StatusUI.SetActive(false);
     }
     
     //攻擊玩家的函式
@@ -324,12 +326,12 @@ public class EnemyMovement : MonoBehaviour
         if ((currentHP - damage) > 0)
         {
             currentHP -= (int)damage;
-            actionVariables.hpSlider.value = currentHP;
+            uiController.hpSlider.value = currentHP;
         }
         else
         {
             currentHP = 0;
-            actionVariables.hpSlider.value = 0;
+            uiController.hpSlider.value = 0;
             IsKilled();
 
         }
@@ -346,8 +348,8 @@ public class EnemyMovement : MonoBehaviour
             Player.Instance.SyncCurrentExp();
             Player.Instance.SetEXPUI();
             ChatManager.Instance.SystemMessage($"獲得經驗<color=#F5EC3D>{enemyData.rewardExp}</color>。");
-            actionVariables.exclamationUI.SetActive(false); //隱藏UI
-            actionVariables.StatusUI.SetActive(false); 
+            uiController.exclamationUI.SetActive(false); //隱藏UI
+            uiController.StatusUI.SetActive(false); 
             Destroy(gameObject); //銷毀物件
             monsterQuest();//打怪任務測試
         }
@@ -377,17 +379,27 @@ public class EnemyMovement : MonoBehaviour
             if (distance > playerAttributeManager.Instance.atkRange) return;
             if (hitInfo.collider.gameObject == gameObject)
             {
-                actionVariables.StatusUI.SetActive(true);
+                DisplayStatus();
             }
             else
             {
                 //假如滑鼠離開怪物上方而玩家也不在追擊範圍內時，隱藏UI
                 if(stateMachine.currentState != EnemyController.EnemyState.Chase || stateMachine.currentState != EnemyController.EnemyState.Attack)
                 {
-                    actionVariables.StatusUI.SetActive(false);
+                    uiController.StatusUI.SetActive(false);
                 }
                 
             }
         }
+    }
+
+    void DisplayStatus()
+    {
+        uiController.StatusUI.SetActive(true);
+        uiController.enemyName.text = enemyData.enemyName;
+        uiController.enemyLevel.text = "Lv. " + enemyData.level.ToString();
+        uiController.hpSlider.maxValue = enemyData.maxHealth;
+        uiController.hpSlider.minValue = 0;
+        uiController.hpSlider.value = currentHP;
     }
 }
