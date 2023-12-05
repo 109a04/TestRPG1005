@@ -6,6 +6,7 @@ public class qNPCtrigger : Interactable
 {
     private Questable qTable;
 
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -20,6 +21,8 @@ public class qNPCtrigger : Interactable
 
         if (isInRange && Input.GetKeyDown(KeyCode.F))
         {
+            NPCMotion.Instance.animator.SetTrigger("TalkTrigger");
+
             qTable.DelegateQuest();
         }
     }

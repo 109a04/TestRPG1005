@@ -15,10 +15,11 @@ public class Interactable : MonoBehaviour
     protected Vector3 moreHigh = new Vector3(0f, 80f, 0f); //更高
     protected Vector3 moreMoreHigh = new Vector3(0f, 125f, 0f); //更更高
     protected Camera mainCamera;
-
+    public Transform player;
 
     protected bool isInRange;
     protected bool isTriggered;
+    private bool isTurning = false; // 新增一個標誌位，表示是否正在進行轉向
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -29,6 +30,7 @@ public class Interactable : MonoBehaviour
         nameText.gameObject.SetActive(false); //隱藏以下UI元素
         hintText.gameObject.SetActive(false);
         pressF.gameObject.SetActive(false);
+        player = GameObject.FindGameObjectWithTag("Player").transform; //找尋玩家物件
     }
 
     protected virtual void OnTriggerEnter(Collider other)
@@ -70,6 +72,32 @@ public class Interactable : MonoBehaviour
         {
             isTriggered = !isTriggered; //繼承腳本可以用這個變數去做額外的判斷執行
                                         //例：if (isTriggered) { 你想要讓它做的事情 }
+            if (!isTurning)
+            {
+                StartCoroutine(TurnTowardsPlayer());
+            }
         }
+    }
+
+    IEnumerator TurnTowardsPlayer()
+    {
+        isTurning = true;
+
+        // 先計算目標方向
+        Vector3 directionToPlayer = player.position - transform.position;
+        directionToPlayer.y = 0f;
+
+        Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+
+        // 進行平滑旋轉
+        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5.0f * Time.deltaTime);
+            yield return null;
+        }
+
+        // 轉向完成後設置 isInRange 為 false
+
+        isTurning = false;
     }
 }

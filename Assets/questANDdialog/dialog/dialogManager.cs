@@ -42,7 +42,7 @@ public class dialogManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.J))//按J才能顯示下一句
             {
-                if(isScrolling == false)//整句顯示完整才能顯示下一句
+                if (isScrolling == false)//整句顯示完整才能顯示下一句
                 {
                     currentLine++;
                     if (currentLine < dialogueLines.Length)
@@ -85,7 +85,6 @@ public class dialogManager : MonoBehaviour
     {
         isScrolling = true;
         dialogueText.text = "";//每行都是從空白開始輸出字母
-
         //把字串每個字母拆開放到暫時陣列
         foreach (char letter in dialogueLines[currentLine].ToCharArray())
         {

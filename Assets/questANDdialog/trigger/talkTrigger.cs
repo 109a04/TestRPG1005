@@ -13,6 +13,7 @@ public class talkTrigger : Interactable
     {
         base.Start();
         qTalk = this.gameObject.GetComponent<Talkable>();
+        
     }
 
     // Update is called once per frame
@@ -21,8 +22,12 @@ public class talkTrigger : Interactable
         base.Update();
         if (isInRange && Input.GetKeyDown(KeyCode.F))
         {
+            
             qTalk.StartTalk();
+
             isInRange = false;
         }
     }
+
+    
 }
