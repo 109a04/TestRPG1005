@@ -43,7 +43,7 @@ public class PlayerUI : MonoBehaviour
     private void Update()
     {
         // 更新 UI 介面顯示的屬性點數據
-        nameText.text = "姓名：" + playerAttributeManager.Instance.pname.ToString();
+        nameText.text = "名稱：" + playerAttributeManager.Instance.pname.ToString();
         levelText.text = "等級：" + playerAttributeManager.Instance.level.ToString();
         //levelText.text = "等級：" + playerAttributeManager.Instance.level.ToString();
         expText.text = "經驗：" + playerAttributeManager.Instance.exp.ToString() + "/" + playerAttributeManager.Instance.up_exp.ToString();

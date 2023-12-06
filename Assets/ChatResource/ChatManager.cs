@@ -107,10 +107,6 @@ public class ChatManager : MonoBehaviour
             else
             {
                 toggleChatPanel = !toggleChatPanel;
-                if (toggleChatPanel)
-                {
-                    inputField.ActivateInputField();
-                }
             }
         }
 

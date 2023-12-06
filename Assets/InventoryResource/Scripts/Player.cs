@@ -242,6 +242,7 @@ public class Player : MonoBehaviour
             masterNPC.avaPoint = playerAttributeManager.Instance.point;
             currentExp = playerAttributeManager.Instance.exp;
             ChatManager.Instance.SystemMessage($"<color=#F5EC3D>§A¤É¦Ü {playerAttributeManager.Instance.level} ¯Å!</color>\n");
+            LevelUpParticle.Instance.LevelUp();
         }
         else
         {
