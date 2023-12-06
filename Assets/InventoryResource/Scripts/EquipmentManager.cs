@@ -83,6 +83,10 @@ public class EquipmentManager : MonoBehaviour
             playerAttributeManager.Instance.element = 0;
             playerAttributeManager.Instance.attack = playerAttributeManager.Instance.origin_attack * 2;
             playerAttributeManager.Instance.atkRange = 10;
+            playerAttributeManager.Instance.fire_mr = 10;
+            playerAttributeManager.Instance.water_mr = 10;
+            playerAttributeManager.Instance.grass_mr = 10;
+            playerAttributeManager.Instance.ground_mr = 10;
             return;
         }
 
@@ -105,6 +109,22 @@ public class EquipmentManager : MonoBehaviour
                 playerAttributeManager.Instance.atkRange = 25;
                 break;
         }
+
+        switch (weaponItem.elementType) //根據不同屬性改變防禦（雖然傷害公式根本沒用到這些）
+        {
+            case WeaponItem.ElementType.Water:
+                playerAttributeManager.Instance.water_mr = 15;
+                break;
+            case WeaponItem.ElementType.Fire:
+                playerAttributeManager.Instance.fire_mr = 15;
+                break;
+            case WeaponItem.ElementType.Grass:
+                playerAttributeManager.Instance.grass_mr = 15;
+                break;
+            case WeaponItem.ElementType.Earth:
+                playerAttributeManager.Instance.ground_mr = 15;
+                break;
+        } 
     }
 
     private void ShowModel()

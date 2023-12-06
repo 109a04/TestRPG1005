@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Dummy
   m_EditorClassIdentifier: 
   enemyID: 100
-  enemyName: "\u9776\u5B50"
-  enemyElement: 0
+  enemyName: "\u58DE\u7AE0\u9B5A"
+  enemyElement: 1
   level: 5
   maxHealth: 50
   attack: 15

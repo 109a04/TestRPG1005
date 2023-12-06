@@ -8,8 +8,14 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
+    public static EnemySpawn Instance;
     public GameObject enemyPrefab;
     public Transform spawnPoint;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()

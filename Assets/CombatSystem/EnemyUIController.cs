@@ -20,6 +20,7 @@ public class EnemyUIController : MonoBehaviour
     {
         mainCamera = Camera.main;
         enemyTransfrom = transform;
+
         enemyName = StatusUI.transform.Find("Name").GetComponent<Text>();
         enemyLevel = StatusUI.transform.Find("Level").GetComponent<Text>();
 

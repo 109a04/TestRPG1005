@@ -65,6 +65,7 @@ public class Questable : MonoBehaviour
                     if(quest.questType == Quest.QuestType.Monster)
                     {
                         Debug.Log("打怪任務");
+                        EnemySpawn.Instance.SpawnMonster();
                     }
                 }
                 else//沒做完任務
