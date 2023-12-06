@@ -57,6 +57,14 @@ public class Player : MonoBehaviour
         maxHealth = playerAttributeManager.Instance.hp;
         maxMp = playerAttributeManager.Instance.mp;
         maxExp = playerAttributeManager.Instance.up_exp;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        if (currentMp > maxMp)
+        {
+            currentMp = maxMp;
+        }
     }
 
     public void SetElement(int element)

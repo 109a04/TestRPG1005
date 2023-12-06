@@ -87,12 +87,13 @@ public class npcAttribute : MonoBehaviour
         playerAttributeManager.Instance.point = avaPoint;
 
         //換算後數值影響
-        playerAttributeManager.Instance.hp = playerAttributeManager.Instance.origin_hp * 50;
-        playerAttributeManager.Instance.mp = playerAttributeManager.Instance.origin_mp * 10;
-        playerAttributeManager.Instance.attack = playerAttributeManager.Instance.origin_attack * 2;
-        playerAttributeManager.Instance.speed = playerAttributeManager.Instance.origin_speed * 2;
+        playerAttributeManager.Instance.hp = 50 + (int)(playerAttributeManager.Instance.origin_hp * 2.5);
+        playerAttributeManager.Instance.mp = 30 + (int)(playerAttributeManager.Instance.origin_mp * 4.5);
+        playerAttributeManager.Instance.attack = 10 +(int)(playerAttributeManager.Instance.origin_attack * 2.25);
+        playerAttributeManager.Instance.speed = 7 + (int)(playerAttributeManager.Instance.origin_speed * 1.5);
 
         Player.Instance.SetStatus();
         Player.Instance.SetUI();
+        PlayerMove.Instance.SpeedChange(); //連動角色移動速度
     }
 }

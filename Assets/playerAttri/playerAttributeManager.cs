@@ -54,15 +54,15 @@ public class playerAttributeManager : MonoBehaviour
         up_exp = 40;
         point = 3;
 
-        origin_hp = 1;
-        origin_mp = 3;
-        origin_attack = 5;
-        origin_speed = 9;
+        origin_hp = 2;
+        origin_mp = 2;
+        origin_attack = 2;
+        origin_speed = 2;
 
-        hp = origin_hp * 50;
-        mp = origin_mp * 10;
-        attack = origin_attack * 2;
-        speed = origin_speed * 2;
+        hp = 50 + (int)(origin_hp * 2.5);
+        mp = 30 + (int)(origin_mp * 4.5);
+        attack = 10 + (int)(origin_attack * 2.25);
+        speed = 7 + (int)(origin_speed * 1.5);
 
         weapon = 0;
         element = 0;

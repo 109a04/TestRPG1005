@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     private CharacterController controller;
-    public float speed = 10;//角色速度
+    public float speed;//角色速度
     //public float RotateSpeed = 1f;//轉動速度(沒用)
 
     public float Gravity = -9.8f;//重力預設
@@ -29,10 +29,19 @@ public class PlayerMove : MonoBehaviour
     //private bool isRotating = false; // 標記是否正在旋轉        註解掉了
 
     // Start is called before the first frame update
+
+    public static PlayerMove Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         controller = transform.GetComponent<CharacterController>();
         transform.forward = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
+        speed = playerAttributeManager.Instance.speed;
     }
 
     // Update is called once per frame
@@ -155,4 +164,8 @@ public class PlayerMove : MonoBehaviour
         
     }
 
+    public void SpeedChange()
+    {
+        speed = playerAttributeManager.Instance.speed;
+    }
 }
