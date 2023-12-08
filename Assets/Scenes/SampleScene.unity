@@ -8842,6 +8842,8 @@ MonoBehaviour:
   questTarget: {fileID: 0}
   playerInRange: 0
   isFinish: 0
+  monsterPrefab: {fileID: 0}
+  spawnPoint: {x: 0, y: 0, z: 0}
   npcName: "n-\u5BF6\u77F3\u5927\u76DC"
   giveMission:
   - 
@@ -18303,6 +18305,8 @@ MonoBehaviour:
   questTarget: {fileID: 0}
   playerInRange: 0
   isFinish: 0
+  monsterPrefab: {fileID: 132365150979433402, guid: a046a361de7077e4096eb44de4a1e629, type: 3}
+  spawnPoint: {x: 12, y: 35, z: -174}
   npcName: "n-\u88AB\u6B3A\u8CA0\u7684\u8C93"
   giveMission:
   - 
@@ -35612,7 +35616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 132365150979433402, guid: a046a361de7077e4096eb44de4a1e629, type: 3}
-  spawnPoint: {fileID: 89948711}
+  spawnPoint: {x: 0, y: 0, z: 0}
 --- !u!4 &1265206260
 Transform:
   m_ObjectHideFlags: 0
@@ -50102,6 +50106,8 @@ MonoBehaviour:
   questTarget: {fileID: 0}
   playerInRange: 0
   isFinish: 0
+  monsterPrefab: {fileID: 0}
+  spawnPoint: {x: 0, y: 0, z: 0}
   npcName: "n-\u7AE0\u9B5A\u982D"
   giveMission:
   - 

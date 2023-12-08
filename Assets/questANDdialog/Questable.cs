@@ -7,6 +7,9 @@ public class Questable : MonoBehaviour
     public bool playerInRange;
     public bool isFinish = false;
 
+    public GameObject monsterPrefab;
+    public Vector3 spawnPoint;
+
     //npc對話
     public string npcName;//npc名字
     public string[] giveMission = new string[1];//給任務的對話
@@ -65,7 +68,7 @@ public class Questable : MonoBehaviour
                     if(quest.questType == Quest.QuestType.Monster)
                     {
                         Debug.Log("打怪任務");
-                        EnemySpawn.Instance.SpawnMonster();
+                        EnemySpawn.Instance.SpawnMonster(monsterPrefab, spawnPoint);
                     }
                 }
                 else//沒做完任務

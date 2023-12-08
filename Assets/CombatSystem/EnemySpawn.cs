@@ -10,7 +10,7 @@ public class EnemySpawn : MonoBehaviour
 {
     public static EnemySpawn Instance;
     public GameObject enemyPrefab;
-    public Transform spawnPoint;
+    public Vector3 spawnPoint;
 
     private void Awake()
     {
@@ -29,10 +29,10 @@ public class EnemySpawn : MonoBehaviour
         
     }
 
-    public void SpawnMonster()
+    public void SpawnMonster(GameObject enemyPrefab, Vector3 spawnPoint)
     {
         if (enemyPrefab == null) return;
         if (spawnPoint == null) return;
-        GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+        GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
     }
 }

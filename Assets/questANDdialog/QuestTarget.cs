@@ -23,6 +23,7 @@ public class QuestTarget : MonoBehaviour
         {
             if (targetID == QuestManager.instance.questList[i].targetID)
             {
+                Debug.Log(targetID);
                 Debug.Log("解決任務怪物拉");
                 QuestManager.instance.questList[i].ownAmount++;
                 CheckQuestIsComplete();
@@ -70,6 +71,7 @@ public class QuestTarget : MonoBehaviour
                 if (QuestManager.instance.questList[i].questType == Quest.QuestType.Gathering || QuestManager.instance.questList[i].questType == Quest.QuestType.Talk)
                 {
                     QuestManager.instance.questList[i].ownAmount++;
+                    Debug.Log("非打怪+1");
                 }
 
                 //收集任務直接銷毀任務道具
