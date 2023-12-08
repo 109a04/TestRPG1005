@@ -7083,31 +7083,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265566223}
   m_CullTransparentMesh: 1
---- !u!114 &270488365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132149424221818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad687968982f84c4ca2143ba388a7121, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questID: 30
-  targetID: 30
-  quest:
-    questName: 
-    questID: 0
-    questType: 0
-    questStatus: 0
-    expReward: 0
-    goldReward: 0
-    requireAmount: 0
-    ownAmount: 0
-    targetID: 0
-  questType: 2
 --- !u!114 &270488366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44744,31 +44719,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1454874938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148327947360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad687968982f84c4ca2143ba388a7121, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  questID: 30
-  targetID: 30
-  quest:
-    questName: 
-    questID: 0
-    questType: 0
-    questStatus: 0
-    expReward: 0
-    goldReward: 0
-    requireAmount: 0
-    ownAmount: 0
-    targetID: 0
-  questType: 2
 --- !u!195 &1454874940
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -63095,8 +63045,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148753145697}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18, y: 2, z: -7.5}
+  m_LocalRotation: {x: -0, y: 0.060299657, z: -0, w: 0.9981803}
+  m_LocalPosition: {x: 30.28, y: 34.913654, z: -140.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -63331,7 +63281,6 @@ GameObject:
   - component: {fileID: 1454874934}
   - component: {fileID: 1454874935}
   - component: {fileID: 919132148327947361}
-  - component: {fileID: 1454874938}
   - component: {fileID: 1454874940}
   m_Layer: 0
   m_Name: Monster (1)
@@ -63398,7 +63347,6 @@ GameObject:
   - component: {fileID: 270488371}
   - component: {fileID: 270488369}
   - component: {fileID: 270488370}
-  - component: {fileID: 270488365}
   - component: {fileID: 270488366}
   - component: {fileID: 270488367}
   - component: {fileID: 270488368}
