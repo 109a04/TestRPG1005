@@ -13,17 +13,20 @@ public class QuestTarget : MonoBehaviour
     private void Awake()
     {
         //先訂閱怪物被消滅事件
+        Debug.Log("訂閱怪物被消滅事件");
         EnemyMovement.monsterQuest += OnMonsterDestroyed;
+    
     }
+
+
 
     private void OnMonsterDestroyed()
     {
         //打怪任務則怪物消滅後才加
         for (int i = 0; i < QuestManager.instance.questList.Count; i++)
         {
-            if (targetID == QuestManager.instance.questList[i].targetID)
+            if (targetID == QuestManager.instance.questList[i].targetID && QuestManager.instance.questList[i].questType == Quest.QuestType.Monster)
             {
-                Debug.Log(targetID);
                 Debug.Log("解決任務怪物拉");
                 QuestManager.instance.questList[i].ownAmount++;
                 CheckQuestIsComplete();
