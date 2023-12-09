@@ -42,6 +42,7 @@ public class dialogManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.J))//按J才能顯示下一句
             {
+                //NPCMotion.Instance.SetTrigger("TalkTrigger");
                 if (isScrolling == false)//整句顯示完整才能顯示下一句
                 {
                     currentLine++;

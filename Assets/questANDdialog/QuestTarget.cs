@@ -5,7 +5,7 @@ public class QuestTarget : MonoBehaviour
 {
     public int questID;
     public int targetID;
-    public Quest quest;
+    //public Quest quest;
 
     public enum QuestType { Gathering, Talk, Monster };
     public QuestType questType;//收集類的任務，收集完後會消失
