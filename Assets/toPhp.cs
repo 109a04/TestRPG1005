@@ -23,6 +23,7 @@ public class toPhp : MonoBehaviour
 
     public GameObject paneljump;//視窗
     public GameObject buttonshow;//開始遊戲的按鈕
+    public GameObject playTextbutton;//開始遊戲的按鈕
 
     [Serializable]//玩家帳密物件
     public class player
@@ -91,6 +92,7 @@ public class toPhp : MonoBehaviour
                     yield return new WaitForSecondsRealtime(4.0f);
                     paneljump.SetActive(false);
                     buttonshow.SetActive(true);
+                    playTextbutton.SetActive(true);
                 }
                 else
                 {
@@ -98,6 +100,7 @@ public class toPhp : MonoBehaviour
 
                     yield return new WaitForSecondsRealtime(4.0f);
                     paneljump.SetActive(false);
+                    playTextbutton.SetActive(true);
                 }
             }
         }
@@ -159,6 +162,7 @@ public class toPhp : MonoBehaviour
 
                 yield return new WaitForSecondsRealtime(4.0f);
                 paneljump.SetActive(false);
+                playTextbutton.SetActive(true);
                 //SceneManager.LoadScene(1);//暫時沒用到
             }
         }
