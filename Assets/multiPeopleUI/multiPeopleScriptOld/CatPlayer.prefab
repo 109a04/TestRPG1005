@@ -662,6 +662,7 @@ GameObject:
   - component: {fileID: 450853212447011802}
   - component: {fileID: 7184621345217439483}
   - component: {fileID: 7449248631133683015}
+  - component: {fileID: 8073686053765521235}
   - component: {fileID: -5236791451339122050}
   m_Layer: 8
   m_Name: CatPlayer
@@ -829,6 +830,20 @@ MonoBehaviour:
   _interpolationDataSource: 0
   networkCharacterController: {fileID: 450853212447011802}
   moveSpeed: 15
+--- !u!114 &8073686053765521235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6195955882944806102}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8303517f62919fc4da2a925ca493ca3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  copyCamera: {fileID: 6936684916974654613, guid: 59e6d5bf6188c6646bb4c8600aa5b3d7, type: 3}
+  superGameObject: {fileID: 6195955882944806102}
 --- !u!114 &-5236791451339122050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -836,14 +851,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6195955882944806102}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f49624e6a124a5428afbaad2855eac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
   rotationSpeed: 3
   cameraHeight: 5
+  copyCamera: {fileID: 6936684916974654613, guid: 59e6d5bf6188c6646bb4c8600aa5b3d7, type: 3}
+  superGameObject: {fileID: 6195955882944806102}
 --- !u!1 &6430327580896887430
 GameObject:
   m_ObjectHideFlags: 0

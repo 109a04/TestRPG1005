@@ -53,7 +53,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     }
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
-        var data = new NetworkInputData();
+        var data = new NetworkInputDataOld();
         var camera = new Camera(); // 照相機的方向
 
         if (Input.GetKey(KeyCode.W))

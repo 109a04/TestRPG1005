@@ -13,7 +13,7 @@ public class PlayerController : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        if (GetInput(out NetworkInputData data))
+        if (GetInput(out NetworkInputDataOld data))
         {
             Vector3 moveVector = data.movementInput.normalized;
             networkCharacterController.Move(moveSpeed * moveVector * Runner.DeltaTime);
