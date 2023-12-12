@@ -19776,7 +19776,7 @@ CapsuleCollider:
   m_Radius: 0.9472778
   m_Height: 2.6104577
   m_Direction: 1
-  m_Center: {x: -0.01594472, y: 0.8052288, z: 0.027362347}
+  m_Center: {x: 0.07, y: 0.8052288, z: 0.027362347}
 --- !u!114 &644125235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19850,7 +19850,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5647132, y: 2.684354, z: 1.7713715}
+  m_Size: {x: 1.12, y: 1.56, z: 1.16}
   m_Center: {x: 0.08186705, y: 0.8421787, z: 0.16176093}
 --- !u!1 &644260775 stripped
 GameObject:

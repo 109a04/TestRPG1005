@@ -46,5 +46,14 @@ public class HeroMotion : MonoBehaviour
         {
             animator.SetTrigger("Die");
         }
+
+        if(Input.GetKey(KeyCode.V))
+        {
+            animator.SetBool("Call", true);
+        }
+        else
+        {
+            animator.SetBool("Call", false);
+        }
     }
 }
