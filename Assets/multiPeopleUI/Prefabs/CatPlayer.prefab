@@ -32,6 +32,7 @@ Transform:
   - {fileID: 7900123629984075677}
   - {fileID: 7900123630474677354}
   - {fileID: 2740914540964481089}
+  - {fileID: 788871925249191829}
   - {fileID: 7900123630133703212}
   m_Father: {fileID: 7649462824254942068}
   m_RootOrder: 0
@@ -624,6 +625,37 @@ Transform:
   m_Father: {fileID: 5129885411943934163}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3481834410948778717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 788871925249191829}
+  m_Layer: 8
+  m_Name: cameraAnchorPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &788871925249191829
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3481834410948778717}
+  m_LocalRotation: {x: 0.13920379, y: -0, z: -0, w: 0.9902638}
+  m_LocalPosition: {x: 0.049999952, y: 2.99, z: -4.23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 171807353928094518}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 16.004, y: 0, z: 0}
 --- !u!1 &4084973738527262195
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,6 +730,7 @@ GameObject:
   - component: {fileID: 2740914540964481089}
   - component: {fileID: 2799788529492112096}
   - component: {fileID: 112558508117607725}
+  - component: {fileID: 5283137253129127386}
   m_Layer: 8
   m_Name: Camera
   m_TagString: Untagged
@@ -771,6 +804,19 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4914831534004496129}
   m_Enabled: 1
+--- !u!114 &5283137253129127386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4914831534004496129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2260eaf4e1b95a14eb660157a7d12f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraAnchorPoint: {fileID: 788871925249191829}
 --- !u!1 &4944217344664732899
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,7 +1401,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 171807353928094518}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!20 &7900123630133703210
 Camera:

@@ -34,6 +34,9 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
 
             Debug.Log("生成了遠端的 player");
         }
+
+        // 給不同的玩家改名
+        transform.name = $"Player_{Object.Id}";
     }
 
     public void PlayerLeft(PlayerRef player)

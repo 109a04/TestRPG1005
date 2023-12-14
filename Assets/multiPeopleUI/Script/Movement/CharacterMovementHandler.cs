@@ -5,10 +5,10 @@ using Fusion;
 
 public class CharacterMovementHandler : NetworkBehaviour
 {
-    Vector2 viewInput;
+    //Vector2 viewInput;
     
     //Rotation
-    float cameraRotationX = 0;
+    //float cameraRotationX = 0;
 
     //Other components
     NetworkCharacterControllerPrototypeCustom networkCharacterControllerPrototypeCustom;
@@ -35,13 +35,13 @@ public class CharacterMovementHandler : NetworkBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         cameraRotationX += viewInput.y * Time.deltaTime * networkCharacterControllerPrototypeCustom.viewUpDownRotationSpeed;
         cameraRotationX = Mathf.Clamp(cameraRotationX, -15, 45); // 限制視角轉動的角度
 
         localCamera.transform.localRotation = Quaternion.Euler(cameraRotationX, 0, 0);
-    }
+    }*/
 
     public override void FixedUpdateNetwork()
     {
@@ -52,7 +52,14 @@ public class CharacterMovementHandler : NetworkBehaviour
         if(GetInput(out NetworkInputData networkInputData))
         {
             //Rotate the view
-            networkCharacterControllerPrototypeCustom.Rotate(networkInputData.rotationInput);
+            //networkCharacterControllerPrototypeCustom.Rotate(networkInputData.rotationInput);
+            // Rotate the transform according to the client aim vector
+            transform.forward = networkInputData.aimForwardVector;
+
+            //Cancel out rotation on X axis as we don't want our character to tilt
+            Quaternion rotation = transform.rotation;
+            rotation.eulerAngles = new Vector3(0, rotation.eulerAngles.y, rotation.eulerAngles.z);
+            transform.rotation = rotation;
 
             //Move
             Vector3 moveDirection = transform.forward * networkInputData.movementInput.y + transform.right * networkInputData.movementInput.x;
@@ -66,12 +73,23 @@ public class CharacterMovementHandler : NetworkBehaviour
                 networkCharacterControllerPrototypeCustom.Jump();
             }
 
+            // 檢查有沒有掉出世界之外
+            CheckFallRespawn();
+
         }
     }
 
-    public void SetViewInputVector(Vector2 viewInput)
+    void CheckFallRespawn()
+    {
+        if(transform.position.y < -12)
+        {
+            transform.position = Utils.GetRandomSpawnPoint();
+        }
+    }
+
+    /*public void SetViewInputVector(Vector2 viewInput)
     {
         this.viewInput = viewInput;
-    }
+    }*/
 
 }

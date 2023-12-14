@@ -10,11 +10,13 @@ public class CharacterInputHandler : MonoBehaviour
     private bool isRotating = false; // 標記是否正在旋轉
 
     //Other components
-    CharacterMovementHandler characterMovementHandler;
+    //CharacterMovementHandler characterMovementHandler;
+    LocalCameraHandler localCameraHandler;
 
     private void Awake()
     {
-        characterMovementHandler = GetComponent<CharacterMovementHandler>();
+        //characterMovementHandler = GetComponent<CharacterMovementHandler>();
+        localCameraHandler = GetComponentInChildren<LocalCameraHandler>();
     }
 
     // Start is called before the first frame update
@@ -32,7 +34,7 @@ public class CharacterInputHandler : MonoBehaviour
         moveInputVector.y = Input.GetAxis("Vertical");
 
         // 用這行來處理本地端的視角 Y
-        characterMovementHandler.SetViewInputVector(viewInputVector);
+        //characterMovementHandler.SetViewInputVector(viewInputVector);
 
         //if (Input.GetMouseButtonDown(1))
         //{
@@ -56,8 +58,13 @@ public class CharacterInputHandler : MonoBehaviour
             viewInputVector.x = Input.GetAxis("Mouse X") * 10f;
             viewInputVector.y = Input.GetAxis("Mouse Y") * -1 * 3f; //Invert the mouse look
         }
+        */
+        if (Input.GetButtonDown("Jump"))
+        {
+            isJumpButtonPressed = true;
+        }
 
-        isJumpButtonPressed = Input.GetButtonDown("Jump");*/
+        localCameraHandler.SetViewInputVector(viewInputVector);
 
     }
     public NetworkInputData GetNetworkInput()
@@ -66,13 +73,18 @@ public class CharacterInputHandler : MonoBehaviour
 
         //View data
         // 我只要旋轉的資料共享給其他人就可以了，不需要上下的
-        networkInputData.rotationInput = viewInputVector.x;
+        //networkInputData.rotationInput = viewInputVector.x;
+        networkInputData.aimForwardVector = localCameraHandler.transform.forward;
 
         //Move data
         networkInputData.movementInput = moveInputVector;
         
         //Jump data
         networkInputData.isJumpPressed = isJumpButtonPressed;
+
+        // 在這邊才重置 isJumpButtonPressed
+        // 因為 Update() 和 GetNetworkInput 並不是一比一的次數在執行
+        isJumpButtonPressed = false;
 
         return networkInputData;
     }
