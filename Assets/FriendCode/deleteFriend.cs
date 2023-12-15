@@ -39,7 +39,7 @@ public class deleteFriend : MonoBehaviour
             resultText.text = www.downloadHandler.text;
         }
 
-
+        friend.text = null;
     }
 
 

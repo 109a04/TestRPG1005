@@ -69,5 +69,7 @@ public class postMessage : MonoBehaviour
                 sendText.text = responseText;
             }
         }
+        receiverName.text = null;
+        message.text = null;
     }
 }

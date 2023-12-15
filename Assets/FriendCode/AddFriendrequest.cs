@@ -16,6 +16,7 @@ public class AddFriendrequest : MonoBehaviour
         string receiver = receiverInput.text;
 
         StartCoroutine(AddFriendRequest(sender, receiver));
+        
     }
 
     IEnumerator AddFriendRequest(string sender, string receiver)
@@ -39,5 +40,6 @@ public class AddFriendrequest : MonoBehaviour
                 resultText.text = www.downloadHandler.text;
             }
         }
+        receiverInput.text = null;
     }
 }
