@@ -39,6 +39,7 @@ public class friendList : MonoBehaviour
 
     IEnumerator FriendList()
     {
+        ClearPreviousContent();
         panel.SetActive(true);
         sender = playerNameManager.Instance.playerName;
 

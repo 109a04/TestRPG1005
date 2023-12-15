@@ -117,6 +117,7 @@ public class DisplayFriendInvitations : MonoBehaviour
         StartCoroutine(SendAcceptanceToServer(senderName));
         //按同意後不能按拒絕了
         rejectButton.interactable = false;
+        acceptButton.interactable = false;
 
     }
 
@@ -127,8 +128,9 @@ public class DisplayFriendInvitations : MonoBehaviour
         StartCoroutine(SendRejectionToServer(senderName));
         //按同意後不能按拒絕了
         acceptButton.interactable = false;
+        rejectButton.interactable = false;
 
-        }
+    }
 
     //把同意好友邀請資料POST到好友邀請提示資料庫
     IEnumerator SendAcceptanceToServer(string senderName)
