@@ -10,6 +10,7 @@ public class playerAttributeManager : MonoBehaviour
 
     //角色基本資料
     public string pname { get; set; } //名字
+    public string playerID { get; set; } //ID
     public int money { get; set; }    //金錢
     public int level { get; set; }    //等級
     public int exp { get; set; }      //經驗
@@ -46,8 +47,13 @@ public class playerAttributeManager : MonoBehaviour
         if(playerNameManager.Instance != null)
         {
             pname = playerNameManager.Instance.playerName;
+            playerID = playerNameManager.Instance.playerID;
         }
-        else pname = "貓貓球";
+        else
+        {
+            pname = "貓貓球";
+            playerID = "999";
+        }        
         money = 12000;
         level = 1;
         exp = 0;

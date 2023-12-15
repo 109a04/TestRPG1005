@@ -10,6 +10,7 @@ public class PlayerUI : MonoBehaviour
 
     //姓名/等級/經驗/上限
     public Text nameText;
+    public Text playerID;
     public Text levelText;
     public Text expText;
     //public Text up_expText;
@@ -45,6 +46,7 @@ public class PlayerUI : MonoBehaviour
         // 更新 UI 介面顯示的屬性點數據
         nameText.text = "名稱：" + playerAttributeManager.Instance.pname.ToString();
         levelText.text = "等級：" + playerAttributeManager.Instance.level.ToString();
+        playerID.text = "ID：" + playerAttributeManager.Instance.playerID;
         //levelText.text = "等級：" + playerAttributeManager.Instance.level.ToString();
         expText.text = "經驗：" + playerAttributeManager.Instance.exp.ToString() + "/" + playerAttributeManager.Instance.up_exp.ToString();
         //up_expText.text = "經驗上限：" + playerAttributeManager.Instance.up_exp.ToString();
