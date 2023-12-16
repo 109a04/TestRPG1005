@@ -263,7 +263,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            ChatManager.Instance.SystemMessage($"經驗增加<color=#F5EC3D>{value}。</color>\n");
+            ChatManager.Instance.SystemMessage($"經驗增加<color=#F5EC3D>{value}</color>。\n");
         }
     }
 

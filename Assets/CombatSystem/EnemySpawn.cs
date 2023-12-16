@@ -29,10 +29,16 @@ public class EnemySpawn : MonoBehaviour
         
     }
 
-    public void SpawnMonster(GameObject enemyPrefab, Vector3 spawnPoint)
+    public void SpawnMonster(GameObject enemyPrefab, Vector3 spawnPoint, int quantity)
     {
         if (enemyPrefab == null) return;
         if (spawnPoint == null) return;
-        GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
+        if (quantity == 0) return;
+
+        for (int i = 0; i < quantity; i++)
+        {
+            GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
+        }
+        
     }
 }

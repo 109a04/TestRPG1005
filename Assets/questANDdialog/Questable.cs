@@ -9,6 +9,7 @@ public class Questable : MonoBehaviour
 
     public GameObject monsterPrefab;
     public Vector3 spawnPoint;
+    public int quantity;
 
     //npc對話
     public string npcName;//npc名字
@@ -25,7 +26,7 @@ public class Questable : MonoBehaviour
         noComplete[0] = npcName;
         noComplete[1] = "你還沒達成條件呢，繼續加油吧！";
         complete[0] = npcName;
-        complete[1] = "謝謝你啦，給你金幣 " + quest.goldReward.ToString() + " 和經驗 " + quest.expReward.ToString() + "。";
+        complete[1] = "謝謝你啦，給你金幣 " + quest.goldReward.ToString() + " 和經驗 " + quest.expReward.ToString() +  "。";
         repeat[0] = npcName;
         repeat[1] = "不能重複做任務喔！";
     }
@@ -68,7 +69,7 @@ public class Questable : MonoBehaviour
                     if(quest.questType == Quest.QuestType.Monster)
                     {
                         Debug.Log("打怪任務");
-                        EnemySpawn.Instance.SpawnMonster(monsterPrefab, spawnPoint);
+                        EnemySpawn.Instance.SpawnMonster(monsterPrefab, spawnPoint, quantity);
                     }
                 }
                 else//沒做完任務

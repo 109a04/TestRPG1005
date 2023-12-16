@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class playerAttributeManager : MonoBehaviour
 {
     public static playerAttributeManager Instance { get; private set; }
-
+    
 
     //角色基本資料
     public string pname { get; set; } //名字
@@ -54,11 +54,11 @@ public class playerAttributeManager : MonoBehaviour
             pname = "貓貓球";
             playerID = "999";
         }        
-        money = 12000;
+        money = 200;
         level = 1;
         exp = 0;
-        up_exp = 40;
-        point = 3;
+        up_exp = 150;
+        point = 1;
 
         origin_hp = 2;
         origin_mp = 2;
