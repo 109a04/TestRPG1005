@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public GameObject DeathUI;
     private bool isDead;
     private bool backToPoint;
-    private bool next;
     public Transform respawnPoint; //重生點
     public GameObject playerModel; //玩家模型
     public float deathDelay = 2.0f; // 死亡後延遲復活的時間
@@ -28,7 +27,7 @@ public class GameManager : MonoBehaviour
         DeathUI.SetActive(false);
         isDead = false;
         backToPoint = true;
-        next = false;
+
     }
 
     // Update is called once per frame
@@ -41,7 +40,7 @@ public class GameManager : MonoBehaviour
         }
 
         //當玩家生命值歸零
-        if (Player.Instance.GetCurrentHealth() <= 0)
+        if (playerAttributeManager.Instance.hp <= 0)
         {
             isDead = true;
         }
@@ -50,12 +49,24 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0f;
             DisplayDeathUI();
+            Debug.Log("死掉");
+        }
+        else
+        {
+            Debug.Log("活著");
         }
 
-        if (!backToPoint)
+        /*
+        if (playerModel.transform.position == respawnPoint.position)
         {
-            MoveToRespawnPoint();
+            Debug.Log("回到重生點");
+            backToPoint = true;
         }
+        else
+        {
+            backToPoint = false;
+        }
+        */
 
 
     }
@@ -75,23 +86,16 @@ public class GameManager : MonoBehaviour
         DeathUI.SetActive(isDead);
     }
 
-    //遊戲重開，因為還沒想好存檔的要怎麼做，之後有需要存檔點的話再改（好）
+    //遊戲重開
     public void RestartGame()
     {
-        if (next)
-        {
-            backToPoint = true;
-            isDead = false;
-            next = false;
-        }
-        if (playerModel.transform.position != respawnPoint.position)
-        {
-            backToPoint = false;
-        }
-        //血量回復後，生成到指定地點
-        ResetGameState();
-        DeathUI.SetActive(isDead);
-        next = true;
+        MoveToRespawnPoint();
+        Invoke(nameof(ResetGameState), 2);
+
+        //ResetGameState();
+        isDead = false;
+
+
         
     }
     
@@ -99,8 +103,9 @@ public class GameManager : MonoBehaviour
     private void ResetGameState()
     {
         Debug.Log("重新開始");
-        
-        
+
+        isDead = false;
+        playerAttributeManager.Instance.hp = 50 + (int)(playerAttributeManager.Instance.origin_hp * 2.5);
         Player.Instance.SetStatus();
         Player.Instance.SetInitStats();
         Player.Instance.SetUI();
@@ -111,6 +116,7 @@ public class GameManager : MonoBehaviour
     {
         return isDead;
     }
+
     public void SetIsDead()
     {
         isDead = true;
@@ -118,9 +124,7 @@ public class GameManager : MonoBehaviour
 
     private void MoveToRespawnPoint()
     {
-        Debug.Log("回到重生點");
-        playerModel.transform.position = respawnPoint.position;
-
+        playerModel.transform.position = Utils.GetRandomSpawnPoint();
     }
 
 }

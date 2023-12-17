@@ -48,7 +48,7 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         if (ChatManager.Instance.inputField.isFocused) return;
-        if (!(playerAttributeManager.Instance.hp == 0)) //如果玩家沒有死才能移動
+        if (!GameManager.Instance.GetIsDead()) //如果玩家沒有死才能移動
         {
             PlayerMoveMethod();
         }
@@ -100,12 +100,7 @@ public class PlayerMove : MonoBehaviour
 
 
         //
-        //掉落就會觸發玩完了的panel
-        if (transform.position.y < -30f)
-        {
-            GameManager.Instance.SetIsDead();
-            Debug.Log(transform.position.y);
-        }
+        
         //
 
        
@@ -130,6 +125,15 @@ public class PlayerMove : MonoBehaviour
         //
 
         */
+        //掉落就會觸發玩完了的panel
+        if (transform.position.y < -30f)
+        {
+            Debug.Log("跳樓");
+            playerAttributeManager.Instance.hp = 0;
+            GameManager.Instance.SetIsDead();
+            Debug.Log(transform.position.y);
+        }
+
 
         //新方法
 
