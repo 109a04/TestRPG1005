@@ -10027,6 +10027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: c04249e2dd87d4348a7ed0362e46af5b, type: 2}
+  targetID: 0
 --- !u!65 &270488369
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31512,7 +31513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 938276233217380755, guid: e389d9d8360f9654588d36f2aecc0491, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 938276233217380755, guid: e389d9d8360f9654588d36f2aecc0491, type: 3}
       propertyPath: m_SizeDelta.x
@@ -53126,7 +53127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 938276233217380755, guid: e389d9d8360f9654588d36f2aecc0491, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 938276233217380755, guid: e389d9d8360f9654588d36f2aecc0491, type: 3}
       propertyPath: m_SizeDelta.x
@@ -55666,6 +55667,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: c04249e2dd87d4348a7ed0362e46af5b, type: 2}
+  targetID: 0
 --- !u!114 &1454874934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64407,6 +64409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 20da90c777d8bdf46aebe94951038118, type: 2}
+  targetID: 0
 --- !u!114 &1683224784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80114,7 +80117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &919132148327947361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80184,7 +80187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &919132149424221819
 MonoBehaviour:
   m_ObjectHideFlags: 0
