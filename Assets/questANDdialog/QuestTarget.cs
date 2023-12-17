@@ -10,6 +10,8 @@ public class QuestTarget : MonoBehaviour
     public enum QuestType { Gathering, Talk, Monster };
     public QuestType questType;//收集類的任務，收集完後會消失
 
+
+
     private void Awake()
     {
         //先訂閱怪物被消滅事件
@@ -118,5 +120,6 @@ public class QuestTarget : MonoBehaviour
     private void OnDestroy()
     {
         EnemyMovement.monsterQuest -= OnMonsterDestroyed;
+        Debug.Log("結束訂閱");
     }
 }

@@ -347,9 +347,10 @@ public class EnemyMovement : MonoBehaviour
             Player.Instance.IncreaseExp(enemyData.rewardExp);
             Player.Instance.SetEXPUI();
             uiController.exclamationUI.SetActive(false); //隱藏UI
-            uiController.StatusUI.SetActive(false); 
+            uiController.StatusUI.SetActive(false);
             Destroy(gameObject); //銷毀物件
             monsterQuest();//打怪任務測試
+
         }
     }
 
