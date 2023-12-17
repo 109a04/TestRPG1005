@@ -18,7 +18,7 @@ public class EnemyMovement : MonoBehaviour
     private int currentHP; //當前血量
 
     //測試打怪任務用
-    public int targetID;//怪物任務用
+    //public int targetID;//怪物任務用
     //public delegate void monsterDestroyed();
     //public static event monsterDestroyed monsterQuest;
     //
@@ -361,7 +361,7 @@ public class EnemyMovement : MonoBehaviour
                 //打怪任務則怪物消滅後才加
                 for (int i = 0; i < QuestManager.instance.questList.Count; i++)
                 {
-                    if (targetID == QuestManager.instance.questList[i].targetID)
+                    if (enemyData.enemyID == QuestManager.instance.questList[i].targetID)
                     {
                         Debug.Log("解決任務怪物拉");
                         QuestManager.instance.questList[i].ownAmount++;
