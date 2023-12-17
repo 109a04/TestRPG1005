@@ -18,12 +18,17 @@ public class EnemyMovement : MonoBehaviour
     private int currentHP; //當前血量
 
     //測試打怪任務用
-    public delegate void monsterDestroyed();
-    public static event monsterDestroyed monsterQuest;
+    public int targetID;//怪物任務用
+    //public delegate void monsterDestroyed();
+    //public static event monsterDestroyed monsterQuest;
     //
 
     private void Start()
     {
+        //測試打怪任務用
+        //QuestTarget questTargetScript = GetComponent<QuestTarget>();
+        //
+
         navMeshAgent = GetComponent<NavMeshAgent>();
         stateMachine = GetComponent<EnemyController>();
         actionVariables = GetComponent<EnemyActionVariables>();
@@ -348,8 +353,26 @@ public class EnemyMovement : MonoBehaviour
             Player.Instance.SetEXPUI();
             uiController.exclamationUI.SetActive(false); //隱藏UI
             uiController.StatusUI.SetActive(false);
+
+            //打怪任務測試
+            QuestTarget questTargetScript = GetComponent<QuestTarget>();
+            if (questTargetScript != null)
+            {
+                //打怪任務則怪物消滅後才加
+                for (int i = 0; i < QuestManager.instance.questList.Count; i++)
+                {
+                    if (targetID == QuestManager.instance.questList[i].targetID)
+                    {
+                        Debug.Log("解決任務怪物拉");
+                        QuestManager.instance.questList[i].ownAmount++;
+                        questTargetScript.CheckQuestIsComplete();
+                    }
+                }
+            }
+            //
+
             Destroy(gameObject); //銷毀物件
-            monsterQuest();//打怪任務測試
+            //monsterQuest();//打怪任務測試
 
         }
     }
