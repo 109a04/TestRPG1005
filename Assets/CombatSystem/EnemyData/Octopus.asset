@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d86c0f43aa77814b89943d6f94b9742, type: 3}
-  m_Name: Dummy
+  m_Name: Octopus
   m_EditorClassIdentifier: 
   enemyID: 30
   enemyName: "\u58DE\u7AE0\u9B5A"
