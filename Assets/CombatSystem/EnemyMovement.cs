@@ -83,6 +83,11 @@ public class EnemyMovement : MonoBehaviour
         stateMachine.SetState(EnemyController.EnemyState.Chase);
     }
 
+    public int GetCurrentState()
+    {
+        return (int)stateMachine.currentState;
+    }
+
     //閒置狀態的行為
     public void IdleAction() 
     {
@@ -127,6 +132,7 @@ public class EnemyMovement : MonoBehaviour
     //追擊狀態的行為
     public void ChaseAction()
     {
+
         if (playerAttributeManager.Instance.hp <= 0) stateMachine.SetState(EnemyController.EnemyState.Idle);
         DisplayStatus();
         targetPos = player.position;
@@ -162,7 +168,7 @@ public class EnemyMovement : MonoBehaviour
     //攻擊狀態的行為
     public void AttackAction()
     {
-        if (playerAttributeManager.Instance.hp <= 0) stateMachine.SetState(EnemyController.EnemyState.Idle);
+        if (GameManager.Instance.GetIsDead()) stateMachine.SetState(EnemyController.EnemyState.Idle);
         actionVariables.isBeaten = false;
         DisplayStatus();
         if (actionVariables.canAttack)
@@ -182,7 +188,6 @@ public class EnemyMovement : MonoBehaviour
         if (GameManager.Instance.GetIsDead())
         {
             Invoke(nameof(HideStatusUI), 1);
-            //StartCoroutine(HideStatusUI());
             stateMachine.SetState(EnemyController.EnemyState.Idle);
         }
     }

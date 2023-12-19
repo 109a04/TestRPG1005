@@ -8,13 +8,13 @@ using UnityEngine.UIElements;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public GameObject EscUI;
-    public GameObject DeathUI;
-    private bool isDead;
-    private bool backToPoint;
+    public GameObject EscUI;    //結束遊戲的視窗
+    public GameObject DeathUI;  //玩家死亡的視窗
+    private bool isDead;        //死亡判斷
+    public float deathDelay = 2.0f; // 死亡後延遲復活的時間
+
     public Transform respawnPoint; //重生點
     public GameObject playerModel; //玩家模型
-    public float deathDelay = 2.0f; // 死亡後延遲復活的時間
 
     public void Awake()
     {
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         EscUI.SetActive(false);
         DeathUI.SetActive(false);
         isDead = false;
-        backToPoint = true;
+
 
     }
 
@@ -39,48 +39,27 @@ public class GameManager : MonoBehaviour
             EscUI.SetActive(true);
         }
 
-        //當玩家生命值歸零
-        if (playerAttributeManager.Instance.hp <= 0)
+        if(Player.Instance.GetCurrentHealth() <= 0)
         {
-            isDead = true;
+            SetIsDead();
         }
 
-        if (isDead)
-        {
-            Time.timeScale = 0f;
-            DisplayDeathUI();
-            Debug.Log("死掉");
-        }
-        else
-        {
-            Debug.Log("活著");
-        }
-
-        /*
-        if (playerModel.transform.position == respawnPoint.position)
-        {
-            Debug.Log("回到重生點");
-            backToPoint = true;
-        }
-        else
-        {
-            backToPoint = false;
-        }
-        */
-
-
+        DeathUI.SetActive(isDead);
     }
 
+    //確認離開
     public void PressEscYes()
     {
         Application.Quit();
     }
 
+    //取消
     public void PressEscNo()
     {
         EscUI.SetActive(false);
     }
 
+    //新細明體
     public void DisplayDeathUI()
     {
         DeathUI.SetActive(isDead);
@@ -89,17 +68,11 @@ public class GameManager : MonoBehaviour
     //遊戲重開
     public void RestartGame()
     {
-        MoveToRespawnPoint();
-        Invoke(nameof(ResetGameState), 2);
-
-        //ResetGameState();
-        isDead = false;
-
-
-        
+        ResetGameState();
     }
     
 
+    //重置玩家狀態
     private void ResetGameState()
     {
         Debug.Log("重新開始");
@@ -117,14 +90,12 @@ public class GameManager : MonoBehaviour
         return isDead;
     }
 
+    //別的腳本讓玩家死亡的方式，反正只能死所以就只設true
+    //這個腳本裡才能設false
     public void SetIsDead()
     {
         isDead = true;
     }
 
-    private void MoveToRespawnPoint()
-    {
-        playerModel.transform.position = Utils.GetRandomSpawnPoint();
-    }
 
 }

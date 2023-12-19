@@ -10015,6 +10015,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e07faeb1698edb4b92044fd4f339331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wanderRadius: 10
+  visionRadius: 12
+  chaseRadius: 15
+  attackRadius: 7
 --- !u!114 &270488367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11932,6 +11936,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1131267221054615954, guid: 65e87e0ba52bdb448a0a0f810fae5b1e, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 338322347}
     - target: {fileID: 1160432714502595833, guid: 65e87e0ba52bdb448a0a0f810fae5b1e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -12122,6 +12130,11 @@ MonoBehaviour:
   repeat:
   - 
   - 
+--- !u!95 &338322347 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2214542685931378468, guid: 65e87e0ba52bdb448a0a0f810fae5b1e, type: 3}
+  m_PrefabInstance: {fileID: 338322341}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &339432544 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3590349239161715947, guid: dbd2ebdb2f1d75a40b703c4f4923e2d9, type: 3}
@@ -42964,9 +42977,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EscUI: {fileID: 831636282}
   DeathUI: {fileID: 1246433489}
+  deathDelay: 2
   respawnPoint: {fileID: 344959009}
   playerModel: {fileID: 919132148753145697}
-  deathDelay: 2
 --- !u!1 &1177256497
 GameObject:
   m_ObjectHideFlags: 0
@@ -44210,19 +44223,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3598053199160417130, guid: 65e87e0ba52bdb448a0a0f810fae5b1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 59.17
+      value: 30.75
       objectReference: {fileID: 0}
     - target: {fileID: 3598053199160417130, guid: 65e87e0ba52bdb448a0a0f810fae5b1e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 60.37
+      value: 25.32
       objectReference: {fileID: 0}
     - target: {fileID: 3598053199160417130, guid: 65e87e0ba52bdb448a0a0f810fae5b1e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 50.97
+      value: 184.41
       objectReference: {fileID: 0}
     - target: {fileID: 3598053199160417130, guid: 65e87e0ba52bdb448a0a0f810fae5b1e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9981803
+      value: -0.452971
       objectReference: {fileID: 0}
     - target: {fileID: 3598053199160417130, guid: 65e87e0ba52bdb448a0a0f810fae5b1e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -44230,11 +44243,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3598053199160417130, guid: 65e87e0ba52bdb448a0a0f810fae5b1e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.06029966
+      value: -0.89152527
       objectReference: {fileID: 0}
     - target: {fileID: 3598053199160417130, guid: 65e87e0ba52bdb448a0a0f810fae5b1e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000018626456
+      value: 0.000000029802326
       objectReference: {fileID: 0}
     - target: {fileID: 3598053199160417130, guid: 65e87e0ba52bdb448a0a0f810fae5b1e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -44242,7 +44255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3598053199160417130, guid: 65e87e0ba52bdb448a0a0f810fae5b1e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 6.914
+      value: -233.869
       objectReference: {fileID: 0}
     - target: {fileID: 3598053199160417130, guid: 65e87e0ba52bdb448a0a0f810fae5b1e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -51270,6 +51283,11 @@ MonoBehaviour:
   questID: 20
   targetID: 20
   questType: 1
+--- !u!95 &1285223748 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2214542685931378468, guid: 65e87e0ba52bdb448a0a0f810fae5b1e, type: 3}
+  m_PrefabInstance: {fileID: 1692589688}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1286513655 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1717832391571435430, guid: 54d425f1bf9451c4b9a9a2b09020ee6b, type: 3}
@@ -55865,6 +55883,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e07faeb1698edb4b92044fd4f339331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wanderRadius: 10
+  visionRadius: 12
+  chaseRadius: 15
+  attackRadius: 7
 --- !u!65 &1454874936
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -61279,7 +61301,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u597D\u5427 :("
+  m_Text: "\u5802\u5802\u5FA9\u6D3B!"
 --- !u!222 &1619119958
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -64128,7 +64150,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 139696, guid: eb58e8f2831a51f45a44a261e6710cdd, type: 3}
       propertyPath: m_Name
-      value: Red
+      value: RedDragon
       objectReference: {fileID: 0}
     - target: {fileID: 139696, guid: eb58e8f2831a51f45a44a261e6710cdd, type: 3}
       propertyPath: m_TagString
@@ -64196,8 +64218,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.84, y: 5.6, z: 14.17}
-  m_Center: {x: 0, y: 2.07, z: -2}
+  m_Size: {x: 9.68, y: 5.6, z: 15.77}
+  m_Center: {x: 0, y: 2.07, z: -1.6}
 --- !u!114 &1683224782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64253,6 +64275,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e07faeb1698edb4b92044fd4f339331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wanderRadius: 10
+  visionRadius: 15
+  chaseRadius: 18
+  attackRadius: 11
 --- !u!195 &1683224786
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -64275,6 +64301,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1683224788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683224780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02cfc598f159167449b1975bc148d5a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &1683575248
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -64362,6 +64400,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1131267221054615954, guid: 65e87e0ba52bdb448a0a0f810fae5b1e, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1285223748}
     - target: {fileID: 1160432714502595833, guid: 65e87e0ba52bdb448a0a0f810fae5b1e, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -81176,7 +81218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5340346514559080497}
   m_LocalRotation: {x: 0.7071068, y: -0.00000009415696, z: 0.7071067, w: 0.00000009415697}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:

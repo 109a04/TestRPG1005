@@ -125,7 +125,9 @@ public class PlayerMove : MonoBehaviour
         //
 
         */
-        //掉落就會觸發玩完了的panel
+
+        /*
+        掉落就會觸發玩完了的panel
         if (transform.position.y < -30f)
         {
             Debug.Log("跳樓");
@@ -133,7 +135,7 @@ public class PlayerMove : MonoBehaviour
             GameManager.Instance.SetIsDead();
             Debug.Log(transform.position.y);
         }
-
+        */
 
         //新方法
 
