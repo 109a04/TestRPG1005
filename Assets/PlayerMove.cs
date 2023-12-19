@@ -51,6 +51,19 @@ public class PlayerMove : MonoBehaviour
         if (!GameManager.Instance.GetIsDead()) //如果玩家沒有死才能移動
         {
             PlayerMoveMethod();
+            isCatJumpBuilding();
+        }
+    }
+
+    private void isCatJumpBuilding()
+    {
+        if (transform.position.y < -30f)
+        {
+            Debug.Log("跳樓");
+            //playerAttributeManager.Instance.hp = 0;
+            //GameManager.Instance.SetIsDead();
+            transform.position = Utils.GetRandomSpawnPoint();
+            Debug.Log(transform.position.y);
         }
     }
 
