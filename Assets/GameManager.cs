@@ -11,8 +11,6 @@ public class GameManager : MonoBehaviour
     public GameObject EscUI;    //結束遊戲的視窗
     public GameObject DeathUI;  //玩家死亡的視窗
     private bool isDead;        //死亡判斷
-    public float deathDelay = 2.0f; // 死亡後延遲復活的時間
-
     public Transform respawnPoint; //重生點
     public GameObject playerModel; //玩家模型
 
@@ -45,6 +43,14 @@ public class GameManager : MonoBehaviour
         }
 
         DeathUI.SetActive(isDead);
+        if (isDead)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
 
     //確認離開

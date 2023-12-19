@@ -55,7 +55,6 @@ public class PlayerAttack : MonoBehaviour
             float distance = Vector3.Distance(transform.position, enemyTransform.transform.position);
             if (distance > atkRange) return;                            //檢查怪物是否在攻擊範圍內，沒有則回傳
 
-            AtkParticle.Instance.PlayAtkParticle();
             HeroMotion.Instance.animator.SetTrigger("AttackTrigger");   //觸發打擊動作
             enemyMovement.TakeDamage(damage, weaponElement);            //怪物被打擊          
         }
