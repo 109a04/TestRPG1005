@@ -8,21 +8,11 @@ using UnityEngine.UIElements;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public GameObject EscUI;
-    public GameObject DeathUI;
-    private bool isDead;
-    private bool backToPoint;
-    private bool next;
+    public GameObject EscUI;    //結束遊戲的視窗
+    public GameObject DeathUI;  //玩家死亡的視窗
+    private bool isDead;        //死亡判斷
     public Transform respawnPoint; //重生點
     public GameObject playerModel; //玩家模型
-    public float deathDelay = 2.0f; // 死亡後延遲復活的時間
-
-    /* 這裡是多人的
-    byte[] connectionToken;
-
-    public Vector2 cameraViewRotation = Vector2.zero;
-    public string playerNickName = "";
-     到這裡結束*/
 
     public void Awake()
     {
@@ -34,17 +24,8 @@ public class GameManager : MonoBehaviour
         EscUI.SetActive(false);
         DeathUI.SetActive(false);
         isDead = false;
-        backToPoint = true;
-        next = false;
 
-        /* 從這裡開始，多人要用的，我也不確定是幹嘛的反正就是要用
-        //Check if token is valid, if not get a new one
-        if (connectionToken == null)
-        {
-            connectionToken = ConnectionTokenUtils.NewToken();
-            Debug.Log($"Player connection token {ConnectionTokenUtils.HashToken(connectionToken)}");
-        }
-         到這裡結束*/
+
     }
 
     // Update is called once per frame
@@ -56,67 +37,54 @@ public class GameManager : MonoBehaviour
             EscUI.SetActive(true);
         }
 
-        //當玩家生命值歸零
         if (Player.Instance.GetCurrentHealth() <= 0)
         {
-            isDead = true;
+            SetIsDead();
         }
 
+        DeathUI.SetActive(isDead);
         if (isDead)
         {
-            Time.timeScale = 0f;
-            DisplayDeathUI();
+            Time.timeScale = 0;
         }
-
-        if (!backToPoint)
+        else
         {
-            MoveToRespawnPoint();
+            Time.timeScale = 1;
         }
-
-
     }
 
+    //確認離開
     public void PressEscYes()
     {
         Application.Quit();
     }
 
+    //取消
     public void PressEscNo()
     {
         EscUI.SetActive(false);
     }
 
+    //新細明體
     public void DisplayDeathUI()
     {
         DeathUI.SetActive(isDead);
     }
 
-    //遊戲重開，因為還沒想好存檔的要怎麼做，之後有需要存檔點的話再改（好）
+    //遊戲重開
     public void RestartGame()
     {
-        if (next)
-        {
-            backToPoint = true;
-            isDead = false;
-            next = false;
-        }
-        if (playerModel.transform.position != respawnPoint.position)
-        {
-            backToPoint = false;
-        }
-        //血量回復後，生成到指定地點
         ResetGameState();
-        DeathUI.SetActive(isDead);
-        next = true;
-        
     }
-    
 
+
+    //重置玩家狀態
     private void ResetGameState()
     {
         Debug.Log("重新開始");
-        
-        
+
+        isDead = false;
+        playerAttributeManager.Instance.hp = 50 + (int)(playerAttributeManager.Instance.origin_hp * 2.5);
         Player.Instance.SetStatus();
         Player.Instance.SetInitStats();
         Player.Instance.SetUI();
@@ -127,27 +95,13 @@ public class GameManager : MonoBehaviour
     {
         return isDead;
     }
+
+    //別的腳本讓玩家死亡的方式，反正只能死所以就只設true
+    //這個腳本裡才能設false
     public void SetIsDead()
     {
         isDead = true;
     }
 
-    private void MoveToRespawnPoint()
-    {
-        Debug.Log("回到重生點");
-        playerModel.transform.position = respawnPoint.position;
 
-    }
-
-    /* 多人要用的，我也不確定是幹嘛的反正就是要用
-    public void SetConnectionToken(byte[] connectionToken)
-    {
-        this.connectionToken = connectionToken;
-    }
-
-    public byte[] GetConnectionToken()
-    {
-        return connectionToken;
-    }
-     到這裡結束*/
 }

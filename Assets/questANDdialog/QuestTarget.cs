@@ -10,6 +10,8 @@ public class QuestTarget : MonoBehaviour
     public enum QuestType { Gathering, Talk, Monster };
     public QuestType questType;//收集類的任務，收集完後會消失
 
+
+    /*
     private void Awake()
     {
         //先訂閱怪物被消滅事件
@@ -17,7 +19,7 @@ public class QuestTarget : MonoBehaviour
         EnemyMovement.monsterQuest += OnMonsterDestroyed;
     
     }
-
+    
 
 
     private void OnMonsterDestroyed()
@@ -33,7 +35,7 @@ public class QuestTarget : MonoBehaviour
             }
         }
     }
-
+    */
     /*
     //攜帶這個腳本的是任務相關人和物品
     private void OnCollisionEnter(Collision other)
@@ -114,9 +116,12 @@ public class QuestTarget : MonoBehaviour
         }
     }
 
+    /*
     //當怪物被消滅後，呼叫完事件後要取消訂閱
     private void OnDestroy()
     {
         EnemyMovement.monsterQuest -= OnMonsterDestroyed;
+        Debug.Log("結束訂閱");
     }
+    */
 }

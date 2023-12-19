@@ -16,12 +16,12 @@ public class EnemyActionVariables : MonoBehaviour
     internal float chaseSpeed = 8.0f; //追擊狀態移動速度
 
     //遊蕩範圍
-    internal float wanderRadius = 10.0f;
+    public float wanderRadius = 10.0f;
 
     //視野範圍相關
-    internal float visionRadius = 12.0f; //視野範圍
-    internal float chaseRadius = 15.0f;  //追擊範圍，比視野範圍稍大
-    internal float attackRadius = 7.0f; //攻擊範圍，比上面兩者小
+    public float visionRadius = 12.0f; //視野範圍
+    public float chaseRadius = 15.0f;  //追擊範圍，比視野範圍稍大
+    public float attackRadius = 7.0f; //攻擊範圍，比上面兩者小
 
 
     //控制攻擊間隔的東西
