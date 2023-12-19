@@ -17,6 +17,13 @@ public class GameManager : MonoBehaviour
     public GameObject playerModel; //玩家模型
     public float deathDelay = 2.0f; // 死亡後延遲復活的時間
 
+    /* 這裡是多人的
+    byte[] connectionToken;
+
+    public Vector2 cameraViewRotation = Vector2.zero;
+    public string playerNickName = "";
+     到這裡結束*/
+
     public void Awake()
     {
         Instance = this;
@@ -29,6 +36,15 @@ public class GameManager : MonoBehaviour
         isDead = false;
         backToPoint = true;
         next = false;
+
+        /* 從這裡開始，多人要用的，我也不確定是幹嘛的反正就是要用
+        //Check if token is valid, if not get a new one
+        if (connectionToken == null)
+        {
+            connectionToken = ConnectionTokenUtils.NewToken();
+            Debug.Log($"Player connection token {ConnectionTokenUtils.HashToken(connectionToken)}");
+        }
+         到這裡結束*/
     }
 
     // Update is called once per frame
@@ -123,4 +139,15 @@ public class GameManager : MonoBehaviour
 
     }
 
+    /* 多人要用的，我也不確定是幹嘛的反正就是要用
+    public void SetConnectionToken(byte[] connectionToken)
+    {
+        this.connectionToken = connectionToken;
+    }
+
+    public byte[] GetConnectionToken()
+    {
+        return connectionToken;
+    }
+     到這裡結束*/
 }
