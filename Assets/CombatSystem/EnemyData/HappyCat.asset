@@ -17,5 +17,5 @@ MonoBehaviour:
   enemyElement: 3
   level: 5
   maxHealth: 30
-  attack: 55
+  attack: 3
   rewardExp: 20

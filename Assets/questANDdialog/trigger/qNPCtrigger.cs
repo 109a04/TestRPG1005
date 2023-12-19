@@ -21,8 +21,6 @@ public class qNPCtrigger : Interactable
 
         if (isInRange && Input.GetKeyDown(KeyCode.F))
         {
-            NPCMotion.Instance.animator.SetTrigger("TalkTrigger");
-
             qTable.DelegateQuest();
         }
     }
