@@ -42977,7 +42977,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EscUI: {fileID: 831636282}
   DeathUI: {fileID: 1246433489}
-  deathDelay: 2
   respawnPoint: {fileID: 344959009}
   playerModel: {fileID: 919132148753145697}
 --- !u!1 &1177256497

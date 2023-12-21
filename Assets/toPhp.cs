@@ -89,7 +89,7 @@ public class toPhp : MonoBehaviour
                     playerNameManager.Instance.playerID = responseParts[2];
                     loginText.text = responseParts[0];
 
-                    yield return new WaitForSecondsRealtime(4.0f);
+                    yield return new WaitForSecondsRealtime(1.0f);
                     paneljump.SetActive(false);
                     buttonshow.SetActive(true);
                     playTextbutton.SetActive(true);
@@ -98,7 +98,7 @@ public class toPhp : MonoBehaviour
                 {
                     loginText.text = responseText;
 
-                    yield return new WaitForSecondsRealtime(4.0f);
+                    yield return new WaitForSecondsRealtime(1.0f);
                     paneljump.SetActive(false);
                     playTextbutton.SetActive(true);
                 }
@@ -160,7 +160,7 @@ public class toPhp : MonoBehaviour
                 string responseText = www.downloadHandler.text;
                 regisText.text = responseText;
 
-                yield return new WaitForSecondsRealtime(4.0f);
+                yield return new WaitForSecondsRealtime(1.0f);
                 paneljump.SetActive(false);
                 playTextbutton.SetActive(true);
                 //SceneManager.LoadScene(1);//暫時沒用到

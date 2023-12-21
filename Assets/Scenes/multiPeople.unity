@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 637353536}
   - component: {fileID: 637353534}
   - component: {fileID: 637353535}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: BackgroundCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -963,6 +963,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NetworkRunnerHandler
       objectReference: {fileID: 0}
+    - target: {fileID: 8479942858414016881, guid: 244f0c257b53f464ebdba8142deeff30, type: 3}
+      propertyPath: networkRunnerPrefab
+      value: 
+      objectReference: {fileID: 3456149881531637843, guid: 4b8c65f941ab451418d3cfe24c811941, type: 3}
     - target: {fileID: 8479942858414016882, guid: 244f0c257b53f464ebdba8142deeff30, type: 3}
       propertyPath: m_RootOrder
       value: 10

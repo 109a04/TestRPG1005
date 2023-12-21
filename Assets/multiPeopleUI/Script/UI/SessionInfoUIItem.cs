@@ -15,6 +15,16 @@ public class SessionInfoUIItem : MonoBehaviour
     SessionInfo sessionInfo;
 
     public event Action<SessionInfo> OnJoinSession;
+
+    public void OnClick()
+    {
+        GameObject cat = GameObject.Find("CatPlayer");
+        Destroy(cat);
+        // invoke 呼叫 join session 事件
+        OnJoinSession?.Invoke(sessionInfo);
+        
+    }
+
     public void SetInformation(SessionInfo sessionInfo)
     {
         this.sessionInfo = sessionInfo;
@@ -28,11 +38,4 @@ public class SessionInfoUIItem : MonoBehaviour
         }
         joinButton.gameObject.SetActive(isJoinButtonActive);
     }
-
-    public void OnClick()
-    {
-        // invoke 呼叫 join session 事件
-        OnJoinSession?.Invoke(sessionInfo);
-    }
-
 }

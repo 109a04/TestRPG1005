@@ -43,10 +43,10 @@ public class startNewRoom : MonoBehaviour
         NetworkRunnerHandler networkRunnerHandler = FindObjectOfType<NetworkRunnerHandler>();
         if (networkRunnerHandler == null)
         {
-            Debug.Log("NetworkRunnerHandler 在搞");
+            Debug.Log("NetworkRunnerHandler 找不到");
         }
         string CostomSessionName = playerAttributeManager.Instance.pname;
-        Debug.Log($"ㄚ名字是{playerAttributeManager.Instance.pname}");
+        Debug.Log($"名字是{playerAttributeManager.Instance.pname}");
         networkRunnerHandler.CreateGame(CostomSessionName, "multiPeople");
 
     }

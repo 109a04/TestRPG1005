@@ -10,7 +10,6 @@ public class SessionListUIHandler : MonoBehaviour
     public TextMeshProUGUI statusText;
     public GameObject sessionItemListPrefab;
     public VerticalLayoutGroup verticalLayoutGroup;
-    MainMenuUIHandler mainMenuUIHandler;
 
     private void Awake()
     {
@@ -38,6 +37,7 @@ public class SessionListUIHandler : MonoBehaviour
         addedSessionInfoListUIItem.SetInformation(sessionInfo);
 
         //Hook up events
+        // 連線事件
         addedSessionInfoListUIItem.OnJoinSession += AddedSessionInfoListUIItem_OnJoinSession;
 
     }
@@ -45,8 +45,14 @@ public class SessionListUIHandler : MonoBehaviour
     private void AddedSessionInfoListUIItem_OnJoinSession(SessionInfo sessionInfo)
     {
         NetworkRunnerHandler networkRunnerHandler = FindObjectOfType<NetworkRunnerHandler>();
-
+        if(networkRunnerHandler == null)
+        {
+            Debug.Log("SessionListUIHandler 裡面的加入事件在搞");
+        }
+        Debug.Log($"SessionListUIHandler 裡面的按鈕的 sessionInfo 是 {sessionInfo}");
         networkRunnerHandler.JoinGame(sessionInfo);
+        MainMenuUIHandler mainMenuUIHandler = FindObjectOfType<MainMenuUIHandler>();
+        mainMenuUIHandler.OnJoiningServer();
     }
 
     public void OnNoSessionsFound()

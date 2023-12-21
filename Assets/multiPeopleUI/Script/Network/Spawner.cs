@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
     public NetworkPlayer playerPrefab;
 
     // Mapping between Token ID and Re-created Players
-    Dictionary<int, NetworkPlayer> mapTokenIDWithNetworkPlayer;
+    //Dictionary<int, NetworkPlayer> mapTokenIDWithNetworkPlayer;
     //Other components
     CharacterInputHandler characterInputHandler;
     SessionListUIHandler sessionListUIHandler;
@@ -18,7 +18,7 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
     void Awake()
     {
         //Create a new Dictionary
-        mapTokenIDWithNetworkPlayer = new Dictionary<int, NetworkPlayer>();
+        //mapTokenIDWithNetworkPlayer = new Dictionary<int, NetworkPlayer>();
 
         sessionListUIHandler = FindObjectOfType<SessionListUIHandler>(true);
     }
@@ -31,15 +31,21 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
-        if (runner.IsServer)
+        Debug.Log("有拉還是有到 OnPlayerJoined");
+        Debug.Log($"目前 runner 是 Server 嗎：{runner.IsServer}，player 的 ID 又是：{player.PlayerId}");
+        if (runner.IsClient)
         {
-            Debug.Log("OnPlayerJoined we are server. Spawning player");
-            runner.Spawn(playerPrefab, Utils.GetRandomSpawnPoint(), Quaternion.identity, player);
+            Debug.Log("OnplayerJoined");
+            
         }
         else
         {
-            Debug.Log("OnplayerJoined");
+            Debug.Log("OnPlayerJoined we are server. Spawning player");
+            Debug.Log("給我生成阿為什麼不生成阿快生成阿");
+            runner.Spawn(playerPrefab, Utils.GetRandomSpawnPoint(), Quaternion.identity, player);
+
         }
+        
     }
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
@@ -87,7 +93,16 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
         }
     }
     public void OnCustomAuthenticationResponse(NetworkRunner runner, Dictionary<string, object> data) { }
-    public void OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken) { }
+    public async void OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken) {
+        Debug.Log("OnHostMigration");
+
+        // Shut down the current runner
+        await runner.Shutdown(shutdownReason: ShutdownReason.HostMigration);
+
+        //Find the network runner handler and start the host migration
+        FindObjectOfType<NetworkRunnerHandler>().StartHostMigration(hostMigrationToken);
+
+    }
     public void OnReliableDataReceived(NetworkRunner runner, PlayerRef player, ArraySegment<byte> data) { }
     public void OnSceneLoadDone(NetworkRunner runner) { }
     public void OnSceneLoadStart(NetworkRunner runner) { }

@@ -31,9 +31,13 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
             // 如果不檢查的話就會像之前那樣在其中一個視窗移動，所有的玩家都會被移動
             Local = this;
             Debug.Log("生成了 local player");
-            RPC_SetNickName(playerAttributeManager.Instance.pname);
-            Debug.Log($"名字是 {playerAttributeManager.Instance.pname}");
-
+            //Enable 1 audio listner
+            //AudioListener audioListener = GetComponentInChildren<AudioListener>(true);
+            //audioListener.enabled = true;
+            //RPC_SetNickName(playerAttributeManager.Instance.pname);
+            RPC_SetNickName(PlayerPrefs.GetString("PlayerNickname"));
+            //Debug.Log($"名字是 {playerAttributeManager.Instance.pname}");
+            Debug.Log($"NetworkPlayer-Spawned 名字是 {PlayerPrefs.GetString("PlayerNickname")}");
         }
         else
         {
@@ -45,6 +49,8 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
 
             Debug.Log("生成了遠端的 player");
         }
+        //Set the Player as a player object
+        Runner.SetPlayerObject(Object.InputAuthority, Object);
 
         // 給不同的玩家改名
         transform.name = $"Player_{Object.Id}";
@@ -79,7 +85,7 @@ public class NetworkPlayer : NetworkBehaviour, IPlayerLeft
     {
         Debug.Log($"[RPC] SetNickName {nickName}");
         this.nickName = nickName;
-
+        // client send message to host and tell what name they are
 
     }
 }
