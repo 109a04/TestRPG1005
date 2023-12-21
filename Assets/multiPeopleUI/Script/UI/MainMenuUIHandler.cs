@@ -60,8 +60,8 @@ public class MainMenuUIHandler : MonoBehaviour
     {
         NetworkRunnerHandler networkRunnerHandler = FindObjectOfType<NetworkRunnerHandler>();
 
-        GameObject cat = GameObject.Find("CatPlayer");
-        Destroy(cat);
+        //GameObject cat = GameObject.Find("CatPlayer");
+        //Destroy(cat);
         //string CostomSessionName = playerAttributeManager.Instance.pname;
         Debug.Log($"£«¦W¦r¬O{playerAttributeManager.Instance.pname}");
         //networkRunnerHandler.CreateGame(CostomSessionName, "multiPeople");
